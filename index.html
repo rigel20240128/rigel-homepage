@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>株式会社RIGEL｜産業用ロボット教育システム RTS（Robot Training System）</title>
+<meta name="description" content="株式会社RIGELは、FA技術者不足・技能継承問題を解決する産業用ロボット教育システム「RTS」をレンタル提供します。20年以上のFA設備設計経験に基づく実践教育を、月額制で導入いただけます。">
+<link rel="icon" href="assets/rigel-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --main:#026881;
+    --dark:#014B5D;
+    --light:#74ACBA;
+    --bg:#F7F6F3;
+    --ink:#17181A;
+    --sub:#6B6E73;
+    --border:#E3E1DB;
+    --accent:#E8622C;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    font-family:"Noto Sans JP", -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.8;
+    font-weight:400;
+  }
+  a{ color:inherit; }
+  img{ max-width:100%; display:block; }
+  .wrap{ max-width:1080px; margin:0 auto; padding:0 24px; }
+
+  /* header */
+  header{
+    position:sticky; top:0; z-index:100;
+    background:rgba(247,246,243,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--border);
+  }
+  header .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:72px;
+  }
+  .brand{ display:flex; align-items:center; gap:10px; }
+  .brand img{ height:32px; width:auto; }
+  .brand span{ font-weight:700; font-size:15px; letter-spacing:0.04em; color:var(--dark); }
+  nav{ display:flex; gap:28px; }
+  nav a{
+    font-size:14px; font-weight:500; color:var(--ink); text-decoration:none;
+    padding:6px 0; border-bottom:2px solid transparent;
+  }
+  nav a:hover{ border-bottom-color:var(--main); }
+  @media (max-width:640px){
+    nav{ gap:14px; }
+    nav a{ font-size:12px; }
+    .brand span{ display:none; }
+  }
+
+  /* hero */
+  .hero{
+    padding:120px 0 96px;
+    text-align:center;
+  }
+  .hero img.mark{
+    max-width:480px; width:80%; margin:0 auto 40px;
+  }
+  .hero .tagline{
+    font-size:15px; font-weight:500; letter-spacing:0.12em;
+    color:var(--main); text-transform:uppercase; margin-bottom:20px;
+  }
+  .hero h1{
+    font-size:clamp(24px, 4vw, 36px);
+    font-weight:700; color:var(--ink);
+    max-width:760px; margin:0 auto 20px;
+    line-height:1.6;
+  }
+  .hero p.lead{
+    font-size:16px; color:var(--sub); max-width:600px; margin:0 auto 40px;
+  }
+  .btn{
+    display:inline-block; padding:16px 40px;
+    background:var(--main); color:#fff; text-decoration:none;
+    font-weight:700; font-size:15px; letter-spacing:0.04em;
+    border-radius:2px;
+  }
+  .btn:hover{ background:var(--dark); }
+  .btn.outline{
+    background:transparent; color:var(--main); border:1.5px solid var(--main);
+    margin-left:12px;
+  }
+  .btn.outline:hover{ background:var(--main); color:#fff; }
+
+  /* section generic */
+  section{ padding:88px 0; border-top:1px solid var(--border); }
+  .kicker{
+    font-size:13px; font-weight:700; letter-spacing:0.14em;
+    color:var(--main); text-transform:uppercase; margin-bottom:14px;
+  }
+  h2{
+    font-size:clamp(22px, 3vw, 30px); font-weight:700; color:var(--dark);
+    margin-bottom:20px;
+  }
+  .section-head{ text-align:center; max-width:640px; margin:0 auto 56px; }
+  .section-head p{ color:var(--sub); font-size:15px; }
+
+  /* problem/solution */
+  .grid2{
+    display:grid; grid-template-columns:1fr 1fr; gap:40px;
+  }
+  @media (max-width:760px){ .grid2{ grid-template-columns:1fr; } }
+  .card{
+    background:#fff; border:1px solid var(--border); border-radius:4px;
+    padding:36px;
+  }
+  .card h3{
+    font-size:17px; font-weight:700; margin-bottom:14px; color:var(--ink);
+  }
+  .card p{ color:var(--sub); font-size:14.5px; }
+  .card.problem h3::before{ content:"課題　"; color:var(--accent); }
+  .card.solution h3::before{ content:"解決策　"; color:var(--main); }
+
+  /* features */
+  .features{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:32px; margin-top:16px;
+  }
+  @media (max-width:760px){ .features{ grid-template-columns:1fr; } }
+  .feature{ text-align:left; }
+  .feature .num{
+    font-size:13px; font-weight:900; color:var(--light); letter-spacing:0.08em; margin-bottom:10px;
+  }
+  .feature h4{ font-size:15.5px; font-weight:700; margin-bottom:8px; }
+  .feature p{ font-size:14px; color:var(--sub); }
+
+  /* pricing strip */
+  .pricing{
+    margin-top:56px; background:var(--dark); color:#fff;
+    border-radius:4px; padding:40px 48px;
+    display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;
+  }
+  .pricing .num{ font-size:44px; font-weight:900; }
+  .pricing .num small{ font-size:16px; font-weight:500; opacity:0.8; }
+  .pricing p{ color:rgba(255,255,255,0.75); font-size:14px; max-width:420px; }
+
+  /* company table */
+  table.company{ width:100%; border-collapse:collapse; }
+  table.company th, table.company td{
+    text-align:left; padding:16px 0; border-bottom:1px solid var(--border);
+    font-size:14.5px; vertical-align:top;
+  }
+  table.company th{
+    width:160px; color:var(--sub); font-weight:500;
+  }
+  table.company td{ color:var(--ink); }
+
+  .strengths{ margin-top:40px; display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  @media (max-width:760px){ .strengths{ grid-template-columns:1fr; } }
+  .strengths .item{ padding:24px; background:#fff; border:1px solid var(--border); border-radius:4px; }
+  .strengths .item .n{ font-size:34px; font-weight:900; color:var(--main); }
+  .strengths .item p{ font-size:13.5px; color:var(--sub); margin-top:6px; }
+
+  /* contact */
+  .contact{
+    background:var(--dark); color:#fff; text-align:center;
+  }
+  .contact .kicker{ color:var(--light); }
+  .contact h2{ color:#fff; }
+  .contact p{ color:rgba(255,255,255,0.75); max-width:520px; margin:0 auto 32px; font-size:15px; }
+  .contact .btn{ background:#fff; color:var(--dark); }
+  .contact .btn:hover{ background:var(--light); color:#fff; }
+
+  footer{
+    padding:40px 0; text-align:center; border-top:1px solid var(--border);
+  }
+  footer img{ height:24px; margin:0 auto 14px; opacity:0.85; }
+  footer p{ font-size:12.5px; color:var(--sub); }
+  footer .tag{ font-size:11px; color:var(--sub); letter-spacing:0.08em; margin-top:4px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand">
+      <img src="assets/rigel-logo.png" alt="RIGEL">
+      <span>株式会社RIGEL</span>
+    </div>
+    <nav>
+      <a href="#rts">RTS事業</a>
+      <a href="#company">会社概要</a>
+      <a href="#contact">お問い合わせ</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <img class="mark" src="assets/rigel-logo.png" alt="RIGEL - Hook the Future">
+    <p class="tagline">Hook the Future</p>
+    <h1>産業用ロボットの「使い方」を、<br>現場で学べる教育システムへ。</h1>
+    <p class="lead">
+      RTS（Robot Training System）は、FA技術者不足・技能継承問題を解決する
+      産業用ロボット教育システムのレンタルサービスです。
+    </p>
+    <a class="btn" href="#contact">資料請求・お問い合わせ</a>
+    <a class="btn outline" href="#rts">サービス詳細を見る</a>
+  </div>
+</section>
+
+<section id="rts">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">RTS — Robot Training System</p>
+      <h2>「教えられる人がいない」を解決する、<br class="only-pc">レンタル式ロボット教育システム</h2>
+      <p>産業用ロボット・FA設備の操作／保全スキルを、外部の専門研修に頼らず社内で継続的に育成できます。</p>
+    </div>
+
+    <div class="grid2">
+      <div class="card problem">
+        <h3>こんな課題はありませんか</h3>
+        <p>
+          ベテラン技術者の退職でロボット操作・保全のノウハウが継承されない。
+          新人にOJTだけで教える余裕がなく、教育担当も専任化できない。
+          外部研修は高額で日程も合わせづらい――。
+        </p>
+      </div>
+      <div class="card solution">
+        <h3>RTSが提供する解決策</h3>
+        <p>
+          実機に近い環境で反復練習できる教育システムを、月額のレンタルで導入。
+          教材・マニュアル・動画教材も合わせて提供し、社内でいつでも・何度でも
+          教育を行える体制を構築します。
+        </p>
+      </div>
+    </div>
+
+    <div class="features">
+      <div class="feature">
+        <p class="num">01</p>
+        <h4>実践的な教育コンテンツ</h4>
+        <p>操作手順・保全知識をまとめたマニュアルと動画教材で、経験の浅い担当者でも段階的に習得できます。</p>
+      </div>
+      <div class="feature">
+        <p class="num">02</p>
+        <h4>月額制で導入しやすい</h4>
+        <p>高額な研修費や設備投資をかけず、必要な期間・規模に合わせてレンタルで運用できます。</p>
+      </div>
+      <div class="feature">
+        <p class="num">03</p>
+        <h4>20年超のFA設計経験に基づく設計</h4>
+        <p>長年の産業用ロボット・FA設備設計の実務経験をもとに、現場で本当に使える内容を追求しています。</p>
+      </div>
+    </div>
+
+    <div class="pricing">
+      <div>
+        <div class="num">10<small>万円〜</small> / 月</div>
+      </div>
+      <p>ご利用規模・期間に応じて内容をご提案します。まずはお気軽にお問い合わせください。</p>
+    </div>
+  </div>
+</section>
+
+<section id="company">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">Company</p>
+      <h2>会社概要</h2>
+    </div>
+
+    <table class="company">
+      <tr><th>商号</th><td>株式会社RIGEL（RIGEL Inc.）</td></tr>
+      <tr><th>代表者</th><td>代表取締役　佐藤 貴久</td></tr>
+      <tr><th>所在地</th><td>千葉県柏市</td></tr>
+      <tr><th>設立</th><td>2026年10月（設立準備中）</td></tr>
+      <tr><th>事業内容</th><td>産業用ロボット教育システム（RTS）のレンタル提供、FA設備設計</td></tr>
+      <tr><th>ブランドステートメント</th><td>Hook the Future — 未来を、ロボット技術で釣り上げる。</td></tr>
+    </table>
+
+    <div class="strengths">
+      <div class="item">
+        <div class="n">20年+</div>
+        <p>代表による、FA設備設計・産業用ロボット導入の実務経験</p>
+      </div>
+      <div class="item">
+        <div class="n">JANOME</div>
+        <p>JANOME製ロボットを活用した生産設備設計の実績</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <p class="kicker">Contact</p>
+    <h2>まずはお気軽にご相談ください</h2>
+    <p>RTSの導入相談、FA設備に関するご相談、資料請求など、お気軽にお問い合わせください。</p>
+    <a class="btn" href="mailto:rigel.20240128@gmail.com?subject=RTSに関するお問い合わせ">メールでお問い合わせ</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <img src="assets/rigel-logo.png" alt="RIGEL">
+    <p>&copy; 2026 RIGEL Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>
