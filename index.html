@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>株式会社RIGEL｜産業用ロボット教育システム RTS（Robot Training System）</title>
-<meta name="description" content="株式会社RIGELは、FA技術者不足・技能継承問題を解決する産業用ロボット教育システム「RTS」をレンタル提供します。20年以上のFA設備設計経験に基づく実践教育を、月額制で導入いただけます。">
+<title>株式会社RIGEL｜卓上ロボット教育システム RTS（Robot Training System）</title>
+<meta name="description" content="株式会社RIGELは、FA技術者不足・技能継承問題を解決する卓上ロボット教育システム「RTS」をレンタル提供します。20年以上のFA設備設計経験に基づく実践教育を、月額制で導入いただけます。">
 <link rel="icon" href="assets/rigel-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,6 +13,7 @@
   :root{
     --main:#026881;
     --dark:#014B5D;
+    --deep:#052E38;
     --light:#74ACBA;
     --bg:#F7F6F3;
     --ink:#17181A;
@@ -28,153 +29,360 @@
     background:var(--bg);
     line-height:1.8;
     font-weight:400;
+    overflow-x:hidden;
   }
   a{ color:inherit; }
   img{ max-width:100%; display:block; }
-  .wrap{ max-width:1080px; margin:0 auto; padding:0 24px; }
+  .wrap{ max-width:1120px; margin:0 auto; padding:0 24px; position:relative; }
+  svg{ display:block; }
 
-  /* header */
+  /* header (TDR-style: single small logo, flat icon+label tabs) */
   header{
     position:sticky; top:0; z-index:100;
-    background:rgba(247,246,243,0.92);
-    backdrop-filter:blur(6px);
+    background:rgba(247,246,243,0.86);
+    backdrop-filter:blur(10px);
     border-bottom:1px solid var(--border);
   }
-  header .wrap{
+  .header-row{
     display:flex; align-items:center; justify-content:space-between;
     height:72px;
   }
-  .brand{ display:flex; align-items:center; gap:10px; }
-  .brand img{ height:32px; width:auto; }
-  .brand span{ font-weight:700; font-size:15px; letter-spacing:0.04em; color:var(--dark); }
-  nav{ display:flex; gap:28px; }
-  nav a{
-    font-size:14px; font-weight:500; color:var(--ink); text-decoration:none;
-    padding:6px 0; border-bottom:2px solid transparent;
+  .brand{ display:flex; align-items:center; }
+  .brand img.logo-mark{ height:28px; width:auto; }
+
+  nav.main-nav{ display:flex; align-items:center; gap:4px; }
+  .nav-tab{
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px;
+    padding:8px 13px; border-radius:12px; text-decoration:none; color:var(--sub);
+    font-size:10.5px; font-weight:600; min-width:60px; transition:background .15s ease, color .15s ease;
   }
-  nav a:hover{ border-bottom-color:var(--main); }
-  @media (max-width:640px){
-    nav{ gap:14px; }
-    nav a{ font-size:12px; }
-    .brand span{ display:none; }
+  .nav-tab svg{ width:19px; height:19px; fill:#2F80ED; }
+  .nav-tab:hover{ background:#F2F7FC; color:var(--ink); }
+  .nav-tab.active{ background:#EEF4FC; color:#2F80ED; }
+  .nav-sep{ width:1px; height:26px; background:var(--border); margin:0 6px; }
+  nav.main-nav a.plain{ font-size:14px; font-weight:500; color:var(--ink); text-decoration:none; padding:6px 4px; }
+  nav.main-nav a.plain:hover{ color:var(--main); }
+  nav.main-nav a.nav-cta{
+    background:var(--main); color:#fff; padding:10px 20px; border-radius:999px;
+    font-weight:700; font-size:14px; text-decoration:none; margin-left:4px;
   }
+  nav.main-nav a.nav-cta:hover{ background:var(--dark); }
+
+  .tab-scroll{ display:none; }
+
+  @media (max-width:900px){
+    nav.main-nav .nav-tab, nav.main-nav .nav-sep{ display:none; }
+    .tab-scroll{
+      display:flex; gap:8px; overflow-x:auto; padding:10px 20px 12px;
+      border-top:1px solid var(--border); -webkit-overflow-scrolling:touch; scrollbar-width:none;
+    }
+    .tab-scroll::-webkit-scrollbar{ display:none; }
+    .tab-chip{
+      flex-shrink:0; display:flex; align-items:center; gap:6px; padding:8px 14px; border-radius:999px;
+      background:#F2F7FC; color:var(--ink); text-decoration:none; font-size:12.5px; font-weight:600; white-space:nowrap;
+    }
+    .tab-chip svg{ width:15px; height:15px; fill:#2F80ED; }
+    .tab-chip.active{ background:#2F80ED; color:#fff; }
+    .tab-chip.active svg{ fill:#fff; }
+  }
+  @media (max-width:520px){
+    nav.main-nav a.plain{ display:none; }
+    nav.main-nav a.nav-cta{ padding:8px 14px; font-size:12px; }
+  }
+
+  /* decorative icon system */
+  .ic{ width:26px; height:26px; stroke:var(--main); stroke-width:1.6; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+  .ic-accent{ stroke:var(--accent); }
+  .ic-light{ stroke:var(--light); }
+  .ic-white{ stroke:#fff; }
 
   /* hero */
   .hero{
-    padding:120px 0 96px;
-    text-align:center;
+    position:relative;
+    min-height:calc(100vh - 72px);
+    display:flex; align-items:center;
+    padding:80px 0;
+    background:
+      radial-gradient(ellipse 900px 560px at 78% -8%, rgba(116,172,186,0.30), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 8% 100%, rgba(232,98,44,0.10), transparent 55%),
+      linear-gradient(160deg, var(--deep) 0%, var(--dark) 46%, var(--main) 100%);
+    color:#fff;
+    overflow:hidden;
   }
-  .hero img.mark{
-    max-width:480px; width:80%; margin:0 auto 40px;
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.055) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.055) 1px, transparent 1px);
+    background-size:44px 44px;
+    mask-image:radial-gradient(ellipse 1000px 620px at 60% 20%, #000 20%, transparent 75%);
+    pointer-events:none;
   }
+  .hero .wrap{
+    display:grid; grid-template-columns:1.05fr 0.95fr; align-items:center; gap:32px;
+  }
+  @media (max-width:900px){ .hero .wrap{ grid-template-columns:1fr; } .hero-visual{ order:-1; margin-bottom:8px; } }
+  .hero-copy{ position:relative; z-index:2; }
   .hero .tagline{
-    font-size:15px; font-weight:500; letter-spacing:0.12em;
-    color:var(--main); text-transform:uppercase; margin-bottom:20px;
+    font-size:13px; font-weight:700; letter-spacing:0.22em;
+    color:var(--light); text-transform:uppercase; margin-bottom:18px;
+    display:flex; align-items:center; gap:10px;
   }
+  .hero .tagline::before{ content:""; width:28px; height:1px; background:var(--light); display:inline-block; }
   .hero h1{
-    font-size:clamp(24px, 4vw, 36px);
-    font-weight:700; color:var(--ink);
-    max-width:760px; margin:0 auto 20px;
-    line-height:1.6;
+    font-size:clamp(26px, 3.6vw, 40px);
+    font-weight:900; color:#fff;
+    max-width:600px; margin:0 0 22px;
+    line-height:1.55;
+    letter-spacing:0.01em;
   }
   .hero p.lead{
-    font-size:16px; color:var(--sub); max-width:600px; margin:0 auto 40px;
+    font-size:16px; color:rgba(255,255,255,0.82); max-width:520px; margin:0 0 40px;
   }
   .btn{
-    display:inline-block; padding:16px 40px;
-    background:var(--main); color:#fff; text-decoration:none;
-    font-weight:700; font-size:15px; letter-spacing:0.04em;
-    border-radius:2px;
+    display:inline-flex; align-items:center; gap:8px; padding:16px 34px;
+    background:var(--accent); color:#fff; text-decoration:none;
+    font-weight:700; font-size:15px; letter-spacing:0.03em;
+    border-radius:999px; border:1.5px solid var(--accent);
+    box-shadow:0 12px 26px rgba(232,98,44,0.30);
+    transition:transform .15s ease, box-shadow .15s ease;
   }
-  .btn:hover{ background:var(--dark); }
+  .btn:hover{ background:#d1551f; border-color:#d1551f; transform:translateY(-2px); box-shadow:0 16px 32px rgba(232,98,44,0.38); }
   .btn.outline{
-    background:transparent; color:var(--main); border:1.5px solid var(--main);
-    margin-left:12px;
+    background:transparent; color:#fff; border:1.5px solid rgba(255,255,255,0.55);
+    margin-left:12px; box-shadow:none;
   }
-  .btn.outline:hover{ background:var(--main); color:#fff; }
+  .btn.outline:hover{ background:rgba(255,255,255,0.12); border-color:#fff; transform:translateY(-2px); box-shadow:none; }
+  @media (max-width:480px){ .btn.outline{ margin-left:0; margin-top:12px; } }
+
+  .hero-visual{ position:relative; z-index:1; aspect-ratio:460/420; }
+
+  /* brand hero (top page: company face) */
+  .brand-hero{
+    min-height:auto; padding:100px 0 80px; background:var(--bg); color:var(--ink);
+    background-image:none;
+  }
+  .brand-hero::before{ display:none; }
+  .brand-hero .wrap{ display:block; text-align:center; max-width:720px; }
+  .brand-hero .brand-logo{ width:min(440px, 78%); margin:0 auto 36px; }
+  .brand-hero h1{ color:var(--dark); max-width:none; margin:0 auto 20px; }
+  .brand-hero p.lead{ color:var(--sub); max-width:560px; margin:0 auto 40px; }
+  .brand-hero .btn.outline{ color:var(--dark); border-color:var(--border); margin-left:12px; }
+  .brand-hero .btn.outline:hover{ background:#F2F7FC; border-color:var(--main); }
+  @media (max-width:480px){ .brand-hero .btn.outline{ margin-left:0; margin-top:12px; } }
+
+  /* rts intro (relocated former hero content) */
+  .rts-intro{ display:grid; grid-template-columns:1.05fr 0.95fr; align-items:center; gap:32px; margin-bottom:72px; text-align:left; }
+  @media (max-width:900px){ .rts-intro{ grid-template-columns:1fr; } }
+  .rts-intro .tagline{ font-size:13px; font-weight:700; letter-spacing:0.22em; color:var(--main); text-transform:uppercase; margin-bottom:14px; }
+  .rts-intro h3.rts-headline{ font-size:clamp(22px, 3vw, 32px); font-weight:900; color:var(--dark); margin:0 0 18px; line-height:1.5; }
+  .rts-intro .rts-visual{ aspect-ratio:460/380; }
+  .rts-intro .rts-visual .card{ width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:#fff; border-radius:24px; box-shadow:0 20px 34px rgba(2,20,26,0.10); padding:20px; border:1px solid var(--border); }
+  .rts-intro .rts-visual .card img{ width:100%; height:100%; object-fit:contain; border-radius:14px; }
 
   /* section generic */
-  section{ padding:88px 0; border-top:1px solid var(--border); }
+  section{ padding:96px 0; position:relative; }
+  section.alt{ background:#fff; }
+  .divider{
+    position:relative; height:1px; background:var(--border);
+  }
   .kicker{
-    font-size:13px; font-weight:700; letter-spacing:0.14em;
+    font-size:12.5px; font-weight:700; letter-spacing:0.16em;
     color:var(--main); text-transform:uppercase; margin-bottom:14px;
+    display:flex; align-items:center; gap:9px;
   }
+  .kicker::before{ content:""; width:22px; height:2px; background:var(--accent); display:inline-block; border-radius:2px; }
   h2{
-    font-size:clamp(22px, 3vw, 30px); font-weight:700; color:var(--dark);
-    margin-bottom:20px;
+    font-size:clamp(24px, 3vw, 32px); font-weight:900; color:var(--dark);
+    margin-bottom:20px; letter-spacing:0.01em;
   }
-  .section-head{ text-align:center; max-width:640px; margin:0 auto 56px; }
+  .section-head{ text-align:center; max-width:640px; margin:0 auto 60px; }
   .section-head p{ color:var(--sub); font-size:15px; }
 
   /* problem/solution */
   .grid2{
-    display:grid; grid-template-columns:1fr 1fr; gap:40px;
+    display:grid; grid-template-columns:1fr 1fr; gap:28px;
   }
   @media (max-width:760px){ .grid2{ grid-template-columns:1fr; } }
   .card{
-    background:#fff; border:1px solid var(--border); border-radius:4px;
-    padding:36px;
+    background:#fff; border:1px solid var(--border); border-radius:24px;
+    padding:38px; position:relative; overflow:hidden;
+    box-shadow:0 12px 26px rgba(2,20,26,0.06);
+    transition:transform .22s ease, box-shadow .22s ease;
   }
+  .card:hover{ transform:translateY(-6px); box-shadow:0 26px 42px rgba(2,20,26,0.12); }
+  .card .icon-badge{
+    width:52px; height:52px; border-radius:16px; display:flex; align-items:center; justify-content:center;
+    margin-bottom:20px;
+    transition:transform .22s ease;
+  }
+  .card:hover .icon-badge{ transform:scale(1.08) rotate(-2deg); }
+  .card.problem .icon-badge{ background:#FBEDE6; }
+  .card.problem .icon-badge .ic{ stroke:var(--accent); }
+  .card.solution .icon-badge{ background:#E4F0F2; }
+  .card.solution .icon-badge .ic{ stroke:var(--main); }
   .card h3{
-    font-size:17px; font-weight:700; margin-bottom:14px; color:var(--ink);
+    font-size:17.5px; font-weight:700; margin-bottom:14px; color:var(--ink);
   }
   .card p{ color:var(--sub); font-size:14.5px; }
   .card.problem h3::before{ content:"課題　"; color:var(--accent); }
   .card.solution h3::before{ content:"解決策　"; color:var(--main); }
 
+  /* business overview grid (top page) */
+  .biz-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:22px; margin-top:32px; }
+  @media (max-width:900px){ .biz-grid{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:520px){ .biz-grid{ grid-template-columns:1fr; } }
+  .biz-card{
+    display:block; text-decoration:none; color:inherit;
+    background:#fff; border:1px solid var(--border); border-radius:22px;
+    padding:28px 24px; box-shadow:0 12px 26px rgba(2,20,26,0.06);
+    transition:transform .22s ease, box-shadow .22s ease;
+  }
+  .biz-card:hover{ transform:translateY(-6px); box-shadow:0 26px 42px rgba(2,20,26,0.12); }
+  .biz-card .icon-badge{
+    width:50px; height:50px; border-radius:15px; background:#EEF4FC;
+    display:flex; align-items:center; justify-content:center; margin-bottom:18px;
+  }
+  .biz-card .icon-badge svg{ width:23px; height:23px; fill:#2F80ED; }
+  .biz-card h3{ font-size:16px; font-weight:700; margin-bottom:10px; color:var(--ink); }
+  .biz-card p{ color:var(--sub); font-size:13.5px; margin-bottom:14px; }
+  .biz-card .biz-link{ font-size:12.5px; font-weight:700; color:var(--main); }
+
   /* features */
   .features{
-    display:grid; grid-template-columns:repeat(3, 1fr); gap:32px; margin-top:16px;
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:28px; margin-top:20px;
   }
   @media (max-width:760px){ .features{ grid-template-columns:1fr; } }
-  .feature{ text-align:left; }
-  .feature .num{
-    font-size:13px; font-weight:900; color:var(--light); letter-spacing:0.08em; margin-bottom:10px;
+  .feature{
+    text-align:left; background:#fff; border:1px solid var(--border); border-radius:22px;
+    padding:30px 26px; box-shadow:0 12px 26px rgba(2,20,26,0.05);
+    transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
   }
-  .feature h4{ font-size:15.5px; font-weight:700; margin-bottom:8px; }
+  .feature:hover{ transform:translateY(-6px); box-shadow:0 26px 42px rgba(2,20,26,0.11); border-color:transparent; }
+  .feature .icon-ring{
+    width:50px; height:50px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(150deg, var(--main), var(--dark)); margin-bottom:18px;
+    box-shadow:0 8px 16px rgba(2,104,129,0.28);
+    transition:transform .22s ease;
+  }
+  .feature:hover .icon-ring{ transform:scale(1.1); }
+  .feature .icon-ring .ic{ stroke:#fff; width:22px; height:22px; }
+  .feature .num{
+    font-size:12px; font-weight:900; color:var(--light); letter-spacing:0.1em; margin-bottom:8px;
+  }
+  .feature h4{ font-size:15.5px; font-weight:700; margin-bottom:10px; }
   .feature p{ font-size:14px; color:var(--sub); }
 
   /* pricing strip */
   .pricing{
-    margin-top:56px; background:var(--dark); color:#fff;
-    border-radius:4px; padding:40px 48px;
+    margin-top:56px; position:relative; overflow:hidden;
+    background:linear-gradient(120deg, var(--deep), var(--dark) 60%, var(--main));
+    color:#fff;
+    border-radius:28px; padding:44px 48px;
     display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;
+    box-shadow:0 24px 40px rgba(2,20,26,0.20);
   }
+  .pricing::after{
+    content:"";
+    position:absolute; right:-40px; top:-60px; width:220px; height:220px; border-radius:50%;
+    background:radial-gradient(circle, rgba(116,172,186,0.35), transparent 70%);
+  }
+  .pricing .price-row{ display:flex; align-items:center; gap:18px; position:relative; z-index:1; }
+  .pricing .icon-ring{
+    width:56px; height:56px; border-radius:50%; background:rgba(255,255,255,0.12);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .pricing .icon-ring .ic{ stroke:#fff; }
   .pricing .num{ font-size:44px; font-weight:900; }
   .pricing .num small{ font-size:16px; font-weight:500; opacity:0.8; }
-  .pricing p{ color:rgba(255,255,255,0.75); font-size:14px; max-width:420px; }
+  .pricing p{ color:rgba(255,255,255,0.78); font-size:14px; max-width:380px; position:relative; z-index:1; }
 
   /* company table */
+  .company-panel{
+    background:#fff; border:1px solid var(--border); border-radius:26px; padding:44px;
+    box-shadow:0 16px 34px rgba(2,20,26,0.06);
+  }
+  @media (max-width:640px){ .company-panel{ padding:28px 22px; } }
   table.company{ width:100%; border-collapse:collapse; }
   table.company th, table.company td{
     text-align:left; padding:16px 0; border-bottom:1px solid var(--border);
     font-size:14.5px; vertical-align:top;
   }
+  table.company tr:last-child th, table.company tr:last-child td{ border-bottom:none; }
   table.company th{
-    width:160px; color:var(--sub); font-weight:500;
+    width:210px; color:var(--sub); font-weight:500;
+  }
+  table.company th .th-inline{ display:flex; align-items:center; gap:9px; white-space:nowrap; }
+  table.company th .ic{ width:17px; height:17px; stroke:var(--light); flex-shrink:0; }
+  @media (max-width:560px){
+    table.company th .th-inline{ white-space:normal; }
+    table.company th{ width:auto; }
   }
   table.company td{ color:var(--ink); }
 
-  .strengths{ margin-top:40px; display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  .access-map{ margin-top:28px; border-radius:18px; overflow:hidden; border:1px solid var(--border); box-shadow:0 10px 22px rgba(2,20,26,0.05); }
+  .access-map iframe{ width:100%; height:320px; border:0; display:block; }
+  .access-note{ display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; margin-top:14px; font-size:13px; color:var(--sub); }
+  .access-note a{ color:var(--main); font-weight:700; text-decoration:none; }
+  .access-note a:hover{ text-decoration:underline; }
+
+  .strengths{ margin-top:28px; display:grid; grid-template-columns:1fr 1fr; gap:24px; }
   @media (max-width:760px){ .strengths{ grid-template-columns:1fr; } }
-  .strengths .item{ padding:24px; background:#fff; border:1px solid var(--border); border-radius:4px; }
-  .strengths .item .n{ font-size:34px; font-weight:900; color:var(--main); }
-  .strengths .item p{ font-size:13.5px; color:var(--sub); margin-top:6px; }
+  .strengths .item{
+    padding:28px; background:linear-gradient(160deg, #fff, #F2F7F8);
+    border:1px solid var(--border); border-radius:22px;
+    display:flex; align-items:center; gap:18px;
+    box-shadow:0 10px 22px rgba(2,20,26,0.05);
+    transition:transform .22s ease, box-shadow .22s ease;
+  }
+  .strengths .item:hover{ transform:translateY(-5px); box-shadow:0 22px 36px rgba(2,20,26,0.10); }
+  .strengths .item .icon-ring{
+    width:52px; height:52px; border-radius:16px; flex-shrink:0;
+    background:linear-gradient(150deg, var(--main), var(--dark));
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 8px 16px rgba(2,104,129,0.28);
+    transition:transform .22s ease;
+  }
+  .strengths .item:hover .icon-ring{ transform:scale(1.1) rotate(-2deg); }
+  .strengths .item .icon-ring .ic{ stroke:#fff; width:24px; height:24px; }
+  .strengths .item .n{ font-size:26px; font-weight:900; color:var(--dark); line-height:1.3; }
+  .strengths .item p{ font-size:13.5px; color:var(--sub); margin-top:2px; }
 
   /* contact */
   .contact{
-    background:var(--dark); color:#fff; text-align:center;
+    position:relative; overflow:hidden;
+    background:
+      radial-gradient(ellipse 700px 420px at 85% 0%, rgba(116,172,186,0.22), transparent 60%),
+      linear-gradient(160deg, var(--deep), var(--dark) 70%);
+    color:#fff; text-align:center;
   }
-  .contact .kicker{ color:var(--light); }
+  .contact::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size:40px 40px;
+    mask-image:radial-gradient(ellipse 800px 500px at 50% 40%, #000 15%, transparent 72%);
+  }
+  .contact .wrap{ position:relative; z-index:1; }
+  .contact .icon-ring{
+    width:60px; height:60px; border-radius:50%; background:rgba(255,255,255,0.10);
+    display:flex; align-items:center; justify-content:center; margin:0 auto 22px;
+  }
+  .contact .icon-ring .ic{ stroke:#fff; }
+  .contact .kicker{ color:var(--light); justify-content:center; }
+  .contact .kicker::before{ display:none; }
   .contact h2{ color:#fff; }
   .contact p{ color:rgba(255,255,255,0.75); max-width:520px; margin:0 auto 32px; font-size:15px; }
-  .contact .btn{ background:#fff; color:var(--dark); }
-  .contact .btn:hover{ background:var(--light); color:#fff; }
+  .contact .btn{ background:#fff; color:var(--dark); border-color:#fff; box-shadow:0 14px 28px rgba(1,25,32,0.30); }
+  .contact .btn:hover{ background:var(--light); color:#fff; border-color:var(--light); }
 
   footer{
-    padding:40px 0; text-align:center; border-top:1px solid var(--border);
+    padding:44px 0; text-align:center; background:#fff; border-top:1px solid var(--border);
   }
-  footer img{ height:24px; margin:0 auto 14px; opacity:0.85; }
+  footer img.logo-mark{ height:22px; width:auto; margin:0 auto 16px; opacity:0.85; }
   footer p{ font-size:12.5px; color:var(--sub); }
   footer .tag{ font-size:11px; color:var(--sub); letter-spacing:0.08em; margin-top:4px; }
 </style>
@@ -182,43 +390,103 @@
 <body>
 
 <header>
-  <div class="wrap">
-    <div class="brand">
-      <img src="assets/rigel-logo.png" alt="RIGEL">
-      <span>株式会社RIGEL</span>
-    </div>
-    <nav>
-      <a href="#rts">RTS事業</a>
-      <a href="#company">会社概要</a>
-      <a href="#contact">お問い合わせ</a>
+  <div class="wrap header-row">
+    <a class="brand" href="index.html"><img class="logo-mark" src="assets/rigel-logo.png" alt="RIGEL"></a>
+    <nav class="main-nav">
+      <a href="index.html" class="nav-tab active">
+        <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Z"/></svg>
+        <span>ホーム</span>
+      </a>
+      <a href="education.html" class="nav-tab">
+        <svg viewBox="0 0 24 24"><rect x="2" y="17" width="20" height="5" rx="1.5"/><rect x="9" y="3" width="4" height="12" rx="2"/><rect x="9" y="3" width="10" height="4" rx="2"/></svg>
+        <span>RTS教育システム</span>
+      </a>
+      <a href="jig.html" class="nav-tab">
+        <svg viewBox="0 -960 960 960"><path d="M448-167 228-296q-13.77-8.29-21.39-22.23Q199-332.17 199-348v-257q0-15.83 7.61-29.77Q214.23-648.71 228-657l221-131q14-8 31-8t31 8l221 131q13.78 8.29 21.39 22.23Q761-620.83 761-605v257q0 15.83-7.87 29.77Q745.25-304.29 731-296L508-167q-14.33 8-30.16 8-15.84 0-29.84-8ZM80-691v-129q0-24.75 17.63-42.38Q115.25-880 140-880h129v60H140v129H80ZM269-80H140q-24.75 0-42.37-17.63Q80-115.25 80-140v-129h60v129h129v60Zm422 0v-60h129v-129h60v129q0 24.75-17.62 42.37Q844.75-80 820-80H691Zm129-611v-129H691v-60h129q24.75 0 42.38 17.62Q880-844.75 880-820v129h-60Zm-530 67-30 18v37l190 109v224l30 18 30-18v-224l191-109v-37l-31-18-190 110-190-110Z"/></svg>
+        <span>3D治具設計</span>
+      </a>
+      <a href="fa.html" class="nav-tab">
+        <svg viewBox="0 -960 960 960"><path d="M80-80v-481l280-119v80l200-81v121h320v480H80Zm370-160h60v-160h-60v160Zm-160 0h60v-160h-60v160Zm320 0h60v-160h-60v160Zm265-360H705l35-280h100l35 280Z"/></svg>
+        <span>FA設備</span>
+      </a>
+      <a href="food.html" class="nav-tab">
+        <svg viewBox="0 -960 960 960"><path d="M285-80v-368q-52-11-88.5-52.5T160-600v-280h60v280h65v-280h60v280h65v-280h60v280q0 58-36.5 99.5T345-448v368h-60Zm415 0v-320H585v-305q0-79 48-127t127-48v800h-60Z"/></svg>
+        <span>飲食業界向け</span>
+      </a>
+      <span class="nav-sep"></span>
+      <a href="#company" class="plain">会社概要</a>
+      <a class="nav-cta" href="#contact">お問い合わせ</a>
     </nav>
+  </div>
+  <div class="tab-scroll">
+    <a href="index.html" class="tab-chip active"><svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Z"/></svg>ホーム</a>
+    <a href="education.html" class="tab-chip"><svg viewBox="0 0 24 24"><rect x="2" y="17" width="20" height="5" rx="1.5"/><rect x="9" y="3" width="4" height="12" rx="2"/><rect x="9" y="3" width="10" height="4" rx="2"/></svg>RTS教育システム</a>
+    <a href="jig.html" class="tab-chip"><svg viewBox="0 -960 960 960"><path d="M448-167 228-296q-13.77-8.29-21.39-22.23Q199-332.17 199-348v-257q0-15.83 7.61-29.77Q214.23-648.71 228-657l221-131q14-8 31-8t31 8l221 131q13.78 8.29 21.39 22.23Q761-620.83 761-605v257q0 15.83-7.87 29.77Q745.25-304.29 731-296L508-167q-14.33 8-30.16 8-15.84 0-29.84-8ZM80-691v-129q0-24.75 17.63-42.38Q115.25-880 140-880h129v60H140v129H80ZM269-80H140q-24.75 0-42.37-17.63Q80-115.25 80-140v-129h60v129h129v60Zm422 0v-60h129v-129h60v129q0 24.75-17.62 42.37Q844.75-80 820-80H691Zm129-611v-129H691v-60h129q24.75 0 42.38 17.62Q880-844.75 880-820v129h-60Zm-530 67-30 18v37l190 109v224l30 18 30-18v-224l191-109v-37l-31-18-190 110-190-110Z"/></svg>3D治具設計</a>
+    <a href="fa.html" class="tab-chip"><svg viewBox="0 -960 960 960"><path d="M80-80v-481l280-119v80l200-81v121h320v480H80Zm370-160h60v-160h-60v160Zm-160 0h60v-160h-60v160Zm320 0h60v-160h-60v160Zm265-360H705l35-280h100l35 280Z"/></svg>FA設備</a>
+    <a href="food.html" class="tab-chip"><svg viewBox="0 -960 960 960"><path d="M285-80v-368q-52-11-88.5-52.5T160-600v-280h60v280h65v-280h60v280h65v-280h60v280q0 58-36.5 99.5T345-448v368h-60Zm415 0v-320H585v-305q0-79 48-127t127-48v800h-60Z"/></svg>飲食業界向け</a>
   </div>
 </header>
 
-<section class="hero">
+<section class="hero brand-hero">
   <div class="wrap">
-    <img class="mark" src="assets/rigel-logo.png" alt="RIGEL - Hook the Future">
-    <p class="tagline">Hook the Future</p>
-    <h1>産業用ロボットの「使い方」を、<br>現場で学べる教育システムへ。</h1>
+    <img class="brand-logo" src="assets/rigel-logo.png" alt="株式会社RIGEL — Hook the Future">
+    <h1>ものづくりの現場を、<br class="only-pc">テクノロジーで支える。</h1>
     <p class="lead">
-      RTS（Robot Training System）は、FA技術者不足・技能継承問題を解決する
-      産業用ロボット教育システムのレンタルサービスです。
+      RTS教育システム・3D治具設計・FA設備設計・飲食業界向けIoT。
+      20年以上のFA設備設計・ロボット導入の実務経験を核に、4つの事業でお客様のものづくりを支援します。
     </p>
-    <a class="btn" href="#contact">資料請求・お問い合わせ</a>
-    <a class="btn outline" href="#rts">サービス詳細を見る</a>
+    <a class="btn" href="#business">事業を見る</a>
+    <a class="btn outline" href="#contact">お問い合わせ</a>
   </div>
 </section>
 
-<section id="rts">
+<section id="business">
   <div class="wrap">
     <div class="section-head">
-      <p class="kicker">RTS — Robot Training System</p>
+      <p class="kicker" style="justify-content:center">Our Business</p>
+      <h2>4つの事業で、ものづくりの現場を支える。</h2>
+    </div>
+    <div class="biz-grid">
+      <a class="biz-card" href="education.html">
+        <div class="icon-badge"><svg viewBox="0 0 24 24"><rect x="2" y="17" width="20" height="5" rx="1.5"/><rect x="9" y="3" width="4" height="12" rx="2"/><rect x="9" y="3" width="10" height="4" rx="2"/></svg></div>
+        <h3>RTS教育システム</h3>
+        <p>卓上ロボットの操作・保全を現場で学べる、レンタル式ロボット教育システム。</p>
+        <span class="biz-link">詳しく見る →</span>
+      </a>
+      <a class="biz-card" href="jig.html">
+        <div class="icon-badge"><svg viewBox="0 -960 960 960"><path d="M448-167 228-296q-13.77-8.29-21.39-22.23Q199-332.17 199-348v-257q0-15.83 7.61-29.77Q214.23-648.71 228-657l221-131q14-8 31-8t31 8l221 131q13.78 8.29 21.39 22.23Q761-620.83 761-605v257q0 15.83-7.87 29.77Q745.25-304.29 731-296L508-167q-14.33 8-30.16 8-15.84 0-29.84-8ZM80-691v-129q0-24.75 17.63-42.38Q115.25-880 140-880h129v60H140v129H80ZM269-80H140q-24.75 0-42.37-17.63Q80-115.25 80-140v-129h60v129h129v60Zm422 0v-60h129v-129h60v129q0 24.75-17.62 42.37Q844.75-80 820-80H691Zm129-611v-129H691v-60h129q24.75 0 42.38 17.62Q880-844.75 880-820v129h-60Zm-530 67-30 18v37l190 109v224l30 18 30-18v-224l191-109v-37l-31-18-190 110-190-110Z"/></svg></div>
+        <h3>3D治具設計</h3>
+        <p>ICAD SXを用いた3D設計で治具・工具を設計。古い2D図面の3D化にも柔軟に対応します。</p>
+        <span class="biz-link">詳しく見る →</span>
+      </a>
+      <a class="biz-card" href="fa.html">
+        <div class="icon-badge"><svg viewBox="0 -960 960 960"><path d="M80-80v-481l280-119v80l200-81v121h320v480H80Zm370-160h60v-160h-60v160Zm-160 0h60v-160h-60v160Zm320 0h60v-160h-60v160Zm265-360H705l35-280h100l35 280Z"/></svg></div>
+        <h3>FA設備設計</h3>
+        <p>20年以上の実務経験を活かし、自動化設備・省人化設備の設計を承ります。</p>
+        <span class="biz-link">詳しく見る →</span>
+      </a>
+      <a class="biz-card" href="food.html">
+        <div class="icon-badge"><svg viewBox="0 -960 960 960"><path d="M285-80v-368q-52-11-88.5-52.5T160-600v-280h60v280h65v-280h60v280h65v-280h60v280q0 58-36.5 99.5T345-448v368h-60Zm415 0v-320H585v-305q0-79 48-127t127-48v800h-60Z"/></svg></div>
+        <h3>飲食業界向けIoT</h3>
+        <p>Raspberry PiとPythonで店内演出をIoT化し、来店者が楽しめる空間を演出します。</p>
+        <span class="biz-link">詳しく見る →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="rts" class="alt">
+  <div class="wrap">
+    <div class="section-head">
       <h2>「教えられる人がいない」を解決する、<br class="only-pc">レンタル式ロボット教育システム</h2>
-      <p>産業用ロボット・FA設備の操作／保全スキルを、外部の専門研修に頼らず社内で継続的に育成できます。</p>
+      <p>卓上ロボット・FA設備の操作／保全スキルを、外部の専門研修に頼らず社内で継続的に育成できます。</p>
     </div>
 
     <div class="grid2">
       <div class="card problem">
+        <div class="icon-badge">
+          <svg class="ic" width="26" height="26" viewBox="0 0 24 24"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4"/><path d="M12 17h.01"/></svg>
+        </div>
         <h3>こんな課題はありませんか</h3>
         <p>
           ベテラン技術者の退職でロボット操作・保全のノウハウが継承されない。
@@ -227,6 +495,9 @@
         </p>
       </div>
       <div class="card solution">
+        <div class="icon-badge">
+          <svg class="ic" width="26" height="26" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12l2.5 2.5L16 9"/></svg>
+        </div>
         <h3>RTSが提供する解決策</h3>
         <p>
           実機に近い環境で反復練習できる教育システムを、月額のレンタルで導入。
@@ -238,24 +509,36 @@
 
     <div class="features">
       <div class="feature">
+        <div class="icon-ring">
+          <svg class="ic" width="22" height="22" viewBox="0 0 24 24"><path d="M4 4h13a3 3 0 0 1 3 3v13H7a3 3 0 0 1-3-3V4z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+        </div>
         <p class="num">01</p>
         <h4>実践的な教育コンテンツ</h4>
         <p>操作手順・保全知識をまとめたマニュアルと動画教材で、経験の浅い担当者でも段階的に習得できます。</p>
       </div>
       <div class="feature">
+        <div class="icon-ring">
+          <svg class="ic" width="22" height="22" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/><path d="M7 15h4"/></svg>
+        </div>
         <p class="num">02</p>
         <h4>月額制で導入しやすい</h4>
         <p>高額な研修費や設備投資をかけず、必要な期間・規模に合わせてレンタルで運用できます。</p>
       </div>
       <div class="feature">
+        <div class="icon-ring">
+          <svg class="ic" width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M3 12h3M18 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+        </div>
         <p class="num">03</p>
         <h4>20年超のFA設計経験に基づく設計</h4>
-        <p>長年の産業用ロボット・FA設備設計の実務経験をもとに、現場で本当に使える内容を追求しています。</p>
+        <p>長年のFA設備設計・ロボット導入の実務経験をもとに、現場で本当に使える内容を追求しています。</p>
       </div>
     </div>
 
     <div class="pricing">
-      <div>
+      <div class="price-row">
+        <span class="icon-ring">
+          <svg class="ic" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2v20M17 6.5c0-1.9-2.2-3.5-5-3.5s-5 1.6-5 3.5 2.2 3 5 3.5 5 1.6 5 3.5-2.2 3.5-5 3.5-5-1.6-5-3.5"/></svg>
+        </span>
         <div class="num">10<small>万円〜</small> / 月</div>
       </div>
       <p>ご利用規模・期間に応じて内容をご提案します。まずはお気軽にお問い合わせください。</p>
@@ -266,34 +549,60 @@
 <section id="company">
   <div class="wrap">
     <div class="section-head">
-      <p class="kicker">Company</p>
+      <p class="kicker" style="justify-content:center">Company</p>
       <h2>会社概要</h2>
     </div>
 
-    <table class="company">
-      <tr><th>商号</th><td>株式会社RIGEL（RIGEL Inc.）</td></tr>
-      <tr><th>代表者</th><td>代表取締役　佐藤 貴久</td></tr>
-      <tr><th>所在地</th><td>千葉県柏市</td></tr>
-      <tr><th>設立</th><td>2026年10月（設立準備中）</td></tr>
-      <tr><th>事業内容</th><td>産業用ロボット教育システム（RTS）のレンタル提供、FA設備設計</td></tr>
-      <tr><th>ブランドステートメント</th><td>Hook the Future — 未来を、ロボット技術で釣り上げる。</td></tr>
-    </table>
+    <div class="company-panel">
+      <table class="company">
+        <tr><th><span class="th-inline"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>商号</span></th><td>株式会社RIGEL（RIGEL Inc.）</td></tr>
+        <tr><th><span class="th-inline"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>代表者</span></th><td>代表取締役　佐藤 貴久</td></tr>
+        <tr><th><span class="th-inline"><svg class="ic" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>所在地</span></th><td>千葉県柏市若柴178-4　柏の葉キャンパス148街区2　ショップ&amp;オフィス棟 6階</td></tr>
+        <tr><th><span class="th-inline"><svg class="ic" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="8" rx="1.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><circle cx="9" cy="14" r="1"/><circle cx="15" cy="14" r="1"/></svg>最寄り駅</span></th><td>つくばエクスプレス線「柏の葉キャンパス」駅　徒歩2分</td></tr>
+        <tr><th><span class="th-inline"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>設立</span></th><td>2026年11月（設立準備中）</td></tr>
+        <tr><th><span class="th-inline"><svg class="ic" viewBox="0 0 24 24"><path d="M4 20h16M6 20V10l6-5 6 5v10"/><path d="M10 20v-6h4v6"/></svg>事業内容</span></th><td>卓上ロボット教育システム（RTS）のレンタル提供、FA設備設計</td></tr>
+        <tr><th><span class="th-inline"><svg class="ic" viewBox="0 0 24 24"><path d="M4 12c4-6 12-6 16 0"/><path d="M4 12c4 6 12 6 16 0"/><circle cx="12" cy="12" r="1.6"/></svg>ブランドステートメント</span></th><td>Hook the Future — 未来を、ロボット技術で釣り上げる。</td></tr>
+      </table>
 
-    <div class="strengths">
-      <div class="item">
-        <div class="n">20年+</div>
-        <p>代表による、FA設備設計・産業用ロボット導入の実務経験</p>
+      <div class="strengths">
+        <div class="item">
+          <span class="icon-ring">
+            <svg class="ic" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+          </span>
+          <div>
+            <div class="n">20年+</div>
+            <p>代表による、FA設備設計・ロボット導入の実務経験</p>
+          </div>
+        </div>
+        <div class="item">
+          <span class="icon-ring">
+            <svg class="ic" width="24" height="24" viewBox="0 0 24 24"><rect x="9" y="14" width="6" height="6" rx="1"/><path d="M12 14V8"/><path d="M12 8l-4-3M12 8l4-3"/><circle cx="8" cy="4.5" r="1.4"/><circle cx="16" cy="4.5" r="1.4"/></svg>
+          </span>
+          <div>
+            <div class="n">JANOME</div>
+            <p>JANOME製ロボットを活用した生産設備設計の実績</p>
+          </div>
+        </div>
       </div>
-      <div class="item">
-        <div class="n">JANOME</div>
-        <p>JANOME製ロボットを活用した生産設備設計の実績</p>
+
+      <div class="access-map">
+        <iframe
+          src="https://www.google.com/maps?q=千葉県柏市若柴178-4+柏の葉キャンパス148街区2+ショップ%26オフィス棟&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="RIGELオフィス アクセスマップ"></iframe>
       </div>
+      <p class="access-note">
+        <span>つくばエクスプレス線「柏の葉キャンパス」駅　徒歩2分（柏の葉オープンイノベーションラボ内）</span>
+        <a href="https://www.koil.jp/koil/" target="_blank" rel="noopener">KOIL公式サイトを見る →</a>
+      </p>
     </div>
   </div>
 </section>
 
 <section class="contact" id="contact">
   <div class="wrap">
+    <span class="icon-ring">
+      <svg class="ic ic-white" width="26" height="26" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+    </span>
     <p class="kicker">Contact</p>
     <h2>まずはお気軽にご相談ください</h2>
     <p>RTSの導入相談、FA設備に関するご相談、資料請求など、お気軽にお問い合わせください。</p>
@@ -303,7 +612,7 @@
 
 <footer>
   <div class="wrap">
-    <img src="assets/rigel-logo.png" alt="RIGEL">
+    <img class="logo-mark" src="assets/rigel-logo.png" alt="RIGEL">
     <p>&copy; 2026 RIGEL Inc. All rights reserved.</p>
   </div>
 </footer>

@@ -1,0 +1,29 @@
+# 公開対象外（ローカルには残す）
+# 作業中の控え・旧版HTML
+index_控え_*.html
+
+# イラストの試作・中間ファイル（原本はローカルおよび保管庫に保持）
+assets/*_raw.png
+assets/*_cutout.png
+assets/jr3203_illustration.jpg
+assets/jr3203_v2_*.jpg
+assets/jr3203_v3.jpg
+assets/jr3203_v4.jpg
+assets/jr3203_v5.jpg
+assets/jr3203_v6.jpg
+assets/jr3203_v7.png
+assets/jr3203_v7_white.jpg
+assets/jr3203_v8.jpg
+assets/jr3303.jpg
+assets/janome_jc3.jpg
+assets/janome_jc3_v2.png
+assets/janome_jp5.jpg
+assets/jig_rapid_style.jpg
+assets/jig_pcb_fixture.jpg
+assets/jig_pcb_fixture_v2.jpg
+assets/jig_pcb_fixture_v3.jpg
+assets/jig_pcb_fixture_v4.jpg
+assets/fa_dispenser.jpg
+assets/fa_equipment.png
+assets/food_smallworld_style.jpg
+assets/food_lantern_restaurant.png

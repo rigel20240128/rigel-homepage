@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>飲食業界向けIoT｜株式会社RIGEL</title>
+<meta name="description" content="株式会社RIGELの飲食業界向け演出システム。モーター制御×タイミング設計で「体験する飲食店」を実現します。入店演出・タイマーサプライズ・店内周回ギミック・天井照明の昇降制御を、Raspberry Piによる低コストな制御基盤でご提供します。">
+<link rel="icon" href="assets/rigel-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --main:#026881; --dark:#014B5D; --deep:#052E38; --light:#74ACBA; --bg:#F7F6F3;
+    --ink:#17181A; --sub:#6B6E73; --border:#E3E1DB; --accent:#E8622C;
+    --edu:#2F80ED; --edu-dark:#1B5FC4;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{ font-family:"Noto Sans JP", -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif; color:var(--ink); background:var(--bg); line-height:1.8; font-weight:400; overflow-x:hidden; }
+  a{ color:inherit; } img{ max-width:100%; display:block; }
+  .wrap{ max-width:1120px; margin:0 auto; padding:0 24px; position:relative; }
+  svg{ display:block; } .ic{ width:26px; height:26px; }
+
+  header{ position:sticky; top:0; z-index:100; background:rgba(247,246,243,0.86); backdrop-filter:blur(10px); border-bottom:1px solid var(--border); }
+  .header-row{ display:flex; align-items:center; justify-content:space-between; height:72px; }
+  .brand{ display:flex; align-items:center; }
+  .brand img.logo-mark{ height:28px; width:auto; }
+
+  nav.main-nav{ display:flex; align-items:center; gap:4px; }
+  .nav-tab{
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px;
+    padding:8px 13px; border-radius:12px; text-decoration:none; color:var(--sub);
+    font-size:10.5px; font-weight:600; min-width:60px; transition:background .15s ease, color .15s ease;
+  }
+  .nav-tab svg{ width:19px; height:19px; fill:var(--edu); }
+  .nav-tab:hover{ background:#F2F7FC; color:var(--ink); }
+  .nav-tab.active{ background:#EEF4FC; color:var(--edu); }
+  .nav-sep{ width:1px; height:26px; background:var(--border); margin:0 6px; }
+  nav.main-nav a.plain{ font-size:14px; font-weight:500; color:var(--ink); text-decoration:none; padding:6px 4px; }
+  nav.main-nav a.plain:hover{ color:var(--main); }
+  nav.main-nav a.nav-cta{
+    background:var(--main); color:#fff; padding:10px 20px; border-radius:999px;
+    font-weight:700; font-size:14px; text-decoration:none; margin-left:4px;
+  }
+  nav.main-nav a.nav-cta:hover{ background:var(--dark); }
+
+  .tab-scroll{ display:none; }
+
+  @media (max-width:900px){
+    nav.main-nav .nav-tab, nav.main-nav .nav-sep{ display:none; }
+    .tab-scroll{
+      display:flex; gap:8px; overflow-x:auto; padding:10px 20px 12px;
+      border-top:1px solid var(--border); -webkit-overflow-scrolling:touch; scrollbar-width:none;
+    }
+    .tab-scroll::-webkit-scrollbar{ display:none; }
+    .tab-chip{
+      flex-shrink:0; display:flex; align-items:center; gap:6px; padding:8px 14px; border-radius:999px;
+      background:#F2F7FC; color:var(--ink); text-decoration:none; font-size:12.5px; font-weight:600; white-space:nowrap;
+    }
+    .tab-chip svg{ width:15px; height:15px; fill:var(--edu); }
+    .tab-chip.active{ background:var(--edu); color:#fff; }
+    .tab-chip.active svg{ fill:#fff; }
+  }
+  @media (max-width:520px){
+    nav.main-nav a.plain{ display:none; }
+    nav.main-nav a.nav-cta{ padding:8px 14px; font-size:12px; }
+  }
+
+  .hero{
+    position:relative; min-height:auto; display:flex; align-items:center; padding:88px 0 72px;
+    background:var(--bg); color:var(--ink); overflow:hidden;
+  }
+  .hero::before{ display:none; }
+  .hero .wrap{ position:relative; z-index:2; display:grid; grid-template-columns:1fr auto; align-items:stretch; gap:40px; }
+  @media (max-width:900px){ .hero .wrap{ grid-template-columns:1fr; } .hero-visual{ order:-1; margin-bottom:8px; } }
+  .hero-visual{ position:relative; z-index:1; height:100%; max-width:min(560px, 48vw); display:flex; }
+  .hero-visual .card{ height:100%; display:flex; align-items:center; justify-content:center; background:#fff; border-radius:28px; box-shadow:0 18px 32px rgba(2,20,26,0.10); border:1px solid var(--border); padding:16px; }
+  .hero-visual .card img{ height:100%; width:auto; max-width:100%; object-fit:contain; border-radius:14px; }
+  .hero-copy{ position:relative; z-index:2; }
+  .hero-copy-text{ min-height:374px; }
+  .eyebrow{ display:inline-flex; align-items:center; gap:8px; background:#EEF4FC; padding:8px 16px; border-radius:999px; font-size:12.5px; font-weight:700; letter-spacing:0.08em; margin-bottom:24px; color:var(--dark); }
+  .eyebrow .dot{ width:6px; height:6px; border-radius:50%; background:var(--accent); }
+  .hero .tagline{ font-size:13px; font-weight:700; letter-spacing:0.2em; color:var(--main); text-transform:uppercase; margin-bottom:14px; }
+  .hero h1{ font-size:clamp(26px, 3.6vw, 40px); font-weight:900; color:var(--dark); margin:0 0 18px; line-height:1.5; }
+  .hero .sub{ font-size:16px; font-weight:500; color:var(--ink); opacity:0.9; margin-bottom:14px; }
+  .hero p.lead{ font-size:15.5px; color:var(--sub); max-width:520px; margin:0 0 36px; }
+  .btn{ display:inline-flex; align-items:center; gap:8px; padding:16px 34px; background:var(--accent); color:#fff; text-decoration:none; font-weight:700; font-size:15px; border-radius:999px; border:1.5px solid var(--accent); box-shadow:0 12px 26px rgba(232,98,44,0.30); transition:transform .15s ease, box-shadow .15s ease; }
+  .btn:hover{ background:#d1551f; border-color:#d1551f; transform:translateY(-2px); }
+
+  section{ padding:96px 0; position:relative; }
+  section.alt{ background:#fff; }
+  .kicker{ font-size:12.5px; font-weight:700; letter-spacing:0.16em; color:var(--edu); text-transform:uppercase; margin-bottom:14px; display:flex; align-items:center; gap:9px; justify-content:center; }
+  .kicker::before{ content:""; width:22px; height:2px; background:var(--accent); display:inline-block; border-radius:2px; }
+  h2{ font-size:clamp(24px, 3vw, 32px); font-weight:900; color:var(--dark); margin-bottom:20px; text-align:center; }
+  .section-head{ text-align:center; max-width:680px; margin:0 auto 56px; }
+  .section-head p{ color:var(--sub); font-size:15px; }
+
+  .reasons{ display:grid; grid-template-columns:repeat(4,1fr); gap:24px; }
+  @media (max-width:900px){ .reasons{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:520px){ .reasons{ grid-template-columns:1fr; } }
+  .reason{ background:#fff; border:1px solid var(--border); border-radius:20px; padding:30px 26px; box-shadow:0 10px 22px rgba(2,20,26,0.05); transition:transform .22s ease, box-shadow .22s ease; }
+  .reason:hover{ transform:translateY(-5px); box-shadow:0 20px 34px rgba(2,20,26,0.10); }
+  .reason .icon-ring{ width:48px; height:48px; border-radius:14px; display:flex; align-items:center; justify-content:center; background:linear-gradient(150deg, var(--edu), var(--edu-dark)); margin-bottom:16px; box-shadow:0 8px 16px rgba(47,128,237,0.28); }
+  .reason .icon-ring svg{ width:22px; height:22px; fill:#fff; }
+  .reason h4{ font-size:15.5px; font-weight:700; margin-bottom:8px; }
+  .reason p{ font-size:13.5px; color:var(--sub); }
+
+  .note-panel{ margin-top:40px; background:#F2F7FC; border:1px solid var(--border); border-radius:18px; padding:24px 28px; font-size:13px; color:var(--sub); text-align:center; }
+
+  /* 導入文 */
+  .intro-copy{ max-width:780px; margin:0 auto; }
+  .intro-copy p{ font-size:15px; color:var(--sub); margin-bottom:20px; }
+  .intro-copy p.emphasis{ font-size:17px; font-weight:700; color:var(--dark); text-align:center; margin-top:36px; margin-bottom:8px; }
+  .intro-copy p.emphasis + p{ text-align:center; }
+
+  /* メリット */
+  .merits{ display:grid; grid-template-columns:repeat(5,1fr); gap:18px; margin-top:8px; }
+  @media (max-width:1000px){ .merits{ grid-template-columns:repeat(3,1fr); } }
+  @media (max-width:640px){ .merits{ grid-template-columns:1fr 1fr; } }
+  .merit{ background:#fff; border:1px solid var(--border); border-radius:18px; padding:24px 18px; text-align:center; box-shadow:0 10px 22px rgba(2,20,26,0.05); }
+  .merit .merit-title{ font-size:14.5px; font-weight:700; color:var(--edu); margin-bottom:8px; }
+  .merit p{ font-size:12.5px; color:var(--sub); }
+
+  /* フェーズ別ギミック */
+  .phases{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  @media (max-width:900px){ .phases{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:600px){ .phases{ grid-template-columns:1fr; } }
+  .phase{ background:#fff; border:1px solid var(--border); border-radius:20px; padding:26px 24px; box-shadow:0 10px 22px rgba(2,20,26,0.05); }
+  .phase h4{ font-size:14.5px; font-weight:700; color:var(--dark); margin-bottom:14px; padding-bottom:10px; border-bottom:2px solid #EEF4FC; }
+  .phase ul{ list-style:none; }
+  .phase li{ font-size:13px; color:var(--sub); padding:7px 0 7px 18px; position:relative; }
+  .phase li::before{ content:""; position:absolute; left:0; top:15px; width:6px; height:6px; border-radius:50%; background:var(--edu); }
+  .note-panel strong{ color:var(--ink); }
+
+  .contact{
+    position:relative; overflow:hidden;
+    background: radial-gradient(ellipse 700px 420px at 85% 0%, rgba(80,150,237,0.22), transparent 60%), linear-gradient(160deg, var(--deep), var(--dark) 70%);
+    color:#fff; text-align:center;
+  }
+  .contact .wrap{ position:relative; z-index:1; }
+  .contact .icon-ring{ width:60px; height:60px; border-radius:50%; background:rgba(255,255,255,0.10); display:flex; align-items:center; justify-content:center; margin:0 auto 22px; }
+  .contact .icon-ring svg{ width:26px; height:26px; }
+  .contact .kicker{ color:#9FC3F5; } .contact .kicker::before{ display:none; }
+  .contact h2{ color:#fff; }
+  .contact p{ color:rgba(255,255,255,0.75); max-width:520px; margin:0 auto 32px; font-size:15px; }
+  .contact .btn{ background:#fff; color:var(--dark); border-color:#fff; box-shadow:0 14px 28px rgba(1,25,32,0.30); }
+  .contact .btn:hover{ background:var(--light); color:#fff; border-color:var(--light); }
+
+  footer{ padding:44px 0; text-align:center; background:#fff; border-top:1px solid var(--border); }
+  footer img.logo-mark{ height:22px; width:auto; margin:0 auto 16px; opacity:0.85; }
+  footer p{ font-size:12.5px; color:var(--sub); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-row">
+    <a class="brand" href="index.html"><img class="logo-mark" src="assets/rigel-logo.png" alt="RIGEL"></a>
+    <nav class="main-nav">
+      <a href="index.html" class="nav-tab">
+        <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Z"/></svg>
+        <span>ホーム</span>
+      </a>
+      <a href="education.html" class="nav-tab">
+        <svg viewBox="0 0 24 24"><rect x="2" y="17" width="20" height="5" rx="1.5"/><rect x="9" y="3" width="4" height="12" rx="2"/><rect x="9" y="3" width="10" height="4" rx="2"/></svg>
+        <span>RTS教育システム</span>
+      </a>
+      <a href="jig.html" class="nav-tab">
+        <svg viewBox="0 -960 960 960"><path d="M448-167 228-296q-13.77-8.29-21.39-22.23Q199-332.17 199-348v-257q0-15.83 7.61-29.77Q214.23-648.71 228-657l221-131q14-8 31-8t31 8l221 131q13.78 8.29 21.39 22.23Q761-620.83 761-605v257q0 15.83-7.87 29.77Q745.25-304.29 731-296L508-167q-14.33 8-30.16 8-15.84 0-29.84-8ZM80-691v-129q0-24.75 17.63-42.38Q115.25-880 140-880h129v60H140v129H80ZM269-80H140q-24.75 0-42.37-17.63Q80-115.25 80-140v-129h60v129h129v60Zm422 0v-60h129v-129h60v129q0 24.75-17.62 42.37Q844.75-80 820-80H691Zm129-611v-129H691v-60h129q24.75 0 42.38 17.62Q880-844.75 880-820v129h-60Zm-530 67-30 18v37l190 109v224l30 18 30-18v-224l191-109v-37l-31-18-190 110-190-110Z"/></svg>
+        <span>3D治具設計</span>
+      </a>
+      <a href="fa.html" class="nav-tab">
+        <svg viewBox="0 -960 960 960"><path d="M80-80v-481l280-119v80l200-81v121h320v480H80Zm370-160h60v-160h-60v160Zm-160 0h60v-160h-60v160Zm320 0h60v-160h-60v160Zm265-360H705l35-280h100l35 280Z"/></svg>
+        <span>FA設備</span>
+      </a>
+      <a href="food.html" class="nav-tab active">
+        <svg viewBox="0 -960 960 960"><path d="M285-80v-368q-52-11-88.5-52.5T160-600v-280h60v280h65v-280h60v280h65v-280h60v280q0 58-36.5 99.5T345-448v368h-60Zm415 0v-320H585v-305q0-79 48-127t127-48v800h-60Z"/></svg>
+        <span>飲食業界向け</span>
+      </a>
+      <span class="nav-sep"></span>
+      <a href="index.html#company" class="plain">会社概要</a>
+      <a class="nav-cta" href="#contact">お問い合わせ</a>
+    </nav>
+  </div>
+  <div class="tab-scroll">
+    <a href="index.html" class="tab-chip"><svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Z"/></svg>ホーム</a>
+    <a href="education.html" class="tab-chip"><svg viewBox="0 0 24 24"><rect x="2" y="17" width="20" height="5" rx="1.5"/><rect x="9" y="3" width="4" height="12" rx="2"/><rect x="9" y="3" width="10" height="4" rx="2"/></svg>RTS教育システム</a>
+    <a href="jig.html" class="tab-chip"><svg viewBox="0 -960 960 960"><path d="M448-167 228-296q-13.77-8.29-21.39-22.23Q199-332.17 199-348v-257q0-15.83 7.61-29.77Q214.23-648.71 228-657l221-131q14-8 31-8t31 8l221 131q13.78 8.29 21.39 22.23Q761-620.83 761-605v257q0 15.83-7.87 29.77Q745.25-304.29 731-296L508-167q-14.33 8-30.16 8-15.84 0-29.84-8ZM80-691v-129q0-24.75 17.63-42.38Q115.25-880 140-880h129v60H140v129H80ZM269-80H140q-24.75 0-42.37-17.63Q80-115.25 80-140v-129h60v129h129v60Zm422 0v-60h129v-129h60v129q0 24.75-17.62 42.37Q844.75-80 820-80H691Zm129-611v-129H691v-60h129q24.75 0 42.38 17.62Q880-844.75 880-820v129h-60Zm-530 67-30 18v37l190 109v224l30 18 30-18v-224l191-109v-37l-31-18-190 110-190-110Z"/></svg>3D治具設計</a>
+    <a href="fa.html" class="tab-chip"><svg viewBox="0 -960 960 960"><path d="M80-80v-481l280-119v80l200-81v121h320v480H80Zm370-160h60v-160h-60v160Zm-160 0h60v-160h-60v160Zm320 0h60v-160h-60v160Zm265-360H705l35-280h100l35 280Z"/></svg>FA設備</a>
+    <a href="food.html" class="tab-chip active"><svg viewBox="0 -960 960 960"><path d="M285-80v-368q-52-11-88.5-52.5T160-600v-280h60v280h65v-280h60v280h65v-280h60v280q0 58-36.5 99.5T345-448v368h-60Zm415 0v-320H585v-305q0-79 48-127t127-48v800h-60Z"/></svg>飲食業界向け</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <div class="hero-copy-text">
+        <span class="eyebrow"><span class="dot"></span>飲食・商業施設向け</span>
+        <p class="tagline">Experience Design</p>
+        <h1>「食べる」だけでなく、<br>「体験する」飲食店へ。</h1>
+        <p class="sub">モーター制御による店内演出システム</p>
+        <p class="lead">モーター制御×タイミング設計で、来店から食事中まで“驚き”を演出します。Raspberry Piによる低コストな制御基盤で、店舗規模に合わせて柔軟に導入いただけます。</p>
+      </div>
+      <a class="btn" href="#contact">
+        <svg class="ic" width="18" height="18" viewBox="0 0 24 24" style="fill:none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M4 8h16"/><path d="M8 4v4"/></svg>
+        資料請求・お問い合わせ
+      </a>
+    </div>
+    <div class="hero-visual">
+      <div class="card">
+        <img src="assets/food_lantern_restaurant_web.jpg" alt="天井ランタンの昇降演出とサプライズ演出を取り入れた飲食店の店内イメージ">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">Concept</p>
+      <h2>RIGELが飲食店にもたらす、<br class="only-pc">“驚きのある食体験”</h2>
+    </div>
+    <div class="intro-copy">
+      <p>料理の味やサービスだけでなく、「その場にいる時間そのもの」を演出できたら――。RIGELは、モーター制御技術を軸に、飲食店の空間に自動化された“驚き”と“物語”を組み込みます。</p>
+      <p>お客様が店に足を踏み入れた瞬間から、演出は始まります。入店を検知して起動する演出システムが、非日常への入り口を演出。食事の最中には、タイマーによるサプライズ演出が、記念日やコースの節目に合わせて自然に発火し、スタッフの手を借りずとも毎回同じ感動を届けます。</p>
+      <p>さらに、店内を巡るモノレールやゴーカートといった可動ギミックは、料理を運ぶだけでなく、それ自体がエンターテインメントとなり、お客様の記憶とSNSでの拡散を生み出します。天井から吊るされた照明は、タイマー制御によってランダムなタイミングとパターンで静かに上下し、決して同じ動きを繰り返さない、まるで呼吸するような空間の生命感を作り出します。</p>
+      <p class="emphasis">食べるための場所から、また来たくなる場所へ。</p>
+      <p>RIGELは、飲食店の空間そのものを演出装置に変えます。</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">Solution</p>
+      <h2>提供できる演出</h2>
+      <p>同じ技術基盤の上で、来店から退店までのあらゆる場面に演出を組み込めます。</p>
+    </div>
+    <div class="reasons">
+      <div class="reason">
+        <div class="icon-ring"><svg viewBox="0 -960 960 960"><path d="M197-197q-54-54-85.5-126.5T80-480q0-84 31.5-156.5T197-763l42 43q-46 46-72.5 107.5T140-480q0 71 26.5 132.5T240-239l-43 42Zm113-113q-32-32-51-75.5T240-480q0-51 19-94.5t51-75.5l42 43q-24 24-38 56.5T300-480q0 38 14 70.5t39 57.5l-43 42Zm170-90q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm170 90-42-43q24-24 38-56.5t14-70.5q0-38-14-70.5T607-608l43-42q32 32 51 75.5t19 94.5q0 50-19 93.5T650-310Zm113 113-42-43q46-46 72.5-107.5T820-480q0-71-26.5-132.5T720-721l43-42q54 55 85.5 127.5T880-480q0 83-31.5 155.5T763-197Z"/></svg></div>
+        <h4>① 入店演出</h4>
+        <p>来店を検知して自動で演出をスタート（照明・音・可動什器の連動）。「特別なお客様を迎える」ような非日常感を、最初の数秒で作ります。</p>
+      </div>
+      <div class="reason">
+        <div class="icon-ring"><svg viewBox="0 -960 960 960"><path d="m627-287 45-45-159-160v-201h-60v225l174 181ZM480-80q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-82 31.5-155t86-127.5Q252-817 325-848.5T480-880q82 0 155 31.5t127.5 86Q817-708 848.5-635T880-480q0 82-31.5 155t-86 127.5Q708-143 635-111.5T480-80Z"/></svg></div>
+        <h4>② タイマー演出（サプライズ設計）</h4>
+        <p>時間経過やタイミングをトリガーにした自動演出。記念日・誕生日・コース料理の節目に合わせて発火し、スタッフの手を介さず毎回同じ品質で再現できます。</p>
+      </div>
+      <div class="reason">
+        <div class="icon-ring"><svg viewBox="0 -960 960 960"><path d="M240-80q-33 0-56.5-23.5T160-160v-560q0-66 59-93t141-27q82 0 141 27t59 93v560q0 33-23.5 56.5T480-80H240Zm0-560h240v-80H240v80Zm0 240h240v-160H240v160Zm60 160q25 0 42.5-17.5T360-300q0-25-17.5-42.5T300-360q-25 0-42.5 17.5T240-300q0 25 17.5 42.5T300-240Zm420 160v-320h-80v-320q0-33 23.5-56.5T720-800h40q33 0 56.5 23.5T840-720v320h-80v320h-40Z"/></svg></div>
+        <h4>③ 店内周回ギミック</h4>
+        <p>モノレールやゴーカートで料理や演出物を店内で自動搬送・周回。「動く」こと自体がエンタメになり、SNS拡散につながります。配膳導線としても省人化に寄与します。</p>
+      </div>
+      <div class="reason">
+        <div class="icon-ring"><svg viewBox="0 -960 960 960"><path d="M480-80q-83 0-141.5-58.5T280-280q0-42 17-80t49-66l14-14v-240q0-58 41-99t99-41q58 0 99 41t41 99v240l14 14q32 28 49 66t17 80q0 83-58.5 141.5T480-80Z"/></svg></div>
+        <h4>④ 天井吊り下げ照明の昇降制御</h4>
+        <p>天井から吊るしたランタン等が、タイマー制御によりランダムなタイミング・パターンで上下動。同じ動きを繰り返さないため、何度来店しても新鮮な体験を提供します。</p>
+      </div>
+    </div>
+    <div class="note-panel">
+      <strong>技術基盤</strong> — Raspberry Piによる制御で、モーター・タイマー・センサーを統合。低コストで多台数の同時制御・拡張が可能なため、店舗規模やレイアウトに合わせて柔軟に導入できます。汎用ハードウェアベースのため、故障時の部品交換や仕様変更にも迅速に対応可能です。
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">Benefits</p>
+      <h2>飲食店側のメリット</h2>
+    </div>
+    <div class="merits">
+      <div class="merit">
+        <div class="merit-title">差別化</div>
+        <p>味だけでは埋まらない“体験”での競合優位性</p>
+      </div>
+      <div class="merit">
+        <div class="merit-title">拡散性</div>
+        <p>SNS映え・口コミによる集客効果</p>
+      </div>
+      <div class="merit">
+        <div class="merit-title">再現性</div>
+        <p>属人化せず、毎回同じクオリティの演出</p>
+      </div>
+      <div class="merit">
+        <div class="merit-title">省人化</div>
+        <p>演出・搬送を自動化しスタッフ負荷を軽減</p>
+      </div>
+      <div class="merit">
+        <div class="merit-title">単価・満足度</div>
+        <p>記念日需要やコース単価アップに寄与</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">Variations</p>
+      <h2>展開可能なギミック</h2>
+      <p>モーター制御×タイマー／ランダム発火×Raspberry Pi制御という同じ技術基盤の上で、以下のような展開が可能です。</p>
+    </div>
+    <div class="phases">
+      <div class="phase">
+        <h4>入店〜着席時</h4>
+        <ul>
+          <li>自動開閉するカーテン・のれん・扉（演出の“幕開け”として）</li>
+          <li>光の演出</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <h4>着席後・食事中</h4>
+        <ul>
+          <li>テーブル天板の一部が開いて料理や仕掛けが出現する“サプライズテーブル”</li>
+          <li>ドリンクや小皿が自動レールで運ばれてくる仕組み</li>
+          <li>蓋を開けると煙・ミストが出る演出</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <h4>待ち時間・余韻づくり</h4>
+        <ul>
+          <li>BGMや店内アナウンスと連動して動くモーター演出（音トリガー）</li>
+          <li>順番待ち・抽選演出（物理機構で「当たり」を演出）</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <h4>会計・退店時</h4>
+        <ul>
+          <li>お会計時に箱や扉が開く“からくり会計”演出</li>
+          <li>退店時に光や音で見送る演出（入店演出の対になる仕掛け）</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <h4>空間全体</h4>
+        <ul>
+          <li>水槽・生け簀の水流や噴水のモーター制御</li>
+          <li>看板・POP・メニューボードの自動回転や切り替え</li>
+          <li>季節・時間帯によって照明パターンを変えるスケジュール制御</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <span class="icon-ring"><svg viewBox="0 0 24 24" style="fill:none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
+    <p class="kicker">Contact</p>
+    <h2>飲食業界向けIoTについて、お気軽にご相談ください</h2>
+    <p>店内演出のIoT化に関するご相談は、お気軽にお問い合わせください。</p>
+    <a class="btn" href="mailto:info@rigel-works.jp?subject=飲食業界向けIoTに関するお問い合わせ">メールでお問い合わせ</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <img class="logo-mark" src="assets/rigel-logo.png" alt="RIGEL">
+    <p>&copy; 2026 RIGEL Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>

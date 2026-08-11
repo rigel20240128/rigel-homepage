@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3D治具設計｜株式会社RIGEL</title>
+<meta name="description" content="株式会社RIGELの3D治具設計サービス。ICAD SXを用いた3D設計で、FA設備・生産ラインに最適化された治具・工具を設計します。古い2D図面から3D図面への変換にも対応し、ご要望に応じて柔軟にお引き受けいたします。">
+<link rel="icon" href="assets/rigel-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --main:#026881; --dark:#014B5D; --deep:#052E38; --light:#74ACBA; --bg:#F7F6F3;
+    --ink:#17181A; --sub:#6B6E73; --border:#E3E1DB; --accent:#E8622C;
+    --edu:#2F80ED; --edu-dark:#1B5FC4;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{ font-family:"Noto Sans JP", -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif; color:var(--ink); background:var(--bg); line-height:1.8; font-weight:400; overflow-x:hidden; }
+  a{ color:inherit; } img{ max-width:100%; display:block; }
+  .wrap{ max-width:1120px; margin:0 auto; padding:0 24px; position:relative; }
+  svg{ display:block; } .ic{ width:26px; height:26px; }
+
+  header{ position:sticky; top:0; z-index:100; background:rgba(247,246,243,0.86); backdrop-filter:blur(10px); border-bottom:1px solid var(--border); }
+  .header-row{ display:flex; align-items:center; justify-content:space-between; height:72px; }
+  .brand{ display:flex; align-items:center; }
+  .brand img.logo-mark{ height:28px; width:auto; }
+
+  nav.main-nav{ display:flex; align-items:center; gap:4px; }
+  .nav-tab{
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px;
+    padding:8px 13px; border-radius:12px; text-decoration:none; color:var(--sub);
+    font-size:10.5px; font-weight:600; min-width:60px; transition:background .15s ease, color .15s ease;
+  }
+  .nav-tab svg{ width:19px; height:19px; fill:var(--edu); }
+  .nav-tab:hover{ background:#F2F7FC; color:var(--ink); }
+  .nav-tab.active{ background:#EEF4FC; color:var(--edu); }
+  .nav-sep{ width:1px; height:26px; background:var(--border); margin:0 6px; }
+  nav.main-nav a.plain{ font-size:14px; font-weight:500; color:var(--ink); text-decoration:none; padding:6px 4px; }
+  nav.main-nav a.plain:hover{ color:var(--main); }
+  nav.main-nav a.nav-cta{
+    background:var(--main); color:#fff; padding:10px 20px; border-radius:999px;
+    font-weight:700; font-size:14px; text-decoration:none; margin-left:4px;
+  }
+  nav.main-nav a.nav-cta:hover{ background:var(--dark); }
+
+  .tab-scroll{ display:none; }
+
+  @media (max-width:900px){
+    nav.main-nav .nav-tab, nav.main-nav .nav-sep{ display:none; }
+    .tab-scroll{
+      display:flex; gap:8px; overflow-x:auto; padding:10px 20px 12px;
+      border-top:1px solid var(--border); -webkit-overflow-scrolling:touch; scrollbar-width:none;
+    }
+    .tab-scroll::-webkit-scrollbar{ display:none; }
+    .tab-chip{
+      flex-shrink:0; display:flex; align-items:center; gap:6px; padding:8px 14px; border-radius:999px;
+      background:#F2F7FC; color:var(--ink); text-decoration:none; font-size:12.5px; font-weight:600; white-space:nowrap;
+    }
+    .tab-chip svg{ width:15px; height:15px; fill:var(--edu); }
+    .tab-chip.active{ background:var(--edu); color:#fff; }
+    .tab-chip.active svg{ fill:#fff; }
+  }
+  @media (max-width:520px){
+    nav.main-nav a.plain{ display:none; }
+    nav.main-nav a.nav-cta{ padding:8px 14px; font-size:12px; }
+  }
+
+  .hero{
+    position:relative; min-height:auto; display:flex; align-items:center; padding:88px 0 72px;
+    background:var(--bg); color:var(--ink); overflow:hidden;
+  }
+  .hero::before{ display:none; }
+  .hero .wrap{ position:relative; z-index:2; display:grid; grid-template-columns:1fr auto; align-items:stretch; gap:40px; }
+  @media (max-width:900px){ .hero .wrap{ grid-template-columns:1fr; } .hero-visual{ order:-1; margin-bottom:8px; } }
+  .hero-visual{ position:relative; z-index:1; height:100%; max-width:min(560px, 48vw); display:flex; }
+  .hero-visual .card{ height:100%; display:flex; align-items:center; justify-content:center; background:#fff; border-radius:28px; box-shadow:0 18px 32px rgba(2,20,26,0.10); border:1px solid var(--border); padding:16px; }
+  .hero-visual .card img{ height:100%; width:auto; max-width:100%; object-fit:contain; border-radius:14px; }
+  .hero-copy{ position:relative; z-index:2; }
+  .hero-copy-text{ min-height:374px; }
+  .eyebrow{ display:inline-flex; align-items:center; gap:8px; background:#EEF4FC; padding:8px 16px; border-radius:999px; font-size:12.5px; font-weight:700; letter-spacing:0.08em; margin-bottom:24px; color:var(--dark); }
+  .eyebrow .dot{ width:6px; height:6px; border-radius:50%; background:var(--accent); }
+  .hero .tagline{ font-size:13px; font-weight:700; letter-spacing:0.2em; color:var(--main); text-transform:uppercase; margin-bottom:14px; }
+  .hero h1{ font-size:clamp(26px, 3.6vw, 40px); font-weight:900; color:var(--dark); margin:0 0 18px; line-height:1.5; }
+  .hero .sub{ font-size:16px; font-weight:500; color:var(--ink); opacity:0.9; margin-bottom:14px; }
+  .hero p.lead{ font-size:15.5px; color:var(--sub); max-width:520px; margin:0 0 36px; }
+  .btn{ display:inline-flex; align-items:center; gap:8px; padding:16px 34px; background:var(--accent); color:#fff; text-decoration:none; font-weight:700; font-size:15px; border-radius:999px; border:1.5px solid var(--accent); box-shadow:0 12px 26px rgba(232,98,44,0.30); transition:transform .15s ease, box-shadow .15s ease; }
+  .btn:hover{ background:#d1551f; border-color:#d1551f; transform:translateY(-2px); }
+
+  section{ padding:96px 0; position:relative; }
+  section.alt{ background:#fff; }
+  .kicker{ font-size:12.5px; font-weight:700; letter-spacing:0.16em; color:var(--edu); text-transform:uppercase; margin-bottom:14px; display:flex; align-items:center; gap:9px; justify-content:center; }
+  .kicker::before{ content:""; width:22px; height:2px; background:var(--accent); display:inline-block; border-radius:2px; }
+  h2{ font-size:clamp(24px, 3vw, 32px); font-weight:900; color:var(--dark); margin-bottom:20px; text-align:center; }
+  .section-head{ text-align:center; max-width:680px; margin:0 auto 56px; }
+  .section-head p{ color:var(--sub); font-size:15px; }
+
+  .reasons{ display:grid; grid-template-columns:repeat(4,1fr); gap:24px; }
+  @media (max-width:900px){ .reasons{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:520px){ .reasons{ grid-template-columns:1fr; } }
+  .reason{ background:#fff; border:1px solid var(--border); border-radius:20px; padding:30px 26px; box-shadow:0 10px 22px rgba(2,20,26,0.05); transition:transform .22s ease, box-shadow .22s ease; }
+  .reason:hover{ transform:translateY(-5px); box-shadow:0 20px 34px rgba(2,20,26,0.10); }
+  .reason .icon-ring{ width:48px; height:48px; border-radius:14px; display:flex; align-items:center; justify-content:center; background:linear-gradient(150deg, var(--edu), var(--edu-dark)); margin-bottom:16px; box-shadow:0 8px 16px rgba(47,128,237,0.28); }
+  .reason .icon-ring svg{ width:22px; height:22px; fill:#fff; }
+  .reason h4{ font-size:15.5px; font-weight:700; margin-bottom:8px; }
+  .reason p{ font-size:13.5px; color:var(--sub); }
+
+  .note-panel{ margin-top:40px; background:#F2F7FC; border:1px solid var(--border); border-radius:18px; padding:24px 28px; font-size:13px; color:var(--sub); text-align:center; }
+  .note-panel strong{ color:var(--ink); }
+
+  .flow{ margin-top:48px; display:flex; align-items:stretch; gap:0; }
+  @media (max-width:760px){ .flow{ flex-direction:column; } }
+  .flow-step{ flex:1; background:#fff; border:1px solid var(--border); border-radius:18px; padding:26px 20px; text-align:center; box-shadow:0 10px 22px rgba(2,20,26,0.05); }
+  .flow-step .num{ width:30px; height:30px; border-radius:50%; background:var(--edu); color:#fff; font-weight:700; font-size:13.5px; display:flex; align-items:center; justify-content:center; margin:0 auto 14px; }
+  .flow-step h4{ font-size:14px; font-weight:700; margin-bottom:8px; }
+  .flow-step p{ font-size:12.5px; color:var(--sub); }
+  .flow-arrow{ padding:0 14px; color:var(--border); font-size:20px; font-weight:900; display:flex; align-items:center; }
+  @media (max-width:760px){ .flow-arrow{ transform:rotate(90deg); padding:10px 0; margin:0 auto; } }
+
+  .contact{
+    position:relative; overflow:hidden;
+    background: radial-gradient(ellipse 700px 420px at 85% 0%, rgba(80,150,237,0.22), transparent 60%), linear-gradient(160deg, var(--deep), var(--dark) 70%);
+    color:#fff; text-align:center;
+  }
+  .contact .wrap{ position:relative; z-index:1; }
+  .contact .icon-ring{ width:60px; height:60px; border-radius:50%; background:rgba(255,255,255,0.10); display:flex; align-items:center; justify-content:center; margin:0 auto 22px; }
+  .contact .icon-ring svg{ width:26px; height:26px; }
+  .contact .kicker{ color:#9FC3F5; } .contact .kicker::before{ display:none; }
+  .contact h2{ color:#fff; }
+  .contact p{ color:rgba(255,255,255,0.75); max-width:520px; margin:0 auto 32px; font-size:15px; }
+  .contact .btn{ background:#fff; color:var(--dark); border-color:#fff; box-shadow:0 14px 28px rgba(1,25,32,0.30); }
+  .contact .btn:hover{ background:var(--light); color:#fff; border-color:var(--light); }
+
+  footer{ padding:44px 0; text-align:center; background:#fff; border-top:1px solid var(--border); }
+  footer img.logo-mark{ height:22px; width:auto; margin:0 auto 16px; opacity:0.85; }
+  footer p{ font-size:12.5px; color:var(--sub); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-row">
+    <a class="brand" href="index.html"><img class="logo-mark" src="assets/rigel-logo.png" alt="RIGEL"></a>
+    <nav class="main-nav">
+      <a href="index.html" class="nav-tab">
+        <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Z"/></svg>
+        <span>ホーム</span>
+      </a>
+      <a href="education.html" class="nav-tab">
+        <svg viewBox="0 0 24 24"><rect x="2" y="17" width="20" height="5" rx="1.5"/><rect x="9" y="3" width="4" height="12" rx="2"/><rect x="9" y="3" width="10" height="4" rx="2"/></svg>
+        <span>RTS教育システム</span>
+      </a>
+      <a href="jig.html" class="nav-tab active">
+        <svg viewBox="0 -960 960 960"><path d="M448-167 228-296q-13.77-8.29-21.39-22.23Q199-332.17 199-348v-257q0-15.83 7.61-29.77Q214.23-648.71 228-657l221-131q14-8 31-8t31 8l221 131q13.78 8.29 21.39 22.23Q761-620.83 761-605v257q0 15.83-7.87 29.77Q745.25-304.29 731-296L508-167q-14.33 8-30.16 8-15.84 0-29.84-8ZM80-691v-129q0-24.75 17.63-42.38Q115.25-880 140-880h129v60H140v129H80ZM269-80H140q-24.75 0-42.37-17.63Q80-115.25 80-140v-129h60v129h129v60Zm422 0v-60h129v-129h60v129q0 24.75-17.62 42.37Q844.75-80 820-80H691Zm129-611v-129H691v-60h129q24.75 0 42.38 17.62Q880-844.75 880-820v129h-60Zm-530 67-30 18v37l190 109v224l30 18 30-18v-224l191-109v-37l-31-18-190 110-190-110Z"/></svg>
+        <span>3D治具設計</span>
+      </a>
+      <a href="fa.html" class="nav-tab">
+        <svg viewBox="0 -960 960 960"><path d="M80-80v-481l280-119v80l200-81v121h320v480H80Zm370-160h60v-160h-60v160Zm-160 0h60v-160h-60v160Zm320 0h60v-160h-60v160Zm265-360H705l35-280h100l35 280Z"/></svg>
+        <span>FA設備</span>
+      </a>
+      <a href="food.html" class="nav-tab">
+        <svg viewBox="0 -960 960 960"><path d="M285-80v-368q-52-11-88.5-52.5T160-600v-280h60v280h65v-280h60v280h65v-280h60v280q0 58-36.5 99.5T345-448v368h-60Zm415 0v-320H585v-305q0-79 48-127t127-48v800h-60Z"/></svg>
+        <span>飲食業界向け</span>
+      </a>
+      <span class="nav-sep"></span>
+      <a href="index.html#company" class="plain">会社概要</a>
+      <a class="nav-cta" href="#contact">お問い合わせ</a>
+    </nav>
+  </div>
+  <div class="tab-scroll">
+    <a href="index.html" class="tab-chip"><svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Z"/></svg>ホーム</a>
+    <a href="education.html" class="tab-chip"><svg viewBox="0 0 24 24"><rect x="2" y="17" width="20" height="5" rx="1.5"/><rect x="9" y="3" width="4" height="12" rx="2"/><rect x="9" y="3" width="10" height="4" rx="2"/></svg>RTS教育システム</a>
+    <a href="jig.html" class="tab-chip active"><svg viewBox="0 -960 960 960"><path d="M448-167 228-296q-13.77-8.29-21.39-22.23Q199-332.17 199-348v-257q0-15.83 7.61-29.77Q214.23-648.71 228-657l221-131q14-8 31-8t31 8l221 131q13.78 8.29 21.39 22.23Q761-620.83 761-605v257q0 15.83-7.87 29.77Q745.25-304.29 731-296L508-167q-14.33 8-30.16 8-15.84 0-29.84-8ZM80-691v-129q0-24.75 17.63-42.38Q115.25-880 140-880h129v60H140v129H80ZM269-80H140q-24.75 0-42.37-17.63Q80-115.25 80-140v-129h60v129h129v60Zm422 0v-60h129v-129h60v129q0 24.75-17.62 42.37Q844.75-80 820-80H691Zm129-611v-129H691v-60h129q24.75 0 42.38 17.62Q880-844.75 880-820v129h-60Zm-530 67-30 18v37l190 109v224l30 18 30-18v-224l191-109v-37l-31-18-190 110-190-110Z"/></svg>3D治具設計</a>
+    <a href="fa.html" class="tab-chip"><svg viewBox="0 -960 960 960"><path d="M80-80v-481l280-119v80l200-81v121h320v480H80Zm370-160h60v-160h-60v160Zm-160 0h60v-160h-60v160Zm320 0h60v-160h-60v160Zm265-360H705l35-280h100l35 280Z"/></svg>FA設備</a>
+    <a href="food.html" class="tab-chip"><svg viewBox="0 -960 960 960"><path d="M285-80v-368q-52-11-88.5-52.5T160-600v-280h60v280h65v-280h60v280h65v-280h60v280q0 58-36.5 99.5T345-448v368h-60Zm415 0v-320H585v-305q0-79 48-127t127-48v800h-60Z"/></svg>飲食業界向け</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <div class="hero-copy-text">
+        <span class="eyebrow"><span class="dot"></span>柔軟に対応可能</span>
+        <p class="tagline">Jig &amp; Fixture Design</p>
+        <h1>生産ラインに、<br>ぴったり合う治具を。</h1>
+        <p class="sub">3D治具設計サービス</p>
+        <p class="lead">ICAD SXを用いた3D設計で、FA設備・生産ラインに最適化された治具・工具を設計します。古い2D図面から3D図面への変換にも対応しており、ご要望に応じて柔軟にお引き受けいたします。</p>
+      </div>
+      <a class="btn" href="#contact">
+        <svg class="ic" width="18" height="18" viewBox="0 0 24 24" style="fill:none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M4 8h16"/><path d="M8 4v4"/></svg>
+        資料請求・お問い合わせ
+      </a>
+    </div>
+    <div class="hero-visual">
+      <div class="card">
+        <img src="assets/jig_pcb_fixture_v4_web.jpg" alt="ガラエポ基板を2面樹脂位置決め＋対角シリンダクランプする治具の3D設計イメージ">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">3D治具設計</p>
+      <h2>治具設計でできること</h2>
+    </div>
+    <div class="reasons">
+      <div class="reason">
+        <div class="icon-ring"><svg viewBox="0 -960 960 960"><path d="m423-329 277-277-43-43-234 234-121-121-42 42 163 165ZM180-120q-25 0-42.5-17.5T120-180v-600q0-25 17.5-42.5T180-840h205q5-35 32-57.5t63-22.5q36 0 63 22.5t32 57.5h205q25 0 42.5 17.5T840-780v600q0 25-17.5 42.5T780-120H180Zm300-677q14 0 24.5-10.5T515-832q0-14-10.5-24.5T480-867q-14 0-24.5 10.5T445-832q0 14 10.5 24.5T480-797Z"/></svg></div>
+        <h4>設計〜納品まで一貫対応</h4>
+        <p>お客様のご要望（仕様書）をいただければ、設計・製作・組立・配線・納品までワンストップで対応可能です。</p>
+      </div>
+      <div class="reason">
+        <div class="icon-ring"><svg viewBox="0 -960 960 960"><path d="M100-160q-24.75 0-42.37-17.63Q40-195.25 40-220v-460h60v460h700v60H100Zm120-120q-24.75 0-42.37-17.63Q160-315.25 160-340v-400q0-24.75 17.63-42.38Q195.25-800 220-800h640q24.75 0 42.38 17.62Q920-764.75 920-740v400q0 24.75-17.62 42.37Q884.75-280 860-280H220Zm100-60q0-42-29-71t-71-29v100h100Zm440 0h100v-100q-42 0-71 29t-29 71Zm-220-80q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35ZM220-640q42 0 71-29t29-71H220v100Zm640 0v-100H760q0 42 29 71t71 29Z"/></svg></div>
+        <h4>ご予算に応じた設計</h4>
+        <p>機械設計20年の経験でサポートし、ご予算に応じた最適な設計をご提案します。</p>
+      </div>
+      <div class="reason">
+        <div class="icon-ring"><svg viewBox="0 -960 960 960"><path d="M448-167 228-296q-13.77-8.29-21.39-22.23Q199-332.17 199-348v-257q0-15.83 7.61-29.77Q214.23-648.71 228-657l221-131q14-8 31-8t31 8l221 131q13.78 8.29 21.39 22.23Q761-620.83 761-605v257q0 15.83-7.87 29.77Q745.25-304.29 731-296L508-167q-14.33 8-30.16 8-15.84 0-29.84-8ZM80-691v-129q0-24.75 17.63-42.38Q115.25-880 140-880h129v60H140v129H80ZM269-80H140q-24.75 0-42.37-17.63Q80-115.25 80-140v-129h60v129h129v60Zm422 0v-60h129v-129h60v129q0 24.75-17.62 42.37Q844.75-80 820-80H691Zm129-611v-129H691v-60h129q24.75 0 42.38 17.62Q880-844.75 880-820v129h-60Zm-530 67-30 18v37l190 109v224l30 18 30-18v-224l191-109v-37l-31-18-190 110-190-110Z"/></svg></div>
+        <h4>ICAD SX（富士通）による3D設計</h4>
+        <p>富士通の3D CAD「ICAD SX」を使用し、精度の高い治具設計を行います。</p>
+      </div>
+      <div class="reason">
+        <div class="icon-ring"><svg viewBox="0 -960 960 960"><path d="M280-80q-33 0-56.5-23.5T200-160v-640q0-33 23.5-56.5T280-880h400q33 0 56.5 23.5T760-800v640q0 33-23.5 56.5T680-80H280Zm0-80h400v-640H280v640Zm60-80h280v-60H340v60Zm0-160h280v-60H340v60Zm0-160h280v-60H340v60Z"/></svg></div>
+        <h4>2D図面から3D図面への変換</h4>
+        <p>紙図面や古い2D CADデータしか残っていない設備・治具も、3Dモデル化して再利用できる形に起こし直します。</p>
+      </div>
+    </div>
+    <div class="flow">
+      <div class="flow-step">
+        <div class="num">1</div>
+        <h4>ヒアリング・仕様確認</h4>
+        <p>生産ライン・設備の要件をヒアリングし、治具に求める仕様を整理します。</p>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="num">2</div>
+        <h4>3Dモデリング（ICAD SX）</h4>
+        <p>富士通「ICAD SX」で3Dモデルを作成し、干渉・可動域を事前に検証します。</p>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="num">3</div>
+        <h4>設計レビュー・修正</h4>
+        <p>3Dデータ・図面をもとにお客様と仕様をすり合わせ、必要に応じて修正します。</p>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="num">4</div>
+        <h4>製作・組立・納品</h4>
+        <p>製作・組立・配線まで一貫対応し、現場でそのまま使える状態でお届けします。</p>
+      </div>
+    </div>
+    <div class="note-panel">
+      <strong>ご要望に応じて柔軟に対応いたします。</strong>治具設計単体のご依頼はもちろん、既存図面の3D化のみ、設計のみ、製作までの一貫対応など、必要な範囲だけでもお引き受けいたします。
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <span class="icon-ring"><svg viewBox="0 0 24 24" style="fill:none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
+    <p class="kicker">Contact</p>
+    <h2>3D治具設計について、お気軽にご相談ください</h2>
+    <p>生産ライン向けの治具・工具設計に関するご相談は、お気軽にお問い合わせください。</p>
+    <a class="btn" href="mailto:info@rigel-works.jp?subject=3D治具設計に関するお問い合わせ">メールでお問い合わせ</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <img class="logo-mark" src="assets/rigel-logo.png" alt="RIGEL">
+    <p>&copy; 2026 RIGEL Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>
