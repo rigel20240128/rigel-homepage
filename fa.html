@@ -117,6 +117,65 @@
   .note-panel{ margin-top:40px; background:#F2F7FC; border:1px solid var(--border); border-radius:18px; padding:24px 28px; font-size:13px; color:var(--sub); text-align:center; }
   .note-panel strong{ color:var(--ink); }
 
+  /* ご依頼から納品までの流れ（スイムレーン図） */
+  .lane-head{ display:grid; grid-template-columns:1fr 72px 1fr; gap:0; margin-bottom:18px; }
+  .lane-label{ display:flex; align-items:center; gap:9px; font-size:13.5px; font-weight:700; padding:10px 18px; border-radius:999px; }
+  .lane-label.user{ justify-content:flex-end; background:#FBEDE6; color:#A8431A; }
+  .lane-label.rigel{ justify-content:flex-start; background:#EEF4FC; color:var(--edu-dark); }
+  .lane-label .lane-dot{ width:8px; height:8px; border-radius:50%; }
+  .lane-label.user .lane-dot{ background:var(--accent); }
+  .lane-label.rigel .lane-dot{ background:var(--edu); }
+
+  .swim{ position:relative; }
+  .swim::before{
+    content:""; position:absolute; left:50%; top:0; bottom:0; width:2px;
+    background:linear-gradient(180deg, var(--accent) 0%, var(--edu) 100%);
+    transform:translateX(-50%); opacity:0.35;
+  }
+  .swim-row{ display:grid; grid-template-columns:1fr 72px 1fr; align-items:center; margin-bottom:16px; }
+  .swim-row.last{ margin-bottom:0; }
+
+  .swim-node{
+    position:relative; z-index:1; justify-self:center;
+    width:38px; height:38px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    background:var(--accent); color:#fff; font-weight:900; font-size:14px;
+    box-shadow:0 0 0 5px var(--bg);
+  }
+  .swim-node.rigel{ background:var(--edu); }
+  .swim-node.milestone{ box-shadow:0 0 0 5px var(--bg), 0 0 0 8px rgba(232,98,44,0.22); }
+
+  .swim-card{
+    position:relative; background:#fff; border:1px solid var(--border); border-radius:16px;
+    padding:18px 22px; box-shadow:0 8px 18px rgba(2,20,26,0.05);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .swim-card:hover{ transform:translateY(-3px); box-shadow:0 16px 28px rgba(2,20,26,0.10); }
+  .swim-card.user{ margin-right:22px; text-align:right; border-left:4px solid var(--accent); }
+  .swim-card.rigel{ margin-left:22px; border-left:4px solid var(--edu); }
+  .swim-card h4{ font-size:15px; font-weight:700; color:var(--dark); margin-bottom:5px; }
+  .swim-card p{ font-size:13px; color:var(--sub); }
+  .swim-card .swim-note{ display:inline-block; margin-top:8px; font-size:11.5px; font-weight:700; color:var(--accent); background:#FBEDE6; padding:3px 10px; border-radius:999px; }
+  .swim-card.milestone{ background:linear-gradient(150deg,#fff,#FFF6F1); }
+
+  /* 矢印（カードから中心線へ） */
+  .swim-card::after{
+    content:""; position:absolute; top:50%; width:0; height:0;
+    border-top:7px solid transparent; border-bottom:7px solid transparent;
+    transform:translateY(-50%);
+  }
+  .swim-card.user::after{ right:-9px; border-left:9px solid #fff; }
+  .swim-card.rigel::after{ left:-9px; border-right:9px solid #fff; }
+
+  @media (max-width:760px){
+    .lane-head{ display:none; }
+    .swim::before{ left:19px; }
+    .swim-row{ grid-template-columns:38px 1fr; gap:14px; }
+    .swim-row > div:empty{ display:none; }
+    .swim-node{ grid-column:1; justify-self:start; }
+    .swim-card{ grid-column:2; margin:0 !important; text-align:left !important; }
+    .swim-card::after{ display:none; }
+  }
+
   .contact{
     position:relative; overflow:hidden;
     background: radial-gradient(ellipse 700px 420px at 85% 0%, rgba(80,150,237,0.22), transparent 60%), linear-gradient(160deg, var(--deep), var(--dark) 70%);
@@ -180,7 +239,6 @@
   <div class="wrap">
     <div class="hero-copy">
       <div class="hero-copy-text">
-        <span class="eyebrow"><span class="dot"></span>3〜5年後の本格始動に向けて準備中</span>
         <p class="tagline">FA Equipment Design</p>
         <h1>自動化設備の設計で、<br>現場の省人化を支える。</h1>
         <p class="sub">FA設備設計</p>
@@ -222,13 +280,128 @@
         <p>バッチ式の設備から、搬送機構付き・全自動設備まで、規模に応じて幅広く対応します。</p>
       </div>
     </div>
-    <div class="roadmap">
-      <div class="road-step now"><p class="tag">現在</p><p>設計業務を中心に対応</p></div>
-      <div class="road-arrow">→</div>
-      <div class="road-step"><p class="tag">3〜5年後</p><p>協力会社と連携した設備一式のご提供を予定</p></div>
+  </div>
+</section>
+
+<section id="flow">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">Process</p>
+      <h2>ご依頼から納品までの流れ</h2>
+      <p>お客様とRIGELが交互に確認を重ねながら進めます。各段階でご承認をいただくため、認識のずれなく製作を進められます。</p>
     </div>
+
+    <div class="lane-head">
+      <div class="lane-label user"><span class="lane-dot"></span>お客様</div>
+      <div></div>
+      <div class="lane-label rigel"><span class="lane-dot"></span>RIGEL</div>
+    </div>
+
+    <div class="swim">
+      <!-- 1 -->
+      <div class="swim-row">
+        <div class="swim-card user">
+          <h4>仕様書のご提供</h4>
+          <p>目的・納期・ご予算をご提示ください。</p>
+          <span class="swim-note">※要打合せ</span>
+        </div>
+        <div class="swim-node"><span>1</span></div>
+        <div></div>
+      </div>
+      <!-- 2 -->
+      <div class="swim-row">
+        <div></div>
+        <div class="swim-node rigel"><span>2</span></div>
+        <div class="swim-card rigel">
+          <h4>内容確認書の提出</h4>
+          <p>製作資料と概算金額をご回答します。</p>
+        </div>
+      </div>
+      <!-- 3 -->
+      <div class="swim-row">
+        <div class="swim-card user">
+          <h4>内容のご確認</h4>
+          <p>提出内容をご確認いただきます。</p>
+        </div>
+        <div class="swim-node"><span>3</span></div>
+        <div></div>
+      </div>
+      <!-- 4 -->
+      <div class="swim-row">
+        <div></div>
+        <div class="swim-node rigel"><span>4</span></div>
+        <div class="swim-card rigel">
+          <h4>構想図の作成</h4>
+          <p>構想図を作成し、詳細見積もりをご回答します。</p>
+        </div>
+      </div>
+      <!-- 5 -->
+      <div class="swim-row">
+        <div class="swim-card user milestone">
+          <h4>最終承認</h4>
+          <p>構想図・見積もりをご承認いただきます。</p>
+        </div>
+        <div class="swim-node milestone"><span>5</span></div>
+        <div></div>
+      </div>
+      <!-- 6 -->
+      <div class="swim-row">
+        <div></div>
+        <div class="swim-node rigel"><span>6</span></div>
+        <div class="swim-card rigel">
+          <h4>製作開始</h4>
+          <p>ご承認をもって製作に着手します。</p>
+        </div>
+      </div>
+      <!-- 7 -->
+      <div class="swim-row">
+        <div class="swim-card user">
+          <h4>中間立ち合い</h4>
+          <p>製作途中の状態をご確認いただきます。</p>
+        </div>
+        <div class="swim-node"><span>7</span></div>
+        <div></div>
+      </div>
+      <!-- 8 -->
+      <div class="swim-row">
+        <div></div>
+        <div class="swim-node rigel"><span>8</span></div>
+        <div class="swim-card rigel">
+          <h4>製作</h4>
+          <p>立ち合い結果を反映しながら製作を進めます。</p>
+        </div>
+      </div>
+      <!-- 9 -->
+      <div class="swim-row">
+        <div class="swim-card user">
+          <h4>最終立ち合い</h4>
+          <p>完成状態を最終確認いただきます。</p>
+        </div>
+        <div class="swim-node"><span>9</span></div>
+        <div></div>
+      </div>
+      <!-- 10 -->
+      <div class="swim-row">
+        <div></div>
+        <div class="swim-node rigel"><span>10</span></div>
+        <div class="swim-card rigel">
+          <h4>納品</h4>
+          <p>設備を納品いたします。</p>
+        </div>
+      </div>
+      <!-- 11 -->
+      <div class="swim-row last">
+        <div class="swim-card user milestone">
+          <h4>最終確認・検収</h4>
+          <p>納品後の最終確認と検収をお願いいたします。</p>
+        </div>
+        <div class="swim-node milestone"><span>11</span></div>
+        <div></div>
+      </div>
+    </div>
+
     <div class="note-panel">
-      <strong>詳細は準備中です。</strong>設計のご相談は、現時点でもお気軽にお問い合わせください。
+      <strong>各段階でご承認をいただきながら進めます。</strong>仕様が固まっていない段階でも構いません。打合せを通じて、目的・納期・ご予算に合わせた最適なご提案をいたします。
     </div>
   </div>
 </section>
