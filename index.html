@@ -245,6 +245,13 @@
     display:flex; align-items:center; justify-content:center; margin-bottom:18px;
   }
   .biz-card .icon-badge svg{ width:23px; height:23px; fill:#2F80ED; }
+  /* 各事業ページのトップイラスト（アイコンの約2倍サイズ） */
+  .biz-thumb{
+    height:100px; margin-bottom:16px; border-radius:14px;
+    background:#fff; border:1px solid var(--border);
+    display:flex; align-items:center; justify-content:center; overflow:hidden; padding:8px;
+  }
+  .biz-thumb img{ max-height:100%; width:auto; max-width:100%; object-fit:contain; }
   .biz-card h3{ font-size:16px; font-weight:700; margin-bottom:10px; color:var(--ink); }
   .biz-card p{ color:var(--sub); font-size:13.5px; margin-bottom:14px; }
   .biz-card .biz-link{ font-size:12.5px; font-weight:700; color:var(--main); }
@@ -448,24 +455,28 @@
     </div>
     <div class="biz-grid">
       <a class="biz-card" href="education.html">
+        <div class="biz-thumb"><img src="assets/jr3203_v8_web.jpg" alt="JANOME製卓上ロボット JR3203"></div>
         <div class="icon-badge"><svg viewBox="0 0 24 24"><rect x="2" y="17" width="20" height="5" rx="1.5"/><rect x="9" y="3" width="4" height="12" rx="2"/><rect x="9" y="3" width="10" height="4" rx="2"/></svg></div>
         <h3>RTS教育システム</h3>
         <p>卓上ロボットの操作・保全を現場で学べる、レンタル式ロボット教育システム。</p>
         <span class="biz-link">詳しく見る →</span>
       </a>
       <a class="biz-card" href="jig.html">
+        <div class="biz-thumb"><img src="assets/jig_chain_conveyor_web.jpg" alt="チェーン搬送機構の治具3D設計"></div>
         <div class="icon-badge"><svg viewBox="0 -960 960 960"><path d="M448-167 228-296q-13.77-8.29-21.39-22.23Q199-332.17 199-348v-257q0-15.83 7.61-29.77Q214.23-648.71 228-657l221-131q14-8 31-8t31 8l221 131q13.78 8.29 21.39 22.23Q761-620.83 761-605v257q0 15.83-7.87 29.77Q745.25-304.29 731-296L508-167q-14.33 8-30.16 8-15.84 0-29.84-8ZM80-691v-129q0-24.75 17.63-42.38Q115.25-880 140-880h129v60H140v129H80ZM269-80H140q-24.75 0-42.37-17.63Q80-115.25 80-140v-129h60v129h129v60Zm422 0v-60h129v-129h60v129q0 24.75-17.62 42.37Q844.75-80 820-80H691Zm129-611v-129H691v-60h129q24.75 0 42.38 17.62Q880-844.75 880-820v129h-60Zm-530 67-30 18v37l190 109v224l30 18 30-18v-224l191-109v-37l-31-18-190 110-190-110Z"/></svg></div>
         <h3>3D治具設計</h3>
         <p>ICAD SXを用いた3D設計で治具・工具を設計。古い2D図面の3D化にも柔軟に対応します。</p>
         <span class="biz-link">詳しく見る →</span>
       </a>
       <a class="biz-card" href="fa.html">
+        <div class="biz-thumb"><img src="assets/fa_equipment_v2_web.jpg" alt="2ステーション構成の自動化設備"></div>
         <div class="icon-badge"><svg viewBox="0 -960 960 960"><path d="M80-80v-481l280-119v80l200-81v121h320v480H80Zm370-160h60v-160h-60v160Zm-160 0h60v-160h-60v160Zm320 0h60v-160h-60v160Zm265-360H705l35-280h100l35 280Z"/></svg></div>
         <h3>FA設備設計</h3>
         <p>20年以上の実務経験を活かし、自動化設備・省人化設備の設計を承ります。</p>
         <span class="biz-link">詳しく見る →</span>
       </a>
       <a class="biz-card" href="food.html">
+        <div class="biz-thumb"><img src="assets/food_lantern_restaurant_web.jpg" alt="店内演出をIoT化した飲食店"></div>
         <div class="icon-badge"><svg viewBox="0 -960 960 960"><path d="M285-80v-368q-52-11-88.5-52.5T160-600v-280h60v280h65v-280h60v280h65v-280h60v280q0 58-36.5 99.5T345-448v368h-60Zm415 0v-320H585v-305q0-79 48-127t127-48v800h-60Z"/></svg></div>
         <h3>飲食業界向けIoT</h3>
         <p>Raspberry PiとPythonで店内演出をIoT化し、来店者が楽しめる空間を演出します。</p>
