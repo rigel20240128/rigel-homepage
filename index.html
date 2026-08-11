@@ -234,27 +234,32 @@
   @media (max-width:900px){ .biz-grid{ grid-template-columns:1fr 1fr; } }
   @media (max-width:520px){ .biz-grid{ grid-template-columns:1fr; } }
   .biz-card{
-    display:block; text-decoration:none; color:inherit;
+    /* アイコン(50px) + イラスト(正方形) を必ず横並びにする。1frは余白 */
+    display:grid; grid-template-columns:50px minmax(0,100px) 1fr;
+    column-gap:14px; align-items:center;
+    text-decoration:none; color:inherit;
     background:#fff; border:1px solid var(--border); border-radius:22px;
     padding:28px 24px; box-shadow:0 12px 26px rgba(2,20,26,0.06);
     transition:transform .22s ease, box-shadow .22s ease;
   }
   .biz-card:hover{ transform:translateY(-6px); box-shadow:0 26px 42px rgba(2,20,26,0.12); }
   .biz-card .icon-badge{
+    grid-column:1; grid-row:1; align-self:center;
     width:50px; height:50px; border-radius:15px; background:#EEF4FC;
     display:flex; align-items:center; justify-content:center; margin-bottom:18px;
   }
   .biz-card .icon-badge svg{ width:23px; height:23px; fill:#2F80ED; }
-  /* 各事業ページのトップイラスト（アイコンの約2倍サイズ） */
+  /* 各事業のイラスト：アイコンの右横・正方形。幅が足りない時も正方形のまま縮む */
   .biz-thumb{
-    height:100px; margin-bottom:16px; border-radius:14px;
-    background:#fff; border:1px solid var(--border);
-    display:flex; align-items:center; justify-content:center; overflow:hidden; padding:8px;
+    grid-column:2; grid-row:1; align-self:center;
+    width:100%; aspect-ratio:1/1; margin-bottom:18px; border-radius:14px;
+    background:#fff; border:1px solid var(--border); overflow:hidden;
   }
-  .biz-thumb img{ max-height:100%; width:auto; max-width:100%; object-fit:contain; }
-  .biz-card h3{ font-size:16px; font-weight:700; margin-bottom:10px; color:var(--ink); }
-  .biz-card p{ color:var(--sub); font-size:13.5px; margin-bottom:14px; }
-  .biz-card .biz-link{ font-size:12.5px; font-weight:700; color:var(--main); }
+  /* 縦の大きさを保ち、横だけトリミングして正方形に収める */
+  .biz-thumb img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .biz-card h3{ grid-column:1/-1; font-size:16px; font-weight:700; margin-bottom:10px; color:var(--ink); }
+  .biz-card p{ grid-column:1/-1; color:var(--sub); font-size:13.5px; margin-bottom:14px; }
+  .biz-card .biz-link{ grid-column:1/-1; font-size:12.5px; font-weight:700; color:var(--main); }
 
   /* features */
   .features{
