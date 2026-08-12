@@ -185,7 +185,7 @@
   .flow-card:hover .icon-ring{ transform:scale(1.1); }
   .flow-card .icon-ring svg{ width:24px; height:24px; fill:#fff; }
   .flow-card h4{ font-size:15px; font-weight:700; margin-bottom:6px; }
-  .flow-card p{ font-size:13px; color:var(--sub); }
+  .flow-card p{ font-size:13px; color:var(--sub); word-break:auto-phrase; }
   .flow-arrow{ display:flex; align-items:center; justify-content:center; color:var(--border); font-size:20px; }
   @media (max-width:900px){ .flow-arrow{ display:none; } }
 
@@ -195,7 +195,9 @@
   .reason{ background:#fff; border:1px solid var(--border); border-radius:20px; padding:26px; box-shadow:0 10px 22px rgba(2,20,26,0.05); }
   .reason .num{ font-size:12px; font-weight:900; color:var(--edu); letter-spacing:0.08em; margin-bottom:10px; }
   .reason h4{ font-size:15px; font-weight:700; margin-bottom:8px; }
-  .reason p{ font-size:13.5px; color:var(--sub); }
+  .reason p{ font-size:13.5px; color:var(--sub); word-break:auto-phrase; }
+  /* 語句の途中で改行させない（意味の切れ目で折り返す） */
+  .flow-card p span, .reason p span{ display:inline-block; }
 
   .curriculum-panel{
     background:linear-gradient(120deg, var(--deep), var(--dark) 55%, var(--edu-dark)); color:#fff;
@@ -325,7 +327,7 @@
         <h1>設備を買う前に、<br>人を育てる。</h1>
         <p class="sub">卓上型ロボット教育システム</p>
         <p class="lead">
-          RTSは、汎用性の高い卓上ロボット（XYZ・3〜4軸）を使用して、FA設備に必要なスキルを学べる教育レンタルシステムです。実機を貸与するキット形式で、設備運用の人材育成を進めることができます。
+          RTSは、卓上型XYZロボット（3〜4軸）を使用して、FA設備に必要なスキルを学べる教育レンタルシステムです。実機を貸与するキット形式で、設備運用の人材育成を進めることができます。
         </p>
       </div>
       <a class="btn" href="#contact">
@@ -370,7 +372,7 @@
       </div>
     </div>
     <div class="lead-panel">
-      <p><strong>RTSとは</strong> — RTS（Robot Training System）は、汎用性の高い卓上ロボット（XYZ・3〜4軸）を使用してFA設備に必要なスキルを学べる教育レンタルシステムです。実機を貸与するキット形式で、設備運用の人材育成を進めることができます。</p>
+      <p><strong>RTSとは</strong> — RTS（Robot Training System）は、卓上型XYZロボット（3〜4軸）を使用してFA設備に必要なスキルを学べる教育レンタルシステムです。実機を貸与するキット形式で、設備運用の人材育成を進めることができます。</p>
     </div>
   </div>
 </section>
@@ -385,26 +387,26 @@
       <div class="flow-card">
         <span class="step-num">01</span>
         <div class="icon-ring"><svg viewBox="0 -960 960 960"><path d="M180-120q-24 0-42-18t-18-42v-600q0-24 18-42t42-18h600q24 0 42 18t18 42v600q0 24-18 42t-42 18H180Zm300-173q41 0 74-23.5t56-59.5h170v-404H180v404h170q23 36 56 59.5t74 23.5Zm0-129L327-575l43-43 80 80v-189h60v189l80-80 43 43-153 153Z"/></svg></div>
-        <h4>キットが届く</h4>
-        <p>お申し込み後、スタートキットが郵送で届きます。</p>
+        <h4>スタートキットが届く</h4>
+        <p><span>お申し込み後、</span><span>ご指定の住所へ郵送でお届けします。</span></p>
       </div>
       <div class="flow-card">
         <span class="step-num">02</span>
         <div class="icon-ring"><svg viewBox="0 -960 960 960"><path d="M705-128 447-388q-23 8-46 13t-47 5q-97 0-165-67.5T121-602q0-31 8-60.5t23-55.5l145 145 92-86-149-149q26-15 55-23.5t59-8.5q99 0 168.5 69.5T592-602q0 24-5 47t-13 46l259 258q11 11 11 26.5T833-198l-76 70q-11 11-26 11t-26-11Z"/></svg></div>
-        <h4>キットを組み立てる</h4>
-        <p>貴社にて開梱・組立を行います。</p>
+        <h4>開梱して組み立てる</h4>
+        <p><span>組立手順書に沿って、</span><span>貴社にて組み立てていただきます。</span></p>
       </div>
       <div class="flow-card">
         <span class="step-num">03</span>
         <div class="icon-ring"><svg viewBox="0 -960 960 960"><path d="M480-80q-34 0-57.5-23.5T399-161h162q0 34-23.5 57.5T480-80ZM318-223v-60h324v60H318Zm5-121q-66-43-104.5-107.5T180-597q0-122 89-211t211-89q122 0 211 89t89 211q0 81-38 145.5T637-344H323Z"/></svg></div>
         <h4>実機を動かして学ぶ</h4>
-        <p>センサー・通信・画像処理まで、実機で体系的に習得します。</p>
+        <p><span>センサー・通信・画像処理まで、</span><span>実機で体系的に習得します。</span></p>
       </div>
       <div class="flow-card">
         <span class="step-num">04</span>
         <div class="icon-ring"><svg viewBox="0 -960 960 960"><path d="m385-412 36-115-95-74h116l38-119 37 119h117l-95 74 35 115-94-71-95 71ZM244-40v-304q-45-47-64.5-103T160-560q0-136 92-228t228-92q136 0 228 92t92 228q0 57-19.5 113T716-344v304l-236-79-236 79Zm236-260q109 0 184.5-75.5T740-560q0-109-75.5-184.5T480-820q-109 0-184.5 75.5T220-560q0 109 75.5 184.5T480-300Z"/></svg></div>
         <h4>現場で活躍する技術者に育つ</h4>
-        <p>習得したスキルは、そのまま実務に直結します。</p>
+        <p><span>習得したスキルは、</span><span>そのまま実務に直結します。</span></p>
       </div>
     </div>
   </div>
@@ -417,9 +419,9 @@
       <h2>選ばれる理由</h2>
     </div>
     <div class="reasons">
-      <div class="reason"><p class="num">01</p><h4>産業グレードの実機で学べる</h4><p>習得したスキルがそのまま実務に直結します。</p></div>
-      <div class="reason"><p class="num">02</p><h4>月額制、買わずに始められる</h4><p>最短3ヶ月からご利用いただけます。</p></div>
-      <div class="reason"><p class="num">03</p><h4>JANOME製ロボットを採用</h4><p>汎用XYZロボットのリーディングブランドです。</p></div>
+      <div class="reason"><p class="num">01</p><h4>現場と同じ実機で学べる</h4><p><span>習得したスキルが</span><span>そのまま実務に直結します。</span></p></div>
+      <div class="reason"><p class="num">02</p><h4>月額制、買わずに始められる</h4><p><span>最短3ヶ月から</span><span>ご利用いただけます。</span></p></div>
+      <div class="reason"><p class="num">03</p><h4>JANOME製ロボットを採用</h4><p><span>卓上型XYZロボットの</span><span>リーディングブランドです。</span></p></div>
     </div>
     <div class="curriculum-panel">
       <div class="curriculum-head">
