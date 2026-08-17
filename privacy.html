@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>個人情報の取扱いについて｜株式会社RIGEL</title>
+<meta name="description" content="株式会社RIGELにおける個人情報の利用目的および取扱いについてご説明します。お問い合わせでご提供いただいた個人情報は、ご回答および関連するご連絡の目的に限定して利用いたします。">
+<link rel="icon" href="assets/rigel-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --main:#026881; --dark:#014B5D; --deep:#052E38; --light:#74ACBA; --bg:#F7F6F3;
+    --ink:#17181A; --sub:#6B6E73; --border:#E3E1DB; --accent:#E8622C;
+    --edu:#2F80ED; --edu-dark:#1B5FC4;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{ font-family:"Noto Sans JP", -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif; color:var(--ink); background:var(--bg); line-height:1.9; font-weight:400; overflow-x:hidden; }
+  a{ color:inherit; } img{ max-width:100%; display:block; }
+  .wrap{ max-width:1120px; margin:0 auto; padding:0 24px; position:relative; }
+  svg{ display:block; } .ic{ width:26px; height:26px; }
+
+  header{ position:sticky; top:0; z-index:100; background:rgba(247,246,243,0.86); backdrop-filter:blur(10px); border-bottom:1px solid var(--border); }
+  .header-row{ display:flex; align-items:center; justify-content:space-between; height:72px; }
+  .brand{ display:flex; align-items:center; }
+  .brand img.logo-mark{ height:28px; width:auto; }
+
+  nav.main-nav{ display:flex; align-items:center; gap:4px; }
+  .nav-tab{
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px;
+    padding:8px 13px; border-radius:12px; text-decoration:none; color:var(--sub);
+    font-size:10.5px; font-weight:600; min-width:60px; transition:background .15s ease, color .15s ease;
+  }
+  .nav-tab svg{ width:19px; height:19px; fill:var(--edu); }
+  .nav-tab:hover{ background:#F2F7FC; color:var(--ink); }
+  .nav-tab.active{ background:#EEF4FC; color:var(--edu); }
+  .nav-sep{ width:1px; height:26px; background:var(--border); margin:0 6px; }
+  nav.main-nav a.plain{ font-size:14px; font-weight:500; color:var(--ink); text-decoration:none; padding:6px 4px; }
+  nav.main-nav a.plain:hover{ color:var(--main); }
+  nav.main-nav a.nav-cta{ background:var(--main); color:#fff; padding:10px 20px; border-radius:999px; font-weight:700; font-size:14px; text-decoration:none; margin-left:4px; }
+  nav.main-nav a.nav-cta:hover{ background:var(--dark); }
+
+  .tab-scroll{ display:none; }
+  @media (max-width:900px){
+    nav.main-nav .nav-tab, nav.main-nav .nav-sep{ display:none; }
+    .tab-scroll{ display:flex; gap:8px; overflow-x:auto; padding:10px 20px 12px; border-top:1px solid var(--border); -webkit-overflow-scrolling:touch; scrollbar-width:none; }
+    .tab-scroll::-webkit-scrollbar{ display:none; }
+    .tab-chip{ flex-shrink:0; display:flex; align-items:center; gap:6px; padding:8px 14px; border-radius:999px; background:#F2F7FC; color:var(--ink); text-decoration:none; font-size:12.5px; font-weight:600; white-space:nowrap; }
+    .tab-chip svg{ width:15px; height:15px; fill:var(--edu); }
+    .tab-chip.active{ background:var(--edu); color:#fff; }
+    .tab-chip.active svg{ fill:#fff; }
+  }
+  @media (max-width:520px){
+    nav.main-nav a.plain{ display:none; }
+    nav.main-nav a.nav-cta{ padding:8px 14px; font-size:12px; }
+  }
+
+  /* ページ見出し */
+  .page-head{ padding:72px 0 44px; background:var(--bg); }
+  .page-head .wrap{ max-width:820px; }
+  .page-head .tagline{ font-size:13px; font-weight:700; letter-spacing:0.2em; color:var(--main); text-transform:uppercase; margin-bottom:14px; }
+  .page-head h1{ font-size:clamp(26px, 3.4vw, 38px); font-weight:900; color:var(--dark); margin:0 0 18px; line-height:1.5; }
+  .page-head p{ font-size:15px; color:var(--sub); }
+  .page-head .updated{ margin-top:22px; font-size:12.5px; color:var(--sub); }
+
+  /* 本文 */
+  .policy{ padding:0 0 96px; background:var(--bg); }
+  .policy .wrap{ max-width:820px; }
+  .policy-body{ background:#fff; border:1px solid var(--border); border-radius:24px; padding:48px 52px; box-shadow:0 12px 26px rgba(2,20,26,0.05); }
+  @media (max-width:640px){ .policy-body{ padding:32px 24px; } }
+  .policy-intro{ font-size:14.5px; color:var(--sub); padding-bottom:30px; border-bottom:1px solid var(--border); }
+  .policy h2{ font-size:17px; font-weight:700; color:var(--dark); margin:38px 0 14px; padding-left:14px; border-left:4px solid var(--edu); }
+  .policy p{ font-size:14px; color:var(--sub); margin-bottom:14px; }
+  .policy ul{ list-style:none; margin:0 0 16px; }
+  .policy li{ font-size:14px; color:var(--sub); padding:6px 0 6px 20px; position:relative; }
+  .policy ul li::before{ content:""; position:absolute; left:2px; top:16px; width:6px; height:6px; border-radius:50%; background:var(--edu); }
+  .policy ol{ margin:0 0 16px 22px; }
+  .policy ol li{ list-style:decimal; padding:6px 0 6px 4px; }
+  .policy .purpose-box{ background:#F2F7FC; border:1px solid var(--border); border-radius:16px; padding:22px 28px; margin:18px 0; }
+  .policy .purpose-box li::before{ background:var(--accent); }
+  .policy .contact-box{ background:#F2F7FC; border:1px solid var(--border); border-radius:16px; padding:22px 28px; margin-top:18px; }
+  .policy .contact-box p{ margin-bottom:6px; font-size:13.5px; }
+  .policy .contact-box p:last-child{ margin-bottom:0; }
+  .policy .contact-box a{ color:var(--main); font-weight:700; }
+  .policy .back-link{ display:inline-flex; align-items:center; gap:8px; margin-top:38px; font-size:13.5px; font-weight:700; color:var(--main); text-decoration:none; }
+  .policy .back-link:hover{ text-decoration:underline; }
+
+  footer{ padding:44px 0; text-align:center; background:#fff; border-top:1px solid var(--border); }
+  footer img.logo-mark{ height:22px; width:auto; margin:0 auto 16px; opacity:0.85; }
+  footer p{ font-size:12.5px; color:var(--sub); }
+  footer .foot-links{ margin-bottom:10px; }
+  footer .foot-links a{ color:var(--sub); text-decoration:none; }
+  footer .foot-links a:hover{ color:var(--main); text-decoration:underline; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-row">
+    <a class="brand" href="index.html"><img class="logo-mark" src="assets/rigel-logo.png" alt="RIGEL"></a>
+    <nav class="main-nav">
+      <a href="index.html" class="nav-tab">
+        <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Z"/></svg>
+        <span>ホーム</span>
+      </a>
+      <a href="education.html" class="nav-tab">
+        <svg viewBox="0 0 24 24"><rect x="2" y="17" width="20" height="5" rx="1.5"/><rect x="9" y="3" width="4" height="12" rx="2"/><rect x="9" y="3" width="10" height="4" rx="2"/></svg>
+        <span>RTS教育システム</span>
+      </a>
+      <a href="jig.html" class="nav-tab">
+        <svg viewBox="0 -960 960 960"><path d="M448-167 228-296q-13.77-8.29-21.39-22.23Q199-332.17 199-348v-257q0-15.83 7.61-29.77Q214.23-648.71 228-657l221-131q14-8 31-8t31 8l221 131q13.78 8.29 21.39 22.23Q761-620.83 761-605v257q0 15.83-7.87 29.77Q745.25-304.29 731-296L508-167q-14.33 8-30.16 8-15.84 0-29.84-8ZM80-691v-129q0-24.75 17.63-42.38Q115.25-880 140-880h129v60H140v129H80ZM269-80H140q-24.75 0-42.37-17.63Q80-115.25 80-140v-129h60v129h129v60Zm422 0v-60h129v-129h60v129q0 24.75-17.62 42.37Q844.75-80 820-80H691Zm129-611v-129H691v-60h129q24.75 0 42.38 17.62Q880-844.75 880-820v129h-60Zm-530 67-30 18v37l190 109v224l30 18 30-18v-224l191-109v-37l-31-18-190 110-190-110Z"/></svg>
+        <span>3D治具設計</span>
+      </a>
+      <a href="fa.html" class="nav-tab">
+        <svg viewBox="0 -960 960 960"><path d="M80-80v-481l280-119v80l200-81v121h320v480H80Zm370-160h60v-160h-60v160Zm-160 0h60v-160h-60v160Zm320 0h60v-160h-60v160Zm265-360H705l35-280h100l35 280Z"/></svg>
+        <span>FA設備</span>
+      </a>
+      <a href="food.html" class="nav-tab">
+        <svg viewBox="0 -960 960 960"><path d="M285-80v-368q-52-11-88.5-52.5T160-600v-280h60v280h65v-280h60v280h65v-280h60v280q0 58-36.5 99.5T345-448v368h-60Zm415 0v-320H585v-305q0-79 48-127t127-48v800h-60Z"/></svg>
+        <span>飲食業界向け</span>
+      </a>
+      <span class="nav-sep"></span>
+      <a href="index.html#company" class="plain">会社概要</a>
+      <a class="nav-cta" href="index.html#contact">お問い合わせ</a>
+    </nav>
+  </div>
+  <div class="tab-scroll">
+    <a href="index.html" class="tab-chip"><svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Z"/></svg>ホーム</a>
+    <a href="education.html" class="tab-chip"><svg viewBox="0 0 24 24"><rect x="2" y="17" width="20" height="5" rx="1.5"/><rect x="9" y="3" width="4" height="12" rx="2"/><rect x="9" y="3" width="10" height="4" rx="2"/></svg>RTS教育システム</a>
+    <a href="jig.html" class="tab-chip"><svg viewBox="0 -960 960 960"><path d="M448-167 228-296q-13.77-8.29-21.39-22.23Q199-332.17 199-348v-257q0-15.83 7.61-29.77Q214.23-648.71 228-657l221-131q14-8 31-8t31 8l221 131q13.78 8.29 21.39 22.23Q761-620.83 761-605v257q0 15.83-7.87 29.77Q745.25-304.29 731-296L508-167q-14.33 8-30.16 8-15.84 0-29.84-8ZM80-691v-129q0-24.75 17.63-42.38Q115.25-880 140-880h129v60H140v129H80ZM269-80H140q-24.75 0-42.37-17.63Q80-115.25 80-140v-129h60v129h129v60Zm422 0v-60h129v-129h60v129q0 24.75-17.62 42.37Q844.75-80 820-80H691Zm129-611v-129H691v-60h129q24.75 0 42.38 17.62Q880-844.75 880-820v129h-60Zm-530 67-30 18v37l190 109v224l30 18 30-18v-224l191-109v-37l-31-18-190 110-190-110Z"/></svg>3D治具設計</a>
+    <a href="fa.html" class="tab-chip"><svg viewBox="0 -960 960 960"><path d="M80-80v-481l280-119v80l200-81v121h320v480H80Zm370-160h60v-160h-60v160Zm-160 0h60v-160h-60v160Zm320 0h60v-160h-60v160Zm265-360H705l35-280h100l35 280Z"/></svg>FA設備</a>
+    <a href="food.html" class="tab-chip"><svg viewBox="0 -960 960 960"><path d="M285-80v-368q-52-11-88.5-52.5T160-600v-280h60v280h65v-280h60v280h65v-280h60v280q0 58-36.5 99.5T345-448v368h-60Zm415 0v-320H585v-305q0-79 48-127t127-48v800h-60Z"/></svg>飲食業界向け</a>
+  </div>
+</header>
+
+<section class="page-head">
+  <div class="wrap">
+    <p class="tagline">Privacy Policy</p>
+    <h1>個人情報の取扱いについて</h1>
+    <p>株式会社RIGEL（以下「当社」といいます）は、お客様の個人情報を適切に保護することが事業活動の基盤であると考えます。個人情報の保護に関する法律その他の関係法令および個人情報保護委員会が策定するガイドラインを遵守し、以下のとおり取り扱います。</p>
+    <p class="updated">最終改定日：2026年8月17日</p>
+  </div>
+</section>
+
+<section class="policy">
+  <div class="wrap">
+    <div class="policy-body">
+      <p class="policy-intro">当ホームページでは入力フォームを設けておらず、メールによるお問い合わせのみを承っております。お客様からメールでご提供いただく個人情報の取扱いについて、以下のとおりご説明いたします。</p>
+
+      <h2>1. 取得する個人情報</h2>
+      <p>当社は、お問い合わせに際してお客様からご提供いただく、以下の情報を取得いたします。これら以外の情報を、お客様の意思によらず取得することはありません。</p>
+      <ul>
+        <li>お名前</li>
+        <li>会社名・団体名、部署名、役職</li>
+        <li>メールアドレス、電話番号などの連絡先</li>
+        <li>お問い合わせの内容、その他お客様が任意にご記入された事項</li>
+      </ul>
+      <p>なお、当ホームページではアクセス解析ツールおよび広告目的のCookieは使用しておりません。</p>
+
+      <h2>2. 個人情報の利用目的</h2>
+      <p>当社は、ご提供いただいた個人情報を、以下の目的に限定して利用いたします。</p>
+      <div class="purpose-box">
+        <ul>
+          <li>お問い合わせ・ご質問への回答、およびそのための連絡</li>
+          <li>お見積り、資料・提案書のご提供</li>
+          <li>ご契約に至った場合の、サービス提供に必要な連絡および通知</li>
+          <li>当社サービスに関する情報のご案内</li>
+        </ul>
+      </div>
+      <p>上記の目的の範囲を超えて利用する必要が生じた場合は、あらかじめお客様の同意をいただいたうえで取り扱います。</p>
+
+      <h2>3. 第三者への提供</h2>
+      <p>当社は、お客様の同意なく個人情報を第三者に提供いたしません。ただし、以下の場合はこの限りではありません。</p>
+      <ol>
+        <li>法令に基づく場合</li>
+        <li>人の生命、身体または財産の保護のために必要があり、お客様の同意を得ることが困難であるとき</li>
+        <li>公衆衛生の向上または児童の健全な育成の推進のために特に必要があり、お客様の同意を得ることが困難であるとき</li>
+        <li>国の機関もしくは地方公共団体またはその委託を受けた者が法令の定める事務を遂行することに協力する必要があり、お客様の同意を得ることにより当該事務の遂行に支障を及ぼすおそれがあるとき</li>
+      </ol>
+
+      <h2>4. 業務委託にあたっての取扱い</h2>
+      <p>当社は、設備の設計・製作・配送などにおいて、業務の一部を協力会社へ委託する場合がございます。この場合、委託先には業務の遂行に必要な範囲の情報のみを提供し、契約により個人情報の適切な取扱いを義務づけたうえで、必要かつ適切な監督を行います。</p>
+
+      <h2>5. 安全管理措置</h2>
+      <p>当社は、個人情報の漏えい、滅失または毀損を防止するため、以下の措置を講じます。</p>
+      <ul>
+        <li>個人情報を取り扱う機器へのアクセス制限およびパスワード管理</li>
+        <li>ウイルス対策ソフトの導入と、ソフトウェアの適時更新</li>
+        <li>個人情報の管理責任者の設置</li>
+        <li>保有する必要がなくなった個人情報の、速やかかつ適切な方法による消去</li>
+      </ul>
+
+      <h2>6. 保有期間</h2>
+      <p>お問い合わせに関する個人情報は、対応の完了後、今後のご連絡の必要性を考慮したうえで適切な期間保有し、保有する必要がなくなった時点で速やかに消去いたします。ご契約に関する情報については、法令に定められた保存期間に従い保管いたします。</p>
+
+      <h2>7. 開示・訂正・利用停止などのご請求</h2>
+      <p>お客様は、当社が保有するご自身の個人情報について、開示、訂正、追加、削除、利用停止、第三者への提供の停止をご請求いただけます。下記のお問い合わせ窓口までご連絡いただき、ご本人であることを確認でき次第、法令に従い速やかに対応いたします。</p>
+
+      <h2>8. お問い合わせ窓口</h2>
+      <p>個人情報の取扱いに関するお問い合わせ、および前項のご請求は、下記までご連絡ください。</p>
+      <div class="contact-box">
+        <p><strong>株式会社RIGEL</strong>　個人情報お問い合わせ窓口</p>
+        <p>千葉県柏市若柴178-4　柏の葉キャンパス148街区2　ショップ&amp;オフィス棟 6階</p>
+        <p>メール：<a href="mailto:info@rigel-works.jp?subject=個人情報の取扱いに関するお問い合わせ">info@rigel-works.jp</a></p>
+      </div>
+
+      <h2>9. 本方針の変更</h2>
+      <p>当社は、法令の改正や事業内容の変更に応じ、本方針を見直すことがあります。変更後の内容は、本ページに掲載した時点から適用されます。</p>
+
+      <a class="back-link" href="index.html">← トップページへ戻る</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <img class="logo-mark" src="assets/rigel-logo.png" alt="RIGEL">
+    <p class="foot-links"><a href="privacy.html">個人情報の取扱いについて</a></p>
+    <p>&copy; 2026 株式会社RIGEL All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>
