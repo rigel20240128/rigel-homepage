@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>3D治具設計｜株式会社RIGEL</title>
-<meta name="description" content="株式会社RIGELの3D治具設計サービス。ICAD SXを用いた3D設計で、FA設備・生産ラインに最適化された治具・工具を設計します。古い2D図面から3D図面への変換にも対応し、ご要望に応じて柔軟にお引き受けいたします。">
+<title>古民家レンタルスペース「源氏車」｜株式会社RIGEL</title>
+<meta name="description" content="株式会社RIGELが運営する古民家レンタルスペース「源氏車」。茨城県稲敷市、築50年の古民家を再生し、母屋・離れ・納屋を撮影・イベント・ワークショップの場としてお貸ししています。">
 <link rel="icon" href="assets/rigel-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -71,12 +71,12 @@
     position:relative; min-height:auto; display:flex; align-items:center; padding:88px 0 72px;
     background:var(--bg); color:var(--ink); overflow:hidden;
   }
-  .hero::before{ display:none; }
   .hero .wrap{ position:relative; z-index:2; display:grid; grid-template-columns:1fr auto; align-items:stretch; gap:40px; }
   @media (max-width:900px){ .hero .wrap{ grid-template-columns:1fr; } .hero-visual{ order:-1; margin-bottom:8px; } }
   .hero-visual{ position:relative; z-index:1; height:100%; max-width:min(560px, 48vw); display:flex; }
+  @media (max-width:900px){ .hero-visual{ max-width:100%; } }
   .hero-visual .card{ height:100%; display:flex; align-items:center; justify-content:center; background:#fff; border-radius:28px; box-shadow:0 18px 32px rgba(2,20,26,0.10); border:1px solid var(--border); padding:16px; }
-  .hero-visual .card img{ height:100%; width:auto; max-width:100%; object-fit:contain; border-radius:14px; }
+  .hero-visual .card img{ height:100%; width:auto; max-width:100%; object-fit:cover; border-radius:14px; }
   .hero-copy{ position:relative; z-index:2; }
   .hero-copy-text{ min-height:374px; }
   .eyebrow{ display:inline-flex; align-items:center; gap:8px; background:#EEF4FC; padding:8px 16px; border-radius:999px; font-size:12.5px; font-weight:700; letter-spacing:0.08em; margin-bottom:24px; color:var(--dark); }
@@ -87,6 +87,8 @@
   .hero p.lead{ font-size:15.5px; color:var(--sub); max-width:520px; margin:0 0 36px; }
   .btn{ display:inline-flex; align-items:center; gap:8px; padding:16px 34px; background:var(--accent); color:#fff; text-decoration:none; font-weight:700; font-size:15px; border-radius:999px; border:1.5px solid var(--accent); box-shadow:0 12px 26px rgba(232,98,44,0.30); transition:transform .15s ease, box-shadow .15s ease; }
   .btn:hover{ background:#d1551f; border-color:#d1551f; transform:translateY(-2px); }
+  .btn.ghost{ background:#fff; color:var(--dark); border-color:var(--border); box-shadow:0 10px 22px rgba(2,20,26,0.06); }
+  .btn.ghost:hover{ background:var(--bg); border-color:var(--main); color:var(--main); }
 
   section{ padding:96px 0; position:relative; }
   section.alt{ background:#fff; }
@@ -95,6 +97,14 @@
   h2{ font-size:clamp(24px, 3vw, 32px); font-weight:900; color:var(--dark); margin-bottom:20px; text-align:center; }
   .section-head{ text-align:center; max-width:680px; margin:0 auto 56px; }
   .section-head p{ color:var(--sub); font-size:15px; }
+
+  .gallery{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  @media (max-width:760px){ .gallery{ grid-template-columns:1fr; } }
+  .shot{ background:#fff; border:1px solid var(--border); border-radius:20px; overflow:hidden; box-shadow:0 10px 22px rgba(2,20,26,0.05); }
+  .shot img{ width:100%; height:230px; object-fit:cover; }
+  .shot .cap{ padding:16px 20px 20px; }
+  .shot .cap h4{ font-size:15px; font-weight:700; margin-bottom:6px; }
+  .shot .cap p{ font-size:13px; color:var(--sub); }
 
   .reasons{ display:grid; grid-template-columns:repeat(4,1fr); gap:24px; }
   @media (max-width:900px){ .reasons{ grid-template-columns:1fr 1fr; } }
@@ -106,17 +116,22 @@
   .reason h4{ font-size:15.5px; font-weight:700; margin-bottom:8px; }
   .reason p{ font-size:13.5px; color:var(--sub); }
 
+  .spec{ margin-top:48px; display:grid; grid-template-columns:1.15fr 1fr; gap:32px; align-items:start; }
+  @media (max-width:900px){ .spec{ grid-template-columns:1fr; } }
+  table.tbl{ width:100%; border-collapse:collapse; background:#fff; border:1px solid var(--border); border-radius:18px; overflow:hidden; }
+  table.tbl th{ background:var(--main); color:#fff; font-weight:500; text-align:left; padding:12px 18px; font-size:13.5px; }
+  table.tbl td{ border-bottom:1px solid var(--border); padding:12px 18px; font-size:13.5px; vertical-align:top; }
+  table.tbl tr:last-child td{ border-bottom:none; }
+  table.tbl td.k{ width:120px; color:var(--dark); font-weight:700; background:#FAFAF8; }
+
+  .linkcard{ background:#fff; border:1px solid var(--border); border-radius:20px; padding:28px; box-shadow:0 10px 22px rgba(2,20,26,0.05); }
+  .linkcard h4{ font-size:15.5px; font-weight:700; margin-bottom:8px; }
+  .linkcard p{ font-size:13.5px; color:var(--sub); margin-bottom:20px; }
+  .linkcard .btn{ width:100%; justify-content:center; margin-bottom:12px; padding:14px 20px; font-size:14px; }
+  .linkcard .btn:last-child{ margin-bottom:0; }
+
   .note-panel{ margin-top:40px; background:#F2F7FC; border:1px solid var(--border); border-radius:18px; padding:24px 28px; font-size:13px; color:var(--sub); text-align:center; }
   .note-panel strong{ color:var(--ink); }
-
-  .flow{ margin-top:48px; display:flex; align-items:stretch; gap:0; }
-  @media (max-width:760px){ .flow{ flex-direction:column; } }
-  .flow-step{ flex:1; background:#fff; border:1px solid var(--border); border-radius:18px; padding:26px 20px; text-align:center; box-shadow:0 10px 22px rgba(2,20,26,0.05); }
-  .flow-step .num{ width:30px; height:30px; border-radius:50%; background:var(--edu); color:#fff; font-weight:700; font-size:13.5px; display:flex; align-items:center; justify-content:center; margin:0 auto 14px; }
-  .flow-step h4{ font-size:14px; font-weight:700; margin-bottom:8px; }
-  .flow-step p{ font-size:12.5px; color:var(--sub); }
-  .flow-arrow{ padding:0 14px; color:var(--border); font-size:20px; font-weight:900; display:flex; align-items:center; }
-  @media (max-width:760px){ .flow-arrow{ transform:rotate(90deg); padding:10px 0; margin:0 auto; } }
 
   .contact{
     position:relative; overflow:hidden;
@@ -154,7 +169,7 @@
         <svg viewBox="0 0 24 24"><rect x="2" y="17" width="20" height="5" rx="1.5"/><rect x="9" y="3" width="4" height="12" rx="2"/><rect x="9" y="3" width="10" height="4" rx="2"/></svg>
         <span>RTS教育システム</span>
       </a>
-      <a href="jig.html" class="nav-tab active">
+      <a href="jig.html" class="nav-tab">
         <svg viewBox="0 -960 960 960"><path d="M448-167 228-296q-13.77-8.29-21.39-22.23Q199-332.17 199-348v-257q0-15.83 7.61-29.77Q214.23-648.71 228-657l221-131q14-8 31-8t31 8l221 131q13.78 8.29 21.39 22.23Q761-620.83 761-605v257q0 15.83-7.87 29.77Q745.25-304.29 731-296L508-167q-14.33 8-30.16 8-15.84 0-29.84-8ZM80-691v-129q0-24.75 17.63-42.38Q115.25-880 140-880h129v60H140v129H80ZM269-80H140q-24.75 0-42.37-17.63Q80-115.25 80-140v-129h60v129h129v60Zm422 0v-60h129v-129h60v129q0 24.75-17.62 42.37Q844.75-80 820-80H691Zm129-611v-129H691v-60h129q24.75 0 42.38 17.62Q880-844.75 880-820v129h-60Zm-530 67-30 18v37l190 109v224l30 18 30-18v-224l191-109v-37l-31-18-190 110-190-110Z"/></svg>
         <span>3D治具設計</span>
       </a>
@@ -166,7 +181,7 @@
         <svg viewBox="0 -960 960 960"><path d="M285-80v-368q-52-11-88.5-52.5T160-600v-280h60v280h65v-280h60v280h65v-280h60v280q0 58-36.5 99.5T345-448v368h-60Zm415 0v-320H585v-305q0-79 48-127t127-48v800h-60Z"/></svg>
         <span>飲食業界向け</span>
       </a>
-      <a href="kominka.html" class="nav-tab">
+      <a href="kominka.html" class="nav-tab active">
         <svg viewBox="0 0 24 24"><path d="M12 3 2.5 10.2V21H10v-5.5h4V21h7.5V10.2L12 3zm0 2.5 7.5 5.7V19H16v-5.5H8V19H4.5v-7.8L12 5.5z"/></svg>
         <span>古民家レンタル</span>
       </a>
@@ -178,10 +193,10 @@
   <div class="tab-scroll">
     <a href="index.html" class="tab-chip"><svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Z"/></svg>ホーム</a>
     <a href="education.html" class="tab-chip"><svg viewBox="0 0 24 24"><rect x="2" y="17" width="20" height="5" rx="1.5"/><rect x="9" y="3" width="4" height="12" rx="2"/><rect x="9" y="3" width="10" height="4" rx="2"/></svg>RTS教育システム</a>
-    <a href="jig.html" class="tab-chip active"><svg viewBox="0 -960 960 960"><path d="M448-167 228-296q-13.77-8.29-21.39-22.23Q199-332.17 199-348v-257q0-15.83 7.61-29.77Q214.23-648.71 228-657l221-131q14-8 31-8t31 8l221 131q13.78 8.29 21.39 22.23Q761-620.83 761-605v257q0 15.83-7.87 29.77Q745.25-304.29 731-296L508-167q-14.33 8-30.16 8-15.84 0-29.84-8ZM80-691v-129q0-24.75 17.63-42.38Q115.25-880 140-880h129v60H140v129H80ZM269-80H140q-24.75 0-42.37-17.63Q80-115.25 80-140v-129h60v129h129v60Zm422 0v-60h129v-129h60v129q0 24.75-17.62 42.37Q844.75-80 820-80H691Zm129-611v-129H691v-60h129q24.75 0 42.38 17.62Q880-844.75 880-820v129h-60Zm-530 67-30 18v37l190 109v224l30 18 30-18v-224l191-109v-37l-31-18-190 110-190-110Z"/></svg>3D治具設計</a>
+    <a href="jig.html" class="tab-chip"><svg viewBox="0 -960 960 960"><path d="M448-167 228-296q-13.77-8.29-21.39-22.23Q199-332.17 199-348v-257q0-15.83 7.61-29.77Q214.23-648.71 228-657l221-131q14-8 31-8t31 8l221 131q13.78 8.29 21.39 22.23Q761-620.83 761-605v257q0 15.83-7.87 29.77Q745.25-304.29 731-296L508-167q-14.33 8-30.16 8-15.84 0-29.84-8ZM80-691v-129q0-24.75 17.63-42.38Q115.25-880 140-880h129v60H140v129H80ZM269-80H140q-24.75 0-42.37-17.63Q80-115.25 80-140v-129h60v129h129v60Zm422 0v-60h129v-129h60v129q0 24.75-17.62 42.37Q844.75-80 820-80H691Zm129-611v-129H691v-60h129q24.75 0 42.38 17.62Q880-844.75 880-820v129h-60Zm-530 67-30 18v37l190 109v224l30 18 30-18v-224l191-109v-37l-31-18-190 110-190-110Z"/></svg>3D治具設計</a>
     <a href="fa.html" class="tab-chip"><svg viewBox="0 -960 960 960"><path d="M80-80v-481l280-119v80l200-81v121h320v480H80Zm370-160h60v-160h-60v160Zm-160 0h60v-160h-60v160Zm320 0h60v-160h-60v160Zm265-360H705l35-280h100l35 280Z"/></svg>FA設備</a>
     <a href="food.html" class="tab-chip"><svg viewBox="0 -960 960 960"><path d="M285-80v-368q-52-11-88.5-52.5T160-600v-280h60v280h65v-280h60v280h65v-280h60v280q0 58-36.5 99.5T345-448v368h-60Zm415 0v-320H585v-305q0-79 48-127t127-48v800h-60Z"/></svg>飲食業界向け</a>
-    <a href="kominka.html" class="tab-chip"><svg viewBox="0 0 24 24"><path d="M12 3 2.5 10.2V21H10v-5.5h4V21h7.5V10.2L12 3zm0 2.5 7.5 5.7V19H16v-5.5H8V19H4.5v-7.8L12 5.5z"/></svg>古民家レンタル</a>
+    <a href="kominka.html" class="tab-chip active"><svg viewBox="0 0 24 24"><path d="M12 3 2.5 10.2V21H10v-5.5h4V21h7.5V10.2L12 3zm0 2.5 7.5 5.7V19H16v-5.5H8V19H4.5v-7.8L12 5.5z"/></svg>古民家レンタル</a>
   </div>
 </header>
 
@@ -189,20 +204,20 @@
   <div class="wrap">
     <div class="hero-copy">
       <div class="hero-copy-text">
-        <span class="eyebrow"><span class="dot"></span>柔軟に対応可能</span>
-        <p class="tagline">Jig &amp; Fixture Design</p>
-        <h1>生産ラインに、<br>ぴったり合う治具を。</h1>
-        <p class="sub">3D治具設計サービス</p>
-        <p class="lead">ICAD SXを用いた3D設計で、FA設備・生産ラインに最適化された治具・工具を設計します。古い2D図面から3D図面への変換にも対応しており、ご要望に応じて柔軟にお引き受けいたします。</p>
+        <span class="eyebrow"><span class="dot"></span>運営中</span>
+        <p class="tagline">Kominka Rental Space</p>
+        <h1>時間が残る空間を、<br>撮影とイベントの場に。</h1>
+        <p class="sub">古民家レンタルスペース「源氏車」</p>
+        <p class="lead">築50年の古民家を少しずつ再生し、母屋・離れ・納屋を撮影・イベント・ワークショップの場としてお貸ししています。茨城県稲敷市、敷地約200坪。古いものを壊すのではなく、価値を再発見して未来につなげる場所です。</p>
       </div>
-      <a class="btn" href="#contact">
-        <svg class="ic" width="18" height="18" viewBox="0 0 24 24" style="fill:none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M4 8h16"/><path d="M8 4v4"/></svg>
-        資料請求・お問い合わせ
+      <a class="btn" href="https://www.spacemarket.com/spaces/xd_2_pdjh5yruw5q/" target="_blank" rel="noopener">
+        <svg class="ic" width="18" height="18" viewBox="0 0 24 24" style="fill:none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg>
+        空き状況・ご予約を見る
       </a>
     </div>
     <div class="hero-visual">
       <div class="card">
-        <img src="assets/jig_chain_conveyor_web.jpg" alt="チェーン搬送機構とレーザーセンサーを備えた治具の3D設計イメージ">
+        <img src="assets/genji_omoya.jpg" alt="古民家レンタルスペース 源氏車の母屋">
       </div>
     </div>
   </div>
@@ -211,58 +226,76 @@
 <section class="alt">
   <div class="wrap">
     <div class="section-head">
-      <p class="kicker">3D治具設計</p>
-      <h2>治具設計でできること</h2>
+      <p class="kicker">Space</p>
+      <h2>施設のご案内</h2>
+      <p>母屋・離れ・納屋の3棟。それぞれ雰囲気が異なり、用途に合わせてお使いいただけます。</p>
+    </div>
+    <div class="gallery">
+      <div class="shot">
+        <img src="assets/genji_entrance.jpg" alt="源氏車の入口">
+        <div class="cap"><h4>入口</h4><p>門をくぐると、手の入った庭と古い家屋が迎えます。外観のカットにもお使いいただけます。</p></div>
+      </div>
+      <div class="shot">
+        <img src="assets/genji_omoya.jpg" alt="源氏車の母屋">
+        <div class="cap"><h4>母屋</h4><p>約150㎡。飲食スペース、予約制のレストラン、イベントの会場としてご利用いただけます。</p></div>
+      </div>
+      <div class="shot">
+        <img src="assets/genji_hall.jpg" alt="源氏車の広間">
+        <div class="cap"><h4>広間</h4><p>畳の広間。撮影・ワークショップ・教室・お茶会など、腰を据えて使える空間です。</p></div>
+      </div>
+    </div>
+
+    <div class="spec">
+      <table class="tbl">
+        <tr><th colspan="2">施設概要</th></tr>
+        <tr><td class="k">名称</td><td>古民家レンタルスペース「源氏車」（Genjiguruma）</td></tr>
+        <tr><td class="k">所在地</td><td>〒301-0902　茨城県稲敷市上根本3265</td></tr>
+        <tr><td class="k">アクセス</td><td>JR龍ケ崎市駅より車で約20分</td></tr>
+        <tr><td class="k">敷地</td><td>約200坪</td></tr>
+        <tr><td class="k">貸出面積</td><td>280㎡（約173畳）</td></tr>
+        <tr><td class="k">定員</td><td>30名収容／25名着席可</td></tr>
+        <tr><td class="k">構成</td><td>母屋 約150㎡／離れ 約120㎡／納屋 約120㎡</td></tr>
+      </table>
+      <div class="linkcard">
+        <h4>ご予約・最新の様子</h4>
+        <p>空き状況の確認とご予約はスペースマーケットから。再生の過程や日々の様子はInstagramで発信しています。</p>
+        <a class="btn" href="https://www.spacemarket.com/spaces/xd_2_pdjh5yruw5q/" target="_blank" rel="noopener">スペースマーケットで予約する</a>
+        <a class="btn ghost" href="https://www.instagram.com/genjiguruma1976/" target="_blank" rel="noopener">Instagram @genjiguruma1976</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">Use Case</p>
+      <h2>こんなご利用ができます</h2>
     </div>
     <div class="reasons">
       <div class="reason">
-        <div class="icon-ring"><svg viewBox="0 -960 960 960"><path d="m423-329 277-277-43-43-234 234-121-121-42 42 163 165ZM180-120q-25 0-42.5-17.5T120-180v-600q0-25 17.5-42.5T180-840h205q5-35 32-57.5t63-22.5q36 0 63 22.5t32 57.5h205q25 0 42.5 17.5T840-780v600q0 25-17.5 42.5T780-120H180Zm300-677q14 0 24.5-10.5T515-832q0-14-10.5-24.5T480-867q-14 0-24.5 10.5T445-832q0 14 10.5 24.5T480-797Z"/></svg></div>
-        <h4>設計〜納品まで一貫対応</h4>
-        <p>お客様のご要望（仕様書）をいただければ、設計・製作・組立・配線・納品までワンストップで対応可能です。</p>
+        <div class="icon-ring"><svg viewBox="0 -960 960 960"><path d="M480-260q75 0 127.5-52.5T660-440q0-75-52.5-127.5T480-620q-75 0-127.5 52.5T300-440q0 75 52.5 127.5T480-260Zm0-80q-42 0-71-29t-29-71q0-42 29-71t71-29q42 0 71 29t29 71q0 42-29 71t-71 29ZM160-120q-33 0-56.5-23.5T80-200v-480q0-33 23.5-56.5T160-760h126l74-80h240l74 80h126q33 0 56.5 23.5T880-680v480q0 33-23.5 56.5T800-120H160Z"/></svg></div>
+        <h4>撮影・収録</h4>
+        <p>コスプレ撮影、ポートレート、YouTube・SNSの撮影、商品撮影のロケ地としてご利用いただけます。</p>
       </div>
       <div class="reason">
-        <div class="icon-ring"><svg viewBox="0 -960 960 960"><path d="M100-160q-24.75 0-42.37-17.63Q40-195.25 40-220v-460h60v460h700v60H100Zm120-120q-24.75 0-42.37-17.63Q160-315.25 160-340v-400q0-24.75 17.63-42.38Q195.25-800 220-800h640q24.75 0 42.38 17.62Q920-764.75 920-740v400q0 24.75-17.62 42.37Q884.75-280 860-280H220Zm100-60q0-42-29-71t-71-29v100h100Zm440 0h100v-100q-42 0-71 29t-29 71Zm-220-80q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35ZM220-640q42 0 71-29t29-71H220v100Zm640 0v-100H760q0 42 29 71t71 29Z"/></svg></div>
-        <h4>ご予算に応じた設計</h4>
-        <p>機械設計20年の経験でサポートし、ご予算に応じた最適な設計をご提案します。</p>
+        <div class="icon-ring"><svg viewBox="0 -960 960 960"><path d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Z"/></svg></div>
+        <h4>イベント・展示</h4>
+        <p>小人数のイベント、展示会、発表会など。古民家の佇まいがそのまま会場の雰囲気になります。</p>
       </div>
       <div class="reason">
-        <div class="icon-ring"><svg viewBox="0 -960 960 960"><path d="M448-167 228-296q-13.77-8.29-21.39-22.23Q199-332.17 199-348v-257q0-15.83 7.61-29.77Q214.23-648.71 228-657l221-131q14-8 31-8t31 8l221 131q13.78 8.29 21.39 22.23Q761-620.83 761-605v257q0 15.83-7.87 29.77Q745.25-304.29 731-296L508-167q-14.33 8-30.16 8-15.84 0-29.84-8ZM80-691v-129q0-24.75 17.63-42.38Q115.25-880 140-880h129v60H140v129H80ZM269-80H140q-24.75 0-42.37-17.63Q80-115.25 80-140v-129h60v129h129v60Zm422 0v-60h129v-129h60v129q0 24.75-17.62 42.37Q844.75-80 820-80H691Zm129-611v-129H691v-60h129q24.75 0 42.38 17.62Q880-844.75 880-820v129h-60Zm-530 67-30 18v37l190 109v224l30 18 30-18v-224l191-109v-37l-31-18-190 110-190-110Z"/></svg></div>
-        <h4>ICAD SX（富士通）による3D設計</h4>
-        <p>富士通の3D CAD「ICAD SX」を使用し、精度の高い治具設計を行います。</p>
+        <div class="icon-ring"><svg viewBox="0 -960 960 960"><path d="M480-120 200-272v-240L40-600l440-240 440 240v320h-80v-276l-80 44v240L480-120Zm0-332 274-148-274-148-274 148 274 148Zm0 241 200-108v-151L480-360 280-470v151l200 108Z"/></svg></div>
+        <h4>ワークショップ・教室</h4>
+        <p>料理教室、手仕事のワークショップ、講座など。腰を据えて学ぶ場としてお使いいただけます。</p>
       </div>
       <div class="reason">
-        <div class="icon-ring"><svg viewBox="0 -960 960 960"><path d="M280-80q-33 0-56.5-23.5T200-160v-640q0-33 23.5-56.5T280-880h400q33 0 56.5 23.5T760-800v640q0 33-23.5 56.5T680-80H280Zm0-80h400v-640H280v640Zm60-80h280v-60H340v60Zm0-160h280v-60H340v60Zm0-160h280v-60H340v60Z"/></svg></div>
-        <h4>2D図面から3D図面への変換</h4>
-        <p>紙図面や古い2D CADデータしか残っていない設備・治具も、3Dモデル化して再利用できる形に起こし直します。</p>
-      </div>
-    </div>
-    <div class="flow">
-      <div class="flow-step">
-        <div class="num">1</div>
-        <h4>ヒアリング・仕様確認</h4>
-        <p>生産ライン・設備の要件をヒアリングし、治具に求める仕様を整理します。</p>
-      </div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-step">
-        <div class="num">2</div>
-        <h4>3Dモデリング（ICAD SX）</h4>
-        <p>富士通「ICAD SX」で3Dモデルを作成し、干渉・可動域を事前に検証します。</p>
-      </div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-step">
-        <div class="num">3</div>
-        <h4>設計レビュー・修正</h4>
-        <p>3Dデータ・図面をもとにお客様と仕様をすり合わせ、必要に応じて修正します。</p>
-      </div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-step">
-        <div class="num">4</div>
-        <h4>製作・組立・納品</h4>
-        <p>製作・組立・配線まで一貫対応し、現場でそのまま使える状態でお届けします。</p>
+        <div class="icon-ring"><svg viewBox="0 -960 960 960"><path d="M160-160v-80h480v80H160Zm200-160q-83 0-141.5-58.5T160-520v-280h560q33 0 56.5 23.5T800-720v80q0 33-23.5 56.5T720-560h-40v40q0 83-58.5 141.5T480-320H360Zm320-320h40v-80h-40v80Z"/></svg></div>
+        <h4>お茶会・交流会</h4>
+        <p>お茶会、地域の交流会、少人数の集まりに。畳と縁側のある空間でゆっくりお過ごしいただけます。</p>
       </div>
     </div>
     <div class="note-panel">
-      <strong>ご要望に応じて柔軟に対応いたします。</strong>治具設計単体のご依頼はもちろん、既存図面の3D化のみ、設計のみ、製作までの一貫対応など、必要な範囲だけでもお引き受けいたします。
+      <strong>再生の途中にある建物です。</strong>母屋・離れ・納屋それぞれで状態が異なりますので、ご希望の用途をお聞かせいただければ、適した空間をご案内いたします。
     </div>
   </div>
 </section>
@@ -271,9 +304,9 @@
   <div class="wrap">
     <span class="icon-ring"><svg viewBox="0 0 24 24" style="fill:none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
     <p class="kicker">Contact</p>
-    <h2>3D治具設計について、お気軽にご相談ください</h2>
-    <p>生産ライン向けの治具・工具設計に関するご相談は、お気軽にお問い合わせください。</p>
-    <a class="btn" href="mailto:info@rigel-works.jp?subject=3D治具設計に関するお問い合わせ">メールでお問い合わせ</a>
+    <h2>古民家のご利用について、お気軽にご相談ください</h2>
+    <p>撮影・イベント・ワークショップでのご利用、下見のご希望など、どうぞお問い合わせください。</p>
+    <a class="btn" href="mailto:info@rigel-works.jp?subject=古民家レンタルスペース（源氏車）に関するお問い合わせ">メールでお問い合わせ</a>
   </div>
 </section>
 
