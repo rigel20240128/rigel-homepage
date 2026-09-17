@@ -3,7 +3,7 @@
 1ページ構成の静的サイト。ビルド不要（HTML/CSSのみ）。
 
 ## ファイル構成
-- `index.html` … 本体（会社概要・RTS事業紹介・お問い合わせ）
+- `index.html` … 本体（会社概要・画像処理システム(RPV200)事業紹介・お問い合わせ）
 - `assets/rigel-logo.png` … 正式ロゴ（規定色 #026881 に補正済み）
 - `CNAME` … GitHub Pages用のカスタムドメイン指定（`rigel-works.com`）
 

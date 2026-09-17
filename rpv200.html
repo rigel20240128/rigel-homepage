@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>教育システム RTS（Robot Training System）｜株式会社RIGEL</title>
-<meta name="description" content="RTS（Robot Training System）は、設備を買う前に人を育てる、卓上型ロボット教育レンタルシステムです。JANOME製ロボットを使用し、全20ステップの体系カリキュラムで実務に直結するスキルを習得できます。">
+<title>画像処理システム RPV200｜株式会社RIGEL</title>
+<meta name="description" content="株式会社RIGELの小型AI外観検査ユニット「RPV200」。ビジョンカメラとAI画像判定を一体化し、省人化と全数検査の両立を支援します。20年以上のFA設備設計経験に基づき、既存ラインに後付けしやすい設計を追求しました。">
 <link rel="icon" href="assets/rigel-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -165,7 +165,7 @@
   .lead-panel p{ font-size:15px; color:var(--sub); max-width:720px; margin:0 auto; }
   .lead-panel strong{ color:var(--dark); }
 
-  /* flow steps */
+  /* feature flow */
   .flow{ display:grid; grid-template-columns:repeat(4,1fr); gap:24px; }
   @media (max-width:900px){ .flow{ grid-template-columns:1fr 1fr; } }
   @media (max-width:520px){ .flow{ grid-template-columns:1fr; } }
@@ -186,63 +186,32 @@
   .flow-card .icon-ring svg{ width:24px; height:24px; fill:#fff; }
   .flow-card h4{ font-size:15px; font-weight:700; margin-bottom:6px; }
   .flow-card p{ font-size:13px; color:var(--sub); word-break:auto-phrase; }
-  .flow-arrow{ display:flex; align-items:center; justify-content:center; color:var(--border); font-size:20px; }
-  @media (max-width:900px){ .flow-arrow{ display:none; } }
 
-  /* reasons + curriculum */
-  .reasons{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-bottom:48px; }
+  /* reasons */
+  .reasons{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
   @media (max-width:760px){ .reasons{ grid-template-columns:1fr; } }
   .reason{ background:#fff; border:1px solid var(--border); border-radius:20px; padding:26px; box-shadow:0 10px 22px rgba(2,20,26,0.05); }
   .reason .num{ font-size:12px; font-weight:900; color:var(--edu); letter-spacing:0.08em; margin-bottom:10px; }
   .reason h4{ font-size:15px; font-weight:700; margin-bottom:8px; }
   .reason p{ font-size:13.5px; color:var(--sub); word-break:auto-phrase; }
-  /* 語句の途中で改行させない（意味の切れ目で折り返す） */
   .flow-card p span, .reason p span{ display:inline-block; }
 
-  .curriculum-panel{
+  .quote-panel{
     background:linear-gradient(120deg, var(--deep), var(--dark) 55%, var(--edu-dark)); color:#fff;
     border-radius:28px; padding:44px 48px; box-shadow:0 24px 40px rgba(2,20,26,0.20); position:relative; overflow:hidden;
+    text-align:center;
   }
-  .curriculum-panel::after{ content:""; position:absolute; right:-40px; top:-60px; width:220px; height:220px; border-radius:50%; background:radial-gradient(circle, rgba(116,172,186,0.30), transparent 70%); }
-  .curriculum-head{ display:flex; align-items:baseline; gap:16px; margin-bottom:28px; position:relative; z-index:1; }
-  .curriculum-head .big{ font-size:52px; font-weight:900; }
-  .curriculum-head .big small{ font-size:16px; font-weight:500; opacity:0.85; margin-left:4px; }
-  .curriculum-head p{ color:rgba(255,255,255,0.78); font-size:14px; max-width:420px; }
-  .chip-row{ display:flex; flex-wrap:wrap; gap:12px; position:relative; z-index:1; }
-  .chip{
+  .quote-panel::after{ content:""; position:absolute; right:-40px; top:-60px; width:220px; height:220px; border-radius:50%; background:radial-gradient(circle, rgba(116,172,186,0.30), transparent 70%); }
+  .quote-panel h3{ position:relative; z-index:1; font-size:19px; font-weight:800; margin-bottom:16px; }
+  .quote-panel p{ position:relative; z-index:1; color:rgba(255,255,255,0.82); font-size:14.5px; max-width:640px; margin:0 auto 28px; }
+  .quote-chip-row{ display:flex; flex-wrap:wrap; gap:12px; justify-content:center; position:relative; z-index:1; }
+  .quote-chip{
     background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); border-radius:999px;
     padding:10px 18px; font-size:13px; font-weight:500; display:flex; align-items:center; gap:8px;
   }
-  .chip .dot{ width:6px; height:6px; border-radius:50%; background:#9FC3F5; }
+  .quote-chip .dot{ width:6px; height:6px; border-radius:50%; background:#9FC3F5; }
 
-  /* pricing cards */
-  .plans{ display:grid; grid-template-columns:repeat(4,1fr); gap:22px; }
-  @media (max-width:960px){ .plans{ grid-template-columns:1fr 1fr; } }
-  @media (max-width:560px){ .plans{ grid-template-columns:1fr; } }
-  .plan{
-    background:#fff; border:1px solid var(--border); border-radius:22px; padding:30px 24px; text-align:left;
-    box-shadow:0 12px 26px rgba(2,20,26,0.05); transition:transform .22s ease, box-shadow .22s ease; position:relative;
-  }
-  .plan:hover{ transform:translateY(-6px); box-shadow:0 24px 40px rgba(2,20,26,0.11); }
-  .plan.featured{ border-color:var(--edu); box-shadow:0 16px 32px rgba(47,128,237,0.16); }
-  .plan .badge{ position:absolute; top:-12px; right:20px; background:var(--edu); color:#fff; font-size:11px; font-weight:700; padding:5px 12px; border-radius:999px; }
-  .plan .icon-ring{
-    width:46px; height:46px; border-radius:14px; display:flex; align-items:center; justify-content:center;
-    background:#E6EFFB; margin-bottom:16px;
-  }
-  .plan .icon-ring svg{ width:22px; height:22px; fill:var(--edu); }
-  .plan h4{ font-size:15px; font-weight:700; margin-bottom:6px; }
-  .plan .price{ font-size:24px; font-weight:900; color:var(--dark); margin-bottom:4px; }
-  .plan .price small{ font-size:12px; font-weight:500; color:var(--sub); }
-  .plan p.desc{ font-size:12.5px; color:var(--sub); }
-
-  .note-panel{
-    margin-top:32px; background:#F2F7FC; border:1px solid var(--border); border-radius:18px; padding:24px 28px;
-    font-size:13px; color:var(--sub);
-  }
-  .note-panel strong{ color:var(--ink); }
-
-  /* summary: contract + support */
+  /* summary: flow + support */
   .summary-grid{ display:grid; grid-template-columns:1.1fr 0.9fr; gap:28px; }
   @media (max-width:820px){ .summary-grid{ grid-template-columns:1fr; } }
   .info-panel{ background:#fff; border:1px solid var(--border); border-radius:22px; padding:36px; box-shadow:0 10px 22px rgba(2,20,26,0.05); }
@@ -291,9 +260,9 @@
         <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Z"/></svg>
         <span>ホーム</span>
       </a>
-      <a href="education.html" class="nav-tab active">
-        <svg viewBox="0 0 24 24"><rect x="2" y="17" width="20" height="5" rx="1.5"/><rect x="9" y="3" width="4" height="12" rx="2"/><rect x="9" y="3" width="10" height="4" rx="2"/></svg>
-        <span>RTS教育システム</span>
+      <a href="rpv200.html" class="nav-tab active">
+        <svg viewBox="0 -960 960 960"><path d="M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-680q-75 0-127.5 52.5T300-500q0 75 52.5 127.5T480-320Zm0-72q-45 0-76.5-31.5T372-500q0-45 31.5-76.5T480-608q45 0 76.5 31.5T588-500q0 45-31.5 76.5T480-392Zm0 192q-146 0-266-81.5T40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200Z"/></svg>
+        <span>画像処理システム</span>
       </a>
       <a href="jig.html" class="nav-tab">
         <svg viewBox="0 -960 960 960"><path d="M448-167 228-296q-13.77-8.29-21.39-22.23Q199-332.17 199-348v-257q0-15.83 7.61-29.77Q214.23-648.71 228-657l221-131q14-8 31-8t31 8l221 131q13.78 8.29 21.39 22.23Q761-620.83 761-605v257q0 15.83-7.87 29.77Q745.25-304.29 731-296L508-167q-14.33 8-30.16 8-15.84 0-29.84-8ZM80-691v-129q0-24.75 17.63-42.38Q115.25-880 140-880h129v60H140v129H80ZM269-80H140q-24.75 0-42.37-17.63Q80-115.25 80-140v-129h60v129h129v60Zm422 0v-60h129v-129h60v129q0 24.75-17.62 42.37Q844.75-80 820-80H691Zm129-611v-129H691v-60h129q24.75 0 42.38 17.62Q880-844.75 880-820v129h-60Zm-530 67-30 18v37l190 109v224l30 18 30-18v-224l191-109v-37l-31-18-190 110-190-110Z"/></svg>
@@ -318,7 +287,7 @@
   </div>
   <div class="tab-scroll">
     <a href="index.html" class="tab-chip"><svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Z"/></svg>ホーム</a>
-    <a href="education.html" class="tab-chip active"><svg viewBox="0 0 24 24"><rect x="2" y="17" width="20" height="5" rx="1.5"/><rect x="9" y="3" width="4" height="12" rx="2"/><rect x="9" y="3" width="10" height="4" rx="2"/></svg>RTS教育システム</a>
+    <a href="rpv200.html" class="tab-chip active"><svg viewBox="0 -960 960 960"><path d="M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-680q-75 0-127.5 52.5T300-500q0 75 52.5 127.5T480-320Zm0-72q-45 0-76.5-31.5T372-500q0-45 31.5-76.5T480-608q45 0 76.5 31.5T588-500q0 45-31.5 76.5T480-392Zm0 192q-146 0-266-81.5T40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200Z"/></svg>画像処理システム</a>
     <a href="jig.html" class="tab-chip"><svg viewBox="0 -960 960 960"><path d="M448-167 228-296q-13.77-8.29-21.39-22.23Q199-332.17 199-348v-257q0-15.83 7.61-29.77Q214.23-648.71 228-657l221-131q14-8 31-8t31 8l221 131q13.78 8.29 21.39 22.23Q761-620.83 761-605v257q0 15.83-7.87 29.77Q745.25-304.29 731-296L508-167q-14.33 8-30.16 8-15.84 0-29.84-8ZM80-691v-129q0-24.75 17.63-42.38Q115.25-880 140-880h129v60H140v129H80ZM269-80H140q-24.75 0-42.37-17.63Q80-115.25 80-140v-129h60v129h129v60Zm422 0v-60h129v-129h60v129q0 24.75-17.62 42.37Q844.75-80 820-80H691Zm129-611v-129H691v-60h129q24.75 0 42.38 17.62Q880-844.75 880-820v129h-60Zm-530 67-30 18v37l190 109v224l30 18 30-18v-224l191-109v-37l-31-18-190 110-190-110Z"/></svg>3D治具設計</a>
     <a href="fa.html" class="tab-chip"><svg viewBox="0 -960 960 960"><path d="M80-80v-481l280-119v80l200-81v121h320v480H80Zm370-160h60v-160h-60v160Zm-160 0h60v-160h-60v160Zm320 0h60v-160h-60v160Zm265-360H705l35-280h100l35 280Z"/></svg>FA設備</a>
     <a href="food.html" class="tab-chip"><svg viewBox="0 -960 960 960"><path d="M285-80v-368q-52-11-88.5-52.5T160-600v-280h60v280h65v-280h60v280h65v-280h60v280q0 58-36.5 99.5T345-448v368h-60Zm415 0v-320H585v-305q0-79 48-127t127-48v800h-60Z"/></svg>飲食業界向け</a>
@@ -330,25 +299,25 @@
   <div class="wrap">
     <div class="hero-copy">
       <div class="hero-copy-text">
-        <span class="eyebrow"><span class="dot"></span>RTS PITCH DECK — ご提案資料</span>
-        <p class="tagline">Robot Training System</p>
-        <h1>設備を買う前に、<br>人を育てる。</h1>
-        <p class="sub">卓上型ロボット教育システム</p>
+        <span class="eyebrow"><span class="dot"></span>PRODUCT — 製品ご紹介</span>
+        <p class="tagline">Automated Visual Inspection Unit</p>
+        <h1>人の目に頼っていた検査を、<br>その場で自動化する。</h1>
+        <p class="sub">小型AI外観検査ユニット RPV200</p>
         <p class="lead">
-          RTSは、卓上型XYZロボット（3〜4軸）を使用して、FA設備に必要なスキルを学べる教育レンタルシステムです。実機を貸与するキット形式で、設備運用の人材育成を進めることができます。
+          RPV200は、ビジョンカメラとAI画像判定を一体化した、コンパクトな外観検査ユニットです。撮影した画像をその場で良否判定し、省人化と全数検査の両立を支援します。
         </p>
       </div>
       <a class="btn" href="#contact">
         <svg class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M4 8h16"/><path d="M8 4v4"/></svg>
         資料請求・お問い合わせ
       </a>
-      <a class="btn outline" href="#flow">利用の流れを見る</a>
+      <a class="btn outline" href="#features">RPV200の特長を見る</a>
     </div>
     <div class="hero-visual">
       <div class="card">
-        <img src="assets/jr3203_v8_web.jpg" alt="JANOME製ロボット JR3203 イラスト">
+        <img src="assets/rpv200_unit_web.jpg" alt="小型AI外観検査ユニット RPV200 イラスト">
       </div>
-      <span class="device-tag">採用機材：JANOME製ロボット JR3203</span>
+      <span class="device-tag">検査ユニット：RPV200</span>
     </div>
   </div>
 </section>
@@ -357,64 +326,60 @@
   <div class="wrap">
     <div class="section-head">
       <p class="kicker">課題とソリューション</p>
-      <h2>設備投資の前に、育成の壁がある</h2>
+      <h2>検査は、人に頼るほど不安定になる</h2>
     </div>
     <div class="grid2">
       <div class="card problem">
         <div class="icon-badge"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4" stroke="#fff" stroke-width="2"/><circle cx="12" cy="17" r="1.2" fill="#fff"/></svg></div>
         <h3>現場の実情</h3>
         <ul>
-          <li>FA・ロボット活用の需要は年々増加</li>
-          <li>実機を扱える技術者は限られている</li>
-          <li>設備を導入しても、操作はできるが改善はできない</li>
+          <li>熟練検査員の目視に頼っており、判定基準が人によってばらつく</li>
+          <li>人手不足で全数検査が難しく、抜き取り検査にとどまっている</li>
+          <li>検査員の育成・配置にも時間とコストがかかる</li>
         </ul>
       </div>
       <div class="card solution">
         <div class="icon-badge"><svg width="26" height="26" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12l2.5 2.5L16 9" stroke="#fff" stroke-width="2" fill="none"/></svg></div>
         <h3>私たちの視点</h3>
         <ul>
-          <li>必要なのは、先に人を育てる仕組み</li>
-          <li>実機を保有せずに教育だけを始められる</li>
-          <li>レンタル型の学習環境を提供する</li>
+          <li>判定基準を数値化し、機械に任せられる仕組みをつくる</li>
+          <li>カメラとAI画像判定で、良否判定をその場で完結させる</li>
+          <li>既存のラインにも後付けしやすいコンパクト設計にする</li>
         </ul>
       </div>
     </div>
     <div class="lead-panel">
-      <p><strong>RTSとは</strong> — RTS（Robot Training System）は、卓上型XYZロボット（3〜4軸）を使用してFA設備に必要なスキルを学べる教育レンタルシステムです。実機を貸与するキット形式で、設備運用の人材育成を進めることができます。</p>
+      <p><strong>RPV200とは</strong> — RPV200は、ビジョンカメラ・AI画像判定・タッチパネル表示・制御盤を一体化した、コンパクトな外観検査ユニットです。ライン脇に設置し、撮影から良否判定・表示までをその場で行います。</p>
     </div>
   </div>
 </section>
 
-<section id="flow">
+<section id="features">
   <div class="wrap">
     <div class="section-head">
-      <p class="kicker">ご利用の流れ</p>
-      <h2>お申し込みから、現場で活躍するまで</h2>
+      <p class="kicker">RPV200の特長</p>
+      <h2>現場にそのまま置ける、検査の専用ユニット</h2>
     </div>
     <div class="flow">
       <div class="flow-card">
-        <span class="step-num">01</span>
-        <div class="icon-ring"><svg viewBox="0 -960 960 960"><path d="M180-120q-24 0-42-18t-18-42v-600q0-24 18-42t42-18h600q24 0 42 18t18 42v600q0 24-18 42t-42 18H180Zm300-173q41 0 74-23.5t56-59.5h170v-404H180v404h170q23 36 56 59.5t74 23.5Zm0-129L327-575l43-43 80 80v-189h60v189l80-80 43 43-153 153Z"/></svg></div>
-        <h4>スタートキットが届く</h4>
-        <p><span>お申し込み後、</span><span>ご指定の住所へ郵送でお届けします。</span></p>
+        <div class="icon-ring"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 10h16M10 10v10"/></svg></div>
+        <h4>一体型のコンパクト筐体</h4>
+        <p><span>カメラ・制御盤・タッチパネル表示を</span><span>一つの筐体にまとめています。</span></p>
       </div>
       <div class="flow-card">
-        <span class="step-num">02</span>
-        <div class="icon-ring"><svg viewBox="0 -960 960 960"><path d="M705-128 447-388q-23 8-46 13t-47 5q-97 0-165-67.5T121-602q0-31 8-60.5t23-55.5l145 145 92-86-149-149q26-15 55-23.5t59-8.5q99 0 168.5 69.5T592-602q0 24-5 47t-13 46l259 258q11 11 11 26.5T833-198l-76 70q-11 11-26 11t-26-11Z"/></svg></div>
-        <h4>開梱して組み立てる</h4>
-        <p><span>組立手順書に沿って、</span><span>貴社にて組み立てていただきます。</span></p>
+        <div class="icon-ring"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12.5l2.6 2.6L16.5 9"/></svg></div>
+        <h4>その場で分かる良否判定</h4>
+        <p><span>撮影した画像をAIが判定し、</span><span>タッチパネルにOK／NGを表示します。</span></p>
       </div>
       <div class="flow-card">
-        <span class="step-num">03</span>
-        <div class="icon-ring"><svg viewBox="0 -960 960 960"><path d="M480-80q-34 0-57.5-23.5T399-161h162q0 34-23.5 57.5T480-80ZM318-223v-60h324v60H318Zm5-121q-66-43-104.5-107.5T180-597q0-122 89-211t211-89q122 0 211 89t89 211q0 81-38 145.5T637-344H323Z"/></svg></div>
-        <h4>実機を動かして学ぶ</h4>
-        <p><span>センサー・通信・画像処理まで、</span><span>実機で体系的に習得します。</span></p>
+        <div class="icon-ring"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/><path d="M7 15h4"/></svg></div>
+        <h4>現場オペレーターでも操作できる</h4>
+        <p><span>日常の立ち上げ・リセット操作を、</span><span>その場でシンプルに行えます。</span></p>
       </div>
       <div class="flow-card">
-        <span class="step-num">04</span>
-        <div class="icon-ring"><svg viewBox="0 -960 960 960"><path d="m385-412 36-115-95-74h116l38-119 37 119h117l-95 74 35 115-94-71-95 71ZM244-40v-304q-45-47-64.5-103T160-560q0-136 92-228t228-92q136 0 228 92t92 228q0 57-19.5 113T716-344v304l-236-79-236 79Zm236-260q109 0 184.5-75.5T740-560q0-109-75.5-184.5T480-820q-109 0-184.5 75.5T220-560q0 109 75.5 184.5T480-300Z"/></svg></div>
-        <h4>現場で活躍する技術者に育つ</h4>
-        <p><span>習得したスキルは、</span><span>そのまま実務に直結します。</span></p>
+        <div class="icon-ring"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M3 12h3M18 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg></div>
+        <h4>20年超のFA設計経験に基づく設計</h4>
+        <p><span>数多くの生産現場を見てきた設計者が、</span><span>設置のしやすさ・保守性を重視しています。</span></p>
       </div>
     </div>
   </div>
@@ -423,27 +388,13 @@
 <section class="alt">
   <div class="wrap">
     <div class="section-head">
-      <p class="kicker">選ばれる理由 / カリキュラム</p>
+      <p class="kicker">選ばれる理由</p>
       <h2>選ばれる理由</h2>
     </div>
     <div class="reasons">
-      <div class="reason"><p class="num">01</p><h4>現場と同じ実機で学べる</h4><p><span>習得したスキルが</span><span>そのまま実務に直結します。</span></p></div>
-      <div class="reason"><p class="num">02</p><h4>月額制、買わずに始められる</h4><p><span>最短3ヶ月から</span><span>ご利用いただけます。</span></p></div>
-      <div class="reason"><p class="num">03</p><h4>JANOME製ロボットを採用</h4><p><span>卓上型XYZロボットの</span><span>リーディングブランドです。</span></p></div>
-    </div>
-    <div class="curriculum-panel">
-      <div class="curriculum-head">
-        <div class="big">20<small>STEP</small></div>
-        <p>全20ステップの体系カリキュラムで、基礎から段階的に習得できます。</p>
-      </div>
-      <div class="chip-row">
-        <span class="chip"><span class="dot"></span>基本操作</span>
-        <span class="chip"><span class="dot"></span>センサー活用</span>
-        <span class="chip"><span class="dot"></span>ティーチング</span>
-        <span class="chip"><span class="dot"></span>保守・点検</span>
-        <span class="chip"><span class="dot"></span>安全確認</span>
-        <span class="chip"><span class="dot"></span>トラブル対応</span>
-      </div>
+      <div class="reason"><p class="num">01</p><h4>既存ラインに後付けしやすい</h4><p><span>ライン脇にそのまま設置できる</span><span>コンパクトなサイズにまとめました。</span></p></div>
+      <div class="reason"><p class="num">02</p><h4>判定基準を数値化し、属人化を防ぐ</h4><p><span>検査員によるばらつきを抑え、</span><span>一定の基準で判定します。</span></p></div>
+      <div class="reason"><p class="num">03</p><h4>20年超のFA設計経験に基づく設計</h4><p><span>現場を熟知した設計者が、</span><span>実務に即した使いやすさを追求。</span></p></div>
     </div>
   </div>
 </section>
@@ -451,38 +402,17 @@
 <section>
   <div class="wrap">
     <div class="section-head">
-      <p class="kicker">ご利用プラン / 契約条件</p>
-      <h2>ご利用プラン</h2>
+      <p class="kicker">仕様・お見積り</p>
+      <h2>仕様・価格は、用途に合わせてご提案します</h2>
     </div>
-    <div class="plans">
-      <div class="plan featured">
-        <span class="badge">人気</span>
-        <div class="icon-ring"><svg viewBox="0 -960 960 960"><path d="m388-80-20-126q-19-7-40-19t-37-25l-118 54-93-164 108-79q-2-9-2.5-20.5T185-480q0-9 .5-20.5T188-521L80-600l93-164 118 54q16-13 37-25t40-18l20-127h184l20 126q19 7 40.5 18.5T669-710l118-54 93 164-108 77q2 10 2.5 21.5t.5 21.5q0 10-.5 21t-2.5 21l108 78-93 164-118-54q-16 13-36.5 25.5T592-206L572-80H388Zm92-270q54 0 92-38t38-92q0-54-38-92t-92-38q-54 0-92 38t-38 92q0 54 38 92t92 38Z"/></svg></div>
-        <h4>STANDARD</h4>
-        <div class="price">¥120,000<small>〜 / 月</small></div>
-        <p class="desc">基礎20ステップ＋センサー類</p>
+    <div class="quote-panel">
+      <h3>検査対象物・現在の検査方法をお聞かせください</h3>
+      <p>検査対象物のサイズや形状、要求される精度、生産タクトなどはお客様ごとに異なるため、RPV200の仕様・価格は個別にお見積りいたします。まずは検査したい対象物や現在の検査方法について、お気軽にご相談ください。</p>
+      <div class="quote-chip-row">
+        <span class="quote-chip"><span class="dot"></span>検査対象物のサイズ・形状</span>
+        <span class="quote-chip"><span class="dot"></span>求められる判定精度</span>
+        <span class="quote-chip"><span class="dot"></span>生産タクト・設置環境</span>
       </div>
-      <div class="plan">
-        <div class="icon-ring"><svg viewBox="0 -960 960 960"><path d="M197-197q-54-54-85.5-126.5T80-480q0-84 31.5-156.5T197-763l42 43q-46 46-72.5 107.5T140-480q0 71 26.5 132.5T240-239l-43 42Zm113-113q-32-32-51-75.5T240-480q0-51 19-94.5t51-75.5l42 43q-24 24-38 56.5T300-480q0 38 14 70.5t39 57.5l-43 42Zm170-90q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm170 90-42-43q24-24 38-56.5t14-70.5q0-38-14-70.5T607-608l43-42q32 32 51 75.5t19 94.5q0 50-19 93.5T650-310Zm113 113-42-43q46-46 72.5-107.5T820-480q0-71-26.5-132.5T720-721l43-42q54 55 85.5 127.5T880-480q0 83-31.5 155.5T763-197Z"/></svg></div>
-        <h4>ADVANCE</h4>
-        <div class="price">¥198,000<small>〜 / 月</small></div>
-        <p class="desc">基礎20ステップ＋通信関係</p>
-      </div>
-      <div class="plan">
-        <div class="icon-ring"><svg viewBox="0 -960 960 960"><path d="M480.12-330q70.88 0 120.38-49.62t49.5-120.5q0-70.88-49.62-120.38T479.88-670Q409-670 359.5-620.38T310-499.88q0 70.88 49.62 120.38t120.5 49.5Zm-.36-58q-46.76 0-79.26-32.74-32.5-32.73-32.5-79.5 0-46.76 32.74-79.26 32.73-32.5 79.5-32.5 46.76 0 79.26 32.74 32.5 32.73 32.5 79.5 0 46.76-32.74 79.26-32.73 32.5-79.5 32.5Zm.24 188q-146 0-264-83T40-500q58-134 176-217t264-83q146 0 264 83t176 217q-58 134-176 217t-264 83Z"/></svg></div>
-        <h4>VISION</h4>
-        <div class="price">¥298,000<small>〜 / 月</small></div>
-        <p class="desc">基礎20ステップ＋画像処理</p>
-      </div>
-      <div class="plan">
-        <div class="icon-ring"><svg viewBox="0 -960 960 960"><path d="m98-537 168-168q14-14 33-20t39-2l77 14q-55 62-89 117.5T263-466L98-537Zm202 89q27-73 68-137.5T461-702q88-88 201-131.5T873-860q17 98-26 211T716-448q-52 52-117 93t-138 68L300-448Zm286-125q20 20 49.5 20t49.5-20q20-20 20-49.5T685-672q-20-20-49.5-20T586-672q-20 20-20 49.5t20 49.5ZM551-85l-72-165q74-29 129.5-63T726-402l14 77q4 20-2 39.5T718-252L551-85ZM162-318q35-35 85-35.5t85 34.5q35 35 35 85t-35 85q-26 26-81 43T87-74q15-109 32-163.5t43-80.5Z"/></svg></div>
-        <h4>PROFESSIONAL</h4>
-        <div class="price">¥498,000<small>〜 / 月</small></div>
-        <p class="desc">サーボ制御を含む全範囲</p>
-      </div>
-    </div>
-    <div class="note-panel">
-      <strong>初期費用について</strong> — STANDARDの初期費用は¥100,000。ADVANCE以上は受注後の製作となり、月額はグレードにより変動します。詳細はお問い合わせください。ケーブルの被覆を剥くなど加工を伴うため返却ができず、そのままお客様の資産としてお渡しします。
     </div>
   </div>
 </section>
@@ -491,16 +421,15 @@
   <div class="wrap">
     <div class="section-head">
       <p class="kicker">まとめ</p>
-      <h2>共通契約条件・サポート体制</h2>
+      <h2>ご相談の流れ・サポート体制</h2>
     </div>
     <div class="summary-grid">
       <div class="info-panel">
-        <h3>共通契約条件</h3>
+        <h3>ご相談の流れ</h3>
         <table class="terms">
-          <tr><th>納品形態</th><td>スタートキット（郵送、貴社にて開梱・組立）</td></tr>
-          <tr><th>契約期間</th><td>最短3ヶ月〜最長24ヶ月</td></tr>
-          <tr><th>契約終了後</th><td>到着時の梱包箱にてご返送（送料はお客様負担）</td></tr>
-          <tr><th>想定対象</th><td>中小の小型部品製造・組立業、専門学校</td></tr>
+          <tr><th>STEP 1</th><td>お問い合わせ（検査対象物・現在の検査方法をお聞かせください）</td></tr>
+          <tr><th>STEP 2</th><td>ヒアリング・現地調査（必要に応じて現場を拝見します）</td></tr>
+          <tr><th>STEP 3</th><td>仕様のご提案・お見積り</td></tr>
         </table>
       </div>
       <div class="info-panel">
@@ -528,9 +457,9 @@
   <div class="wrap">
     <span class="icon-ring"><svg viewBox="0 0 24 24" style="fill:none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
     <p class="kicker">Contact</p>
-    <h2>RTSについて、お気軽にご相談ください</h2>
-    <p>導入のご相談、資料請求、料金プランの詳細など、お気軽にお問い合わせください。</p>
-    <a class="btn" href="mailto:info@rigel-works.com?subject=RTS（教育システム）に関するお問い合わせ">メールでお問い合わせ</a>
+    <h2>RPV200について、お気軽にご相談ください</h2>
+    <p>検査対象物や現在の検査方法、導入のご検討状況など、お気軽にお問い合わせください。</p>
+    <a class="btn" href="mailto:info@rigel-works.com?subject=画像処理システム（RPV200）に関するお問い合わせ">メールでお問い合わせ</a>
   </div>
 </section>
 
