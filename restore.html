@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FA設備｜株式会社RIGEL</title>
-<meta name="description" content="株式会社RIGELのFA設備設計サービス。20年以上のFA設備設計・ロボット導入の実務経験を活かし、自動化設備・省人化設備の設計を承ります。">
+<title>リバースエンジニアリング製作｜株式会社RIGEL</title>
+<meta name="description" content="株式会社RIGELのリバースエンジニアリング製作サービス「Hook the Past」。図面のない廃番部品・破損した現物1点から、正規寸法を逆算してJIS規格の金属切削加工で復元します。20年来の提携加工先とともに、工場保全部品からヴィンテージ機器の部品まで対応します。">
 <link rel="icon" href="assets/rigel-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,8 +30,8 @@
   nav.main-nav{ display:flex; align-items:center; gap:4px; }
   .nav-tab{
     display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px;
-    padding:8px 13px; border-radius:12px; text-decoration:none; color:var(--sub);
-    font-size:10.5px; font-weight:600; min-width:60px; transition:background .15s ease, color .15s ease;
+    padding:8px 12px; border-radius:12px; text-decoration:none; color:var(--sub);
+    font-size:10.5px; font-weight:600; min-width:56px; transition:background .15s ease, color .15s ease;
   }
   .nav-tab svg{ width:19px; height:19px; fill:var(--edu); }
   .nav-tab:hover{ background:#F2F7FC; color:var(--ink); }
@@ -47,7 +47,7 @@
 
   .tab-scroll{ display:none; }
 
-  @media (max-width:1000px){
+  @media (max-width:1080px){
     nav.main-nav .nav-tab, nav.main-nav .nav-sep{ display:none; }
     .tab-scroll{
       display:flex; gap:8px; overflow-x:auto; padding:10px 20px 12px;
@@ -71,20 +71,18 @@
     position:relative; min-height:auto; display:flex; align-items:center; padding:88px 0 72px;
     background:var(--bg); color:var(--ink); overflow:hidden;
   }
-  .hero::before{ display:none; }
-  .hero .wrap{ position:relative; z-index:2; display:grid; grid-template-columns:1fr auto; align-items:stretch; gap:40px; }
-  @media (max-width:900px){ .hero .wrap{ grid-template-columns:1fr; } .hero-visual{ order:-1; margin-bottom:8px; } }
-  .hero-visual{ position:relative; z-index:1; height:100%; max-width:min(560px, 48vw); display:flex; }
-  .hero-visual .card{ height:100%; display:flex; align-items:center; justify-content:center; background:#fff; border-radius:28px; box-shadow:0 18px 32px rgba(2,20,26,0.10); border:1px solid var(--border); padding:16px; }
-  .hero-visual .card img{ height:100%; width:auto; max-width:100%; object-fit:contain; border-radius:14px; }
-  .hero-copy-text{ min-height:374px; }
-  .eyebrow{ display:inline-flex; align-items:center; gap:8px; background:#EEF4FC; padding:8px 16px; border-radius:999px; font-size:12.5px; font-weight:700; letter-spacing:0.08em; margin-bottom:24px; color:var(--dark); }
-  .eyebrow .dot{ width:6px; height:6px; border-radius:50%; background:var(--accent); }
+  .hero .wrap{ position:relative; z-index:2; max-width:760px; }
   .hero .tagline{ font-size:13px; font-weight:700; letter-spacing:0.2em; color:var(--main); text-transform:uppercase; margin-bottom:14px; }
   .hero h1{ font-size:clamp(26px, 3.6vw, 40px); font-weight:900; color:var(--dark); margin:0 0 18px; line-height:1.5; }
   .hero .sub{ font-size:16px; font-weight:500; color:var(--ink); opacity:0.9; margin-bottom:14px; }
-  .hero p.lead{ font-size:15.5px; color:var(--sub); max-width:520px; margin:0 0 36px; }
-  .hero-copy{ position:relative; z-index:2; }
+  .hero p.lead{ font-size:15.5px; color:var(--sub); max-width:620px; margin:0 0 28px; }
+  .badge-row{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom:36px; }
+  .badge{
+    display:inline-flex; align-items:center; gap:7px; background:#fff; border:1px solid var(--border);
+    padding:9px 16px; border-radius:999px; font-size:12.5px; font-weight:700; color:var(--dark);
+    box-shadow:0 6px 14px rgba(2,20,26,0.05);
+  }
+  .badge .dot{ width:6px; height:6px; border-radius:50%; background:var(--accent); flex-shrink:0; }
   .btn{ display:inline-flex; align-items:center; gap:8px; padding:16px 34px; background:var(--accent); color:#fff; text-decoration:none; font-weight:700; font-size:15px; border-radius:999px; border:1.5px solid var(--accent); box-shadow:0 12px 26px rgba(232,98,44,0.30); transition:transform .15s ease, box-shadow .15s ease; }
   .btn:hover{ background:#d1551f; border-color:#d1551f; transform:translateY(-2px); }
 
@@ -96,6 +94,23 @@
   .section-head{ text-align:center; max-width:680px; margin:0 auto 56px; }
   .section-head p{ color:var(--sub); font-size:15px; }
 
+  /* ターゲット別のお困りごと */
+  .personas{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  @media (max-width:900px){ .personas{ grid-template-columns:1fr; } }
+  .persona{
+    background:#fff; border:1px solid var(--border); border-radius:24px; padding:32px; position:relative;
+    box-shadow:0 12px 26px rgba(2,20,26,0.06); transition:transform .22s ease, box-shadow .22s ease;
+  }
+  .persona:hover{ transform:translateY(-6px); box-shadow:0 26px 42px rgba(2,20,26,0.12); }
+  .persona .icon-badge{ width:48px; height:48px; border-radius:14px; display:flex; align-items:center; justify-content:center; margin-bottom:18px; background:#FBEDE6; }
+  .persona .icon-badge svg{ fill:var(--accent); width:24px; height:24px; }
+  .persona h3{ font-size:16px; font-weight:700; margin-bottom:14px; }
+  .persona ul{ list-style:none; }
+  .persona li{ color:var(--sub); font-size:13.5px; padding:8px 0 8px 20px; position:relative; border-top:1px dashed var(--border); }
+  .persona li:first-child{ border-top:none; }
+  .persona li::before{ content:"—"; position:absolute; left:0; color:var(--edu); font-weight:700; }
+
+  /* 選ばれる3つの理由 */
   .reasons{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
   @media (max-width:760px){ .reasons{ grid-template-columns:1fr; } }
   .reason{ background:#fff; border:1px solid var(--border); border-radius:20px; padding:30px 26px; box-shadow:0 10px 22px rgba(2,20,26,0.05); transition:transform .22s ease, box-shadow .22s ease; }
@@ -105,16 +120,17 @@
   .reason h4{ font-size:15.5px; font-weight:700; margin-bottom:8px; }
   .reason p{ font-size:13.5px; color:var(--sub); }
 
-  .roadmap{ margin-top:48px; display:flex; align-items:center; gap:0; }
-  @media (max-width:700px){ .roadmap{ flex-direction:column; align-items:stretch; } }
-  .road-step{ flex:1; background:#fff; border:1px solid var(--border); border-radius:18px; padding:22px; text-align:center; box-shadow:0 10px 22px rgba(2,20,26,0.05); }
-  .road-step.now{ border-color:var(--edu); box-shadow:0 14px 26px rgba(47,128,237,0.14); }
-  .road-step .tag{ font-size:11px; font-weight:700; color:var(--edu); letter-spacing:0.06em; margin-bottom:8px; }
-  .road-step p{ font-size:13.5px; color:var(--sub); }
-  .road-arrow{ padding:0 18px; color:var(--border); font-size:22px; font-weight:900; }
-  @media (max-width:700px){ .road-arrow{ text-align:center; padding:8px 0; } }
-
-  .note-panel{ margin-top:40px; background:#F2F7FC; border:1px solid var(--border); border-radius:18px; padding:24px 28px; font-size:13px; color:var(--sub); text-align:center; }
+  /* 料金の目安 */
+  .price-cards{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  @media (max-width:900px){ .price-cards{ grid-template-columns:1fr; } }
+  .price-card{ background:#fff; border:1px solid var(--border); border-radius:22px; padding:30px 26px; box-shadow:0 12px 26px rgba(2,20,26,0.05); position:relative; transition:transform .22s ease, box-shadow .22s ease; }
+  .price-card:hover{ transform:translateY(-6px); box-shadow:0 24px 40px rgba(2,20,26,0.11); }
+  .price-card.featured{ border-color:var(--edu); box-shadow:0 16px 32px rgba(47,128,237,0.16); }
+  .price-card .badge-tag{ position:absolute; top:-12px; right:20px; background:var(--edu); color:#fff; font-size:11px; font-weight:700; padding:5px 12px; border-radius:999px; }
+  .price-card h4{ font-size:15.5px; font-weight:700; margin-bottom:10px; }
+  .price-card p.desc{ font-size:13px; color:var(--sub); margin-bottom:18px; min-height:66px; }
+  .price-card .price{ font-size:19px; font-weight:900; color:var(--dark); }
+  .note-panel{ margin-top:32px; background:#F2F7FC; border:1px solid var(--border); border-radius:18px; padding:22px 26px; font-size:13px; color:var(--sub); text-align:center; }
   .note-panel strong{ color:var(--ink); }
 
   /* ご依頼から納品までの流れ（スイムレーン図） */
@@ -157,7 +173,6 @@
   .swim-card .swim-note{ display:inline-block; margin-top:8px; font-size:11.5px; font-weight:700; color:var(--accent); background:#FBEDE6; padding:3px 10px; border-radius:999px; }
   .swim-card.milestone{ background:linear-gradient(150deg,#fff,#FFF6F1); }
 
-  /* 矢印（カードから中心線へ） */
   .swim-card::after{
     content:""; position:absolute; top:50%; width:0; height:0;
     border-top:7px solid transparent; border-bottom:7px solid transparent;
@@ -208,7 +223,7 @@
         <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Z"/></svg>
         <span>ホーム</span>
       </a>
-      <a href="restore.html" class="nav-tab">
+      <a href="restore.html" class="nav-tab active">
         <svg viewBox="0 -960 960 960"><path d="M480-120q-33 0-56.5-23.5T400-200v-40q-32-12-56-33t-40-49l-38 14q-31 11-62.5-1T156-351l-40-69q-16-28-9.5-60t32.5-52l32-25q-2-9-2-17.5v-19.5l-32-25q-26-20-32.5-52t9.5-60l40-69q16-28 47.5-40t62.5 1l38 14q16-28 40-49t56-33v-40q0-33 23.5-56.5T480-840q33 0 56.5 23.5T560-760v40q32 12 56 33t40 49l38-14q31-11 62.5 1t47.5 40l40 69q16 28 9.5 60t-32.5 52l-32 25q2 9 2 17.5v19.5l32 25q26 20 32.5 52t-9.5 60l-40 69q-16 28-47.5 40t-62.5-1l-38-14q-16 28-40 49t-56 33v40q0 33-23.5 56.5T480-120Zm0-260q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35Z"/></svg>
         <span>リバース製作</span>
       </a>
@@ -220,7 +235,7 @@
         <svg viewBox="0 -960 960 960"><path d="M448-167 228-296q-13.77-8.29-21.39-22.23Q199-332.17 199-348v-257q0-15.83 7.61-29.77Q214.23-648.71 228-657l221-131q14-8 31-8t31 8l221 131q13.78 8.29 21.39 22.23Q761-620.83 761-605v257q0 15.83-7.87 29.77Q745.25-304.29 731-296L508-167q-14.33 8-30.16 8-15.84 0-29.84-8ZM80-691v-129q0-24.75 17.63-42.38Q115.25-880 140-880h129v60H140v129H80ZM269-80H140q-24.75 0-42.37-17.63Q80-115.25 80-140v-129h60v129h129v60Zm422 0v-60h129v-129h60v129q0 24.75-17.62 42.37Q844.75-80 820-80H691Zm129-611v-129H691v-60h129q24.75 0 42.38 17.62Q880-844.75 880-820v129h-60Zm-530 67-30 18v37l190 109v224l30 18 30-18v-224l191-109v-37l-31-18-190 110-190-110Z"/></svg>
         <span>3D治具設計</span>
       </a>
-      <a href="fa.html" class="nav-tab active">
+      <a href="fa.html" class="nav-tab">
         <svg viewBox="0 -960 960 960"><path d="M80-80v-481l280-119v80l200-81v121h320v480H80Zm370-160h60v-160h-60v160Zm-160 0h60v-160h-60v160Zm320 0h60v-160h-60v160Zm265-360H705l35-280h100l35 280Z"/></svg>
         <span>FA設備</span>
       </a>
@@ -239,10 +254,10 @@
   </div>
   <div class="tab-scroll">
     <a href="index.html" class="tab-chip"><svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Z"/></svg>ホーム</a>
-    <a href="restore.html" class="tab-chip"><svg viewBox="0 -960 960 960"><path d="M480-120q-33 0-56.5-23.5T400-200v-40q-32-12-56-33t-40-49l-38 14q-31 11-62.5-1T156-351l-40-69q-16-28-9.5-60t32.5-52l32-25q-2-9-2-17.5v-19.5l-32-25q-26-20-32.5-52t9.5-60l40-69q16-28 47.5-40t62.5 1l38 14q16-28 40-49t56-33v-40q0-33 23.5-56.5T480-840q33 0 56.5 23.5T560-760v40q32 12 56 33t40 49l38-14q31-11 62.5 1t47.5 40l40 69q16 28 9.5 60t-32.5 52l-32 25q2 9 2 17.5v19.5l32 25q26 20 32.5 52t-9.5 60l-40 69q-16 28-47.5 40t-62.5-1l-38-14q-16 28-40 49t-56 33v40q0 33-23.5 56.5T480-120Zm0-260q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35Z"/></svg>リバース製作</a>
+    <a href="restore.html" class="tab-chip active"><svg viewBox="0 -960 960 960"><path d="M480-120q-33 0-56.5-23.5T400-200v-40q-32-12-56-33t-40-49l-38 14q-31 11-62.5-1T156-351l-40-69q-16-28-9.5-60t32.5-52l32-25q-2-9-2-17.5v-19.5l-32-25q-26-20-32.5-52t9.5-60l40-69q16-28 47.5-40t62.5 1l38 14q16-28 40-49t56-33v-40q0-33 23.5-56.5T480-840q33 0 56.5 23.5T560-760v40q32 12 56 33t40 49l38-14q31-11 62.5 1t47.5 40l40 69q16 28 9.5 60t-32.5 52l-32 25q2 9 2 17.5v19.5l32 25q26 20 32.5 52t-9.5 60l-40 69q-16 28-47.5 40t-62.5-1l-38-14q-16 28-40 49t-56 33v40q0 33-23.5 56.5T480-120Zm0-260q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35Z"/></svg>リバース製作</a>
     <a href="rpv200.html" class="tab-chip"><svg viewBox="0 -960 960 960"><path d="M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-680q-75 0-127.5 52.5T300-500q0 75 52.5 127.5T480-320Zm0-72q-45 0-76.5-31.5T372-500q0-45 31.5-76.5T480-608q45 0 76.5 31.5T588-500q0 45-31.5 76.5T480-392Zm0 192q-146 0-266-81.5T40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200Z"/></svg>画像処理システム</a>
     <a href="jig.html" class="tab-chip"><svg viewBox="0 -960 960 960"><path d="M448-167 228-296q-13.77-8.29-21.39-22.23Q199-332.17 199-348v-257q0-15.83 7.61-29.77Q214.23-648.71 228-657l221-131q14-8 31-8t31 8l221 131q13.78 8.29 21.39 22.23Q761-620.83 761-605v257q0 15.83-7.87 29.77Q745.25-304.29 731-296L508-167q-14.33 8-30.16 8-15.84 0-29.84-8ZM80-691v-129q0-24.75 17.63-42.38Q115.25-880 140-880h129v60H140v129H80ZM269-80H140q-24.75 0-42.37-17.63Q80-115.25 80-140v-129h60v129h129v60Zm422 0v-60h129v-129h60v129q0 24.75-17.62 42.37Q844.75-80 820-80H691Zm129-611v-129H691v-60h129q24.75 0 42.38 17.62Q880-844.75 880-820v129h-60Zm-530 67-30 18v37l190 109v224l30 18 30-18v-224l191-109v-37l-31-18-190 110-190-110Z"/></svg>3D治具設計</a>
-    <a href="fa.html" class="tab-chip active"><svg viewBox="0 -960 960 960"><path d="M80-80v-481l280-119v80l200-81v121h320v480H80Zm370-160h60v-160h-60v160Zm-160 0h60v-160h-60v160Zm320 0h60v-160h-60v160Zm265-360H705l35-280h100l35 280Z"/></svg>FA設備</a>
+    <a href="fa.html" class="tab-chip"><svg viewBox="0 -960 960 960"><path d="M80-80v-481l280-119v80l200-81v121h320v480H80Zm370-160h60v-160h-60v160Zm-160 0h60v-160h-60v160Zm320 0h60v-160h-60v160Zm265-360H705l35-280h100l35 280Z"/></svg>FA設備</a>
     <a href="food.html" class="tab-chip"><svg viewBox="0 -960 960 960"><path d="M285-80v-368q-52-11-88.5-52.5T160-600v-280h60v280h65v-280h60v280h65v-280h60v280q0 58-36.5 99.5T345-448v368h-60Zm415 0v-320H585v-305q0-79 48-127t127-48v800h-60Z"/></svg>飲食業界向け</a>
     <a href="kominka.html" class="tab-chip"><svg viewBox="0 0 24 24"><path d="M12 2.8 1.2 11.6h21.6L12 2.8z"/><rect x="10.4" y="1.9" width="3.2" height="1.7" rx="0.7"/><rect x="5.2" y="12.7" width="3.6" height="6"/><rect x="10.2" y="12.7" width="3.6" height="6"/><rect x="15.2" y="12.7" width="3.6" height="6"/><rect x="3.2" y="19.3" width="17.6" height="1.8" rx="0.7"/></svg>古民家レンタル</a>
   </div>
@@ -250,21 +265,84 @@
 
 <section class="hero">
   <div class="wrap">
-    <div class="hero-copy">
-      <div class="hero-copy-text">
-        <p class="tagline">FA Equipment Design</p>
-        <h1>自動化設備の設計で、<br>現場の省人化を支える。</h1>
-        <p class="sub">FA設備設計</p>
-        <p class="lead">20年以上のFA設備設計・ロボット導入の実務経験を活かし、自動化設備・省人化設備の設計を承ります。現在は設計業務を中心に対応しています。</p>
-      </div>
-      <a class="btn" href="#contact">
-        <svg class="ic" width="18" height="18" viewBox="0 0 24 24" style="fill:none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M4 8h16"/><path d="M8 4v4"/></svg>
-        資料請求・お問い合わせ
-      </a>
+    <p class="tagline">Hook the Past</p>
+    <h1>図面なし。メーカー廃番。<br>それでも、諦めない。</h1>
+    <p class="sub">リバースエンジニアリング製作</p>
+    <p class="lead">
+      3Dプリンタでは強度が足りない重要保安部品・駆動パーツを、JIS規格の金属切削加工で蘇らせます。摩耗・欠損した箇所も、設計者が「正規寸法」を逆算してCAD図面化。現物をお送りいただくだけで、1点から製作・納品いたします。
+    </p>
+    <div class="badge-row">
+      <span class="badge"><span class="dot"></span>図面不要・破損した現物を送るだけ</span>
+      <span class="badge"><span class="dot"></span>本物の強度・S45C/SUS/アルミ/真鍮の削り出し</span>
+      <span class="badge"><span class="dot"></span>資産化・作成した2D/3D図面データもお渡し</span>
+      <span class="badge"><span class="dot"></span>全国対応・宅配便での現物やりとりに対応</span>
     </div>
-    <div class="hero-visual">
-      <div class="card">
-        <img src="assets/fa_large_equipment_web.jpg" alt="複数ステーション構成の大型自動化設備（アルミフレーム筐体・タッチパネル・搬送コンベア）の3D設計イメージ">
+    <a class="btn" href="#contact">
+      <svg class="ic" width="18" height="18" viewBox="0 0 24 24" style="fill:none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M4 8h16"/><path d="M8 4v4"/></svg>
+      資料請求・お問い合わせ
+    </a>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">こんなお困りごとはありませんか</p>
+      <h2>図面がない。もう作れない。そう言われた方へ</h2>
+    </div>
+    <div class="personas">
+      <div class="persona">
+        <div class="icon-badge"><svg viewBox="0 0 24 24" style="fill:none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></div>
+        <h3>産業機械・工場保全のご担当者様</h3>
+        <ul>
+          <li>30年以上前の専用機・包装機・印刷機で、部品1個が破損してラインが停止している</li>
+          <li>メーカーが既に倒産、またはサポート終了（製廃）で部品の調達先がない</li>
+          <li>加工屋に相談したが、「図面がないと作れない」と門前払いされた</li>
+          <li>3Dプリンタの金属造形を検討したが、強度不足やコストの高さで現実的でなかった</li>
+        </ul>
+      </div>
+      <div class="persona">
+        <div class="icon-badge"><svg viewBox="0 0 24 24"><circle cx="7" cy="17" r="3"/><circle cx="17" cy="17" r="3"/><path d="M7 17h6l3-9h3M10 17l4-8"/></svg></div>
+        <h3>旧車・ヴィンテージバイク・船舶オーナー様</h3>
+        <ul>
+          <li>純正パーツ供給が終了し、中古市場にも良品が出回らない</li>
+          <li>キャブレター周辺や特殊リンケージ、ブラケットをワンオフで高精度に作り直したい</li>
+          <li>海外製パーツの個人輸入が難しく、国内で現物から削り出してほしい</li>
+        </ul>
+      </div>
+      <div class="persona">
+        <div class="icon-badge"><svg viewBox="0 0 24 24" style="fill:none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M15 6v6M13 9h4"/><rect x="7" y="15" width="10" height="3" rx="1"/></svg></div>
+        <h3>ヴィンテージ音響・ジュークボックス・アミューズメント機器オーナー様</h3>
+        <ul>
+          <li>海外製・インチ規格・特殊ピッチの真鍮ギアやカムが摩耗して動かない</li>
+          <li>樹脂ギアが経年劣化で割れたため、今度は耐久性の高い金属製で再製作したい</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">選ばれる3つの理由</p>
+      <h2>なぜ現物だけで作れるのか</h2>
+    </div>
+    <div class="reasons">
+      <div class="reason">
+        <div class="icon-ring"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M3 12h3M18 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg></div>
+        <h4>設計意図の逆算・復元設計</h4>
+        <p>単なる採寸屋ではありません。長年FA機械設計を手がけるプロのエンジニアが、相手側パーツとの嵌合やギアの噛み合いから「新品当時の正規寸法」を機構的に逆算。摩耗や欠けがある状態から、本来の形状を正確に復元します。</p>
+      </div>
+      <div class="reason">
+        <div class="icon-ring"><svg viewBox="0 0 24 24" style="fill:none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/><path d="M7 15h4"/></svg></div>
+        <h4>JIS規格金属による信頼の切削・旋盤加工</h4>
+        <p>樹脂や金属3Dプリント特有の「巣（空隙）」「熱変形」「疲労強度不足」のリスクを排除。S45C・SUS304・A5052・C3604等の規格材から、20年来の提携加工先とともに高精度にマシニング・旋盤切削加工。熱処理・表面処理まで対応します。</p>
+      </div>
+      <div class="reason">
+        <div class="icon-ring"><svg viewBox="0 0 24 24"><path d="M4 4h13a3 3 0 0 1 3 3v13H7a3 3 0 0 1-3-3V4z"/></svg></div>
+        <h4>図面データの納品で「資産」として残す</h4>
+        <p>復元にあたって作成した2D製作図面（PDF/DXF）および3D CADデータ（STEP）は、完成部品と一緒にお渡しします。一度図面化してしまえば、将来再び破損した際も、図面番号をお伝えいただくだけで再製作が可能です。</p>
       </div>
     </div>
   </div>
@@ -273,25 +351,30 @@
 <section class="alt">
   <div class="wrap">
     <div class="section-head">
-      <p class="kicker">FA設備</p>
-      <h2>対応内容</h2>
+      <p class="kicker">料金の目安</p>
+      <h2>明朗な価格体系</h2>
+      <p>価格は税抜表記です。現物の形状・寸法・材質により正式なお見積りをご提示します。</p>
     </div>
-    <div class="reasons">
-      <div class="reason">
-        <div class="icon-ring"><svg viewBox="0 0 24 24"><rect x="2" y="17" width="20" height="5" rx="1.5"/><rect x="9" y="3" width="4" height="12" rx="2"/><rect x="9" y="3" width="10" height="4" rx="2"/></svg></div>
-        <h4>対応工程</h4>
-        <p>半導体前工程・後工程の生産設備（塗布・ねじ締め・基盤分割・画像検査・搬送）に対応。自動車関連・電子部品・組立工程にも対応します。</p>
+    <div class="price-cards">
+      <div class="price-card">
+        <h4>単一部品 復元プラン</h4>
+        <p class="desc">破損・摩耗パーツ1点の精密リバース図面化・金属切削加工。部品1点の製作・納品、完成2D/3D図面データ譲渡込み。</p>
+        <div class="price">80,000円 〜 150,000円</div>
       </div>
-      <div class="reason">
-        <div class="icon-ring"><svg viewBox="0 -960 960 960"><path d="m123-240-43-43 292-291 167 167 241-241H653v-60h227v227h-59v-123L538-321 371-488 123-240Z"/></svg></div>
-        <h4>省人化・作業の安定化</h4>
-        <p>人手不足対策としての省人化と、手作業から機械化への転換による作業の安定化を実現します。</p>
+      <div class="price-card featured">
+        <span class="badge-tag">推奨・最多依頼</span>
+        <h4>ユニット・嵌合一括復元プラン</h4>
+        <p class="desc">噛み合うギア2枚、または軸＋カラー＋ブラケットなど、連動する1ブロック（2〜3点）を一括復元。現品合わせによる確実な嵌合確認。</p>
+        <div class="price">200,000円 〜 350,000円</div>
       </div>
-      <div class="reason">
-        <div class="icon-ring"><svg viewBox="0 -960 960 960"><path d="M201-120q-50 0-85-35t-35-85q0-50 35-85t85-35h560q50 0 85 35t35 85q0 50-35 85t-85 35H201Zm0-60h560q25.5 0 42.75-17.25T821-240q0-25.5-17.25-42.75T761-300H201q-25.5 0-42.75 17.25T141-240q0 25.5 17.25 42.75T201-180Zm190-260q-12.75 0-21.37-8.63Q361-457.25 361-470v-340q0-12.75 8.63-21.38Q378.25-840 391-840h340q12.75 0 21.38 8.62Q761-822.75 761-810v340q0 12.75-8.62 21.37Q743.75-440 731-440H391ZM79-530v-60h221v60H79Zm401-120h162v-60H480v60Zm-319 0h147v-60H161v60Z"/></svg></div>
-        <h4>バッチ式〜全自動まで</h4>
-        <p>バッチ式の設備から、搬送機構付き・全自動設備まで、規模に応じて幅広く対応します。</p>
+      <div class="price-card">
+        <h4>リピート追加製作</h4>
+        <p class="desc">過去に弊社で図面化したパーツの追加・予備部品製作。図面化費用は不要です。</p>
+        <div class="price">実費加工費＋手配料のみ<br><small style="font-weight:500;color:var(--sub);">（1点 数千円〜数万円）</small></div>
       </div>
+    </div>
+    <div class="note-panel">
+      <strong>現物は、正式なご依頼が決まるまでお預かりしません。</strong>まずは写真と寸法から構想図・概算見積りをお出しし、金額にご納得いただいてから現物をお預かりして詳細設計に進みます。
     </div>
   </div>
 </section>
@@ -301,7 +384,7 @@
     <div class="section-head">
       <p class="kicker">Process</p>
       <h2>ご依頼から納品までの流れ</h2>
-      <p>お客様とRIGELが交互に確認を重ねながら進めます。各段階でご承認をいただくため、認識のずれなく製作を進められます。</p>
+      <p>現物は正式なご依頼が固まるまでお預かりしません。写真と概算見積りの段階を経てから、現物をお預かりする流れです。</p>
     </div>
 
     <div class="lane-head">
@@ -311,110 +394,55 @@
     </div>
 
     <div class="swim">
-      <!-- 1 -->
       <div class="swim-row">
         <div class="swim-card user">
-          <h4>仕様書のご提供</h4>
-          <p>目的・納期・ご予算をご提示ください。</p>
-          <span class="swim-note">※要打合せ</span>
+          <h4>写真・寸法のご送付</h4>
+          <p>破損部品の写真数枚と、大まかな寸法をWeb・LINEでお送りください。</p>
         </div>
         <div class="swim-node"><span>1</span></div>
         <div></div>
       </div>
-      <!-- 2 -->
       <div class="swim-row">
         <div></div>
         <div class="swim-node rigel"><span>2</span></div>
         <div class="swim-card rigel">
-          <h4>内容確認書の提出</h4>
-          <p>製作資料と概算金額をご回答します。</p>
+          <h4>構想図・概算お見積り</h4>
+          <p>製作可否と概算金額を、1営業日以内を目安にご回答します。</p>
         </div>
       </div>
-      <!-- 3 -->
       <div class="swim-row">
-        <div class="swim-card user">
-          <h4>内容のご確認</h4>
-          <p>提出内容をご確認いただきます。</p>
+        <div class="swim-card user milestone">
+          <h4>概算のご確認</h4>
+          <p>内容にご納得いただけましたら、現物をご郵送ください。</p>
+          <span class="swim-note">※この段階までは現物をお預かりしません</span>
         </div>
-        <div class="swim-node"><span>3</span></div>
+        <div class="swim-node milestone"><span>3</span></div>
         <div></div>
       </div>
-      <!-- 4 -->
       <div class="swim-row">
         <div></div>
         <div class="swim-node rigel"><span>4</span></div>
         <div class="swim-card rigel">
-          <h4>構想図の作成</h4>
-          <p>構想図を作成し、詳細見積もりをご回答します。</p>
+          <h4>精密採寸・詳細設計</h4>
+          <p>お預かりした現物を精密測定し、復元CADデータを作成します。</p>
         </div>
       </div>
-      <!-- 5 -->
       <div class="swim-row">
-        <div class="swim-card user milestone">
-          <h4>最終承認</h4>
-          <p>構想図・見積もりをご承認いただきます。</p>
+        <div class="swim-card user">
+          <h4>正式お見積りのご確認</h4>
+          <p>詳細設計に基づく正式な見積書をご確認いただきます。</p>
         </div>
-        <div class="swim-node milestone"><span>5</span></div>
+        <div class="swim-node"><span>5</span></div>
         <div></div>
       </div>
-      <!-- 6 -->
-      <div class="swim-row">
+      <div class="swim-row last">
         <div></div>
         <div class="swim-node rigel"><span>6</span></div>
         <div class="swim-card rigel">
-          <h4>製作開始</h4>
-          <p>ご承認をもって製作に着手します。</p>
+          <h4>金属加工・検査・お届け</h4>
+          <p>提携加工先にて高精度金属切削を実施。寸法検査の後、完成部品と図面データを同梱してお届けします。</p>
         </div>
       </div>
-      <!-- 7 -->
-      <div class="swim-row">
-        <div class="swim-card user">
-          <h4>中間立ち合い</h4>
-          <p>製作途中の状態をご確認いただきます。</p>
-        </div>
-        <div class="swim-node"><span>7</span></div>
-        <div></div>
-      </div>
-      <!-- 8 -->
-      <div class="swim-row">
-        <div></div>
-        <div class="swim-node rigel"><span>8</span></div>
-        <div class="swim-card rigel">
-          <h4>製作</h4>
-          <p>立ち合い結果を反映しながら製作を進めます。</p>
-        </div>
-      </div>
-      <!-- 9 -->
-      <div class="swim-row">
-        <div class="swim-card user">
-          <h4>最終立ち合い</h4>
-          <p>完成状態を最終確認いただきます。</p>
-        </div>
-        <div class="swim-node"><span>9</span></div>
-        <div></div>
-      </div>
-      <!-- 10 -->
-      <div class="swim-row">
-        <div></div>
-        <div class="swim-node rigel"><span>10</span></div>
-        <div class="swim-card rigel">
-          <h4>納品</h4>
-          <p>設備を納品いたします。</p>
-        </div>
-      </div>
-      <!-- 11 -->
-      <div class="swim-row last">
-        <div class="swim-card user milestone">
-          <h4>最終確認・検収</h4>
-          <p>納品後の最終確認と検収をお願いいたします。</p>
-        </div>
-        <div class="swim-node milestone"><span>11</span></div>
-        <div></div>
-      </div>
-    </div>
-
-    <div class="note-panel">
-      <strong>各段階でご承認をいただきながら進めます。</strong>仕様が固まっていない段階でも構いません。打合せを通じて、目的・納期・ご予算に合わせた最適なご提案をいたします。
     </div>
   </div>
 </section>
@@ -423,9 +451,9 @@
   <div class="wrap">
     <span class="icon-ring"><svg viewBox="0 0 24 24" style="fill:none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
     <p class="kicker">Contact</p>
-    <h2>FA設備について、お気軽にご相談ください</h2>
-    <p>自動化設備・省人化設備の設計に関するご相談は、お気軽にお問い合わせください。</p>
-    <a class="btn" href="mailto:info@rigel-works.com?subject=FA設備に関するお問い合わせ">メールでお問い合わせ</a>
+    <h2>まずは写真1枚から、お気軽にご相談ください</h2>
+    <p>破損した部品の写真と大まかな寸法をお送りいただければ、製作可否と概算金額をご回答します。</p>
+    <a class="btn" href="mailto:info@rigel-works.com?subject=リバースエンジニアリング製作に関するお問い合わせ">メールでお問い合わせ</a>
   </div>
 </section>
 
