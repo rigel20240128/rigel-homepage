@@ -166,7 +166,7 @@
   .lead-panel strong{ color:var(--dark); }
 
   /* feature flow */
-  .flow{ display:grid; grid-template-columns:repeat(4,1fr); gap:24px; }
+  .flow{ display:grid; grid-template-columns:repeat(5,1fr); gap:20px; }
   @media (max-width:900px){ .flow{ grid-template-columns:1fr 1fr; } }
   @media (max-width:520px){ .flow{ grid-template-columns:1fr; } }
   .flow-card{
@@ -367,22 +367,27 @@
     </div>
     <div class="flow">
       <div class="flow-card">
-        <div class="icon-ring"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 10h16M10 10v10"/></svg></div>
+        <div class="icon-ring"><svg viewBox="0 0 24 24" style="fill:none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 10h16M10 10v10"/></svg></div>
         <h4>一体型のコンパクト筐体</h4>
         <p><span>カメラ・制御盤・タッチパネル表示を</span><span>一つの筐体にまとめています。</span></p>
       </div>
       <div class="flow-card">
-        <div class="icon-ring"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12.5l2.6 2.6L16.5 9"/></svg></div>
+        <div class="icon-ring"><svg viewBox="0 0 24 24" style="fill:none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12.5l2.6 2.6L16.5 9"/></svg></div>
         <h4>その場で分かる良否判定</h4>
-        <p><span>撮影した画像をAIが判定し、</span><span>タッチパネルにOK／NGを表示します。</span></p>
+        <p><span>あらかじめ登録した良品サンプルと照合し、</span><span>AIがその場で良否を判定・表示します。</span></p>
       </div>
       <div class="flow-card">
-        <div class="icon-ring"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/><path d="M7 15h4"/></svg></div>
+        <div class="icon-ring"><svg viewBox="0 0 24 24" style="fill:none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/><path d="M7 15h4"/></svg></div>
         <h4>現場オペレーターでも操作できる</h4>
         <p><span>日常の立ち上げ・リセット操作を、</span><span>その場でシンプルに行えます。</span></p>
       </div>
       <div class="flow-card">
-        <div class="icon-ring"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M3 12h3M18 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg></div>
+        <div class="icon-ring"><svg viewBox="0 0 24 24" style="fill:none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h8l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M9 12h6M9 16h6M9 8h2"/></svg></div>
+        <h4>検査画像を保存し、トレーサビリティを確保</h4>
+        <p><span>判定に使用した画像はSDカードに自動保存。</span><span>後から遡って確認できます。</span></p>
+      </div>
+      <div class="flow-card">
+        <div class="icon-ring"><svg viewBox="0 0 24 24" style="fill:none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M3 12h3M18 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg></div>
         <h4>20年超のFA設計経験に基づく設計</h4>
         <p><span>数多くの生産現場を見てきた設計者が、</span><span>設置のしやすさ・保守性を重視しています。</span></p>
       </div>
@@ -411,8 +416,11 @@
       <h2>仕様・価格は、用途に合わせてご提案します</h2>
     </div>
     <div class="quote-panel">
+      <p style="font-size:12.5px;font-weight:700;letter-spacing:0.1em;color:#9FC3F5;margin-bottom:12px;">RENTAL PLAN</p>
+      <div style="font-size:clamp(32px,5vw,44px);font-weight:900;margin-bottom:6px;">月々69,800円<small style="font-size:16px;font-weight:500;opacity:0.8;">〜</small></div>
+      <p style="font-size:13.5px;color:rgba(255,255,255,0.75);margin-bottom:28px;">最短3ヶ月〜のレンタルでご利用いただけます</p>
       <h3>検査対象物・現在の検査方法をお聞かせください</h3>
-      <p>検査対象物のサイズや形状、要求される精度、生産タクトなどはお客様ごとに異なるため、RPV200の仕様・価格は個別にお見積りいたします。まずは検査したい対象物や現在の検査方法について、お気軽にご相談ください。</p>
+      <p>検査対象物のサイズや形状、要求される精度、生産タクトなど、上記以外の仕様・条件は個別にご提案します。まずは検査したい対象物や現在の検査方法について、お気軽にご相談ください。</p>
       <div class="quote-chip-row">
         <span class="quote-chip"><span class="dot"></span>検査対象物のサイズ・形状</span>
         <span class="quote-chip"><span class="dot"></span>求められる判定精度</span>
