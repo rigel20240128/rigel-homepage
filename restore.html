@@ -30,8 +30,8 @@
   nav.main-nav{ display:flex; align-items:center; gap:4px; }
   .nav-tab{
     display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px;
-    padding:8px 12px; border-radius:12px; text-decoration:none; color:var(--sub);
-    font-size:10.5px; font-weight:600; min-width:56px; transition:background .15s ease, color .15s ease;
+    padding:8px 13px; border-radius:12px; text-decoration:none; color:var(--sub);
+    font-size:10.5px; font-weight:600; min-width:60px; transition:background .15s ease, color .15s ease;
   }
   .nav-tab svg{ width:19px; height:19px; fill:var(--edu); }
   .nav-tab:hover{ background:#F2F7FC; color:var(--ink); }
@@ -47,7 +47,7 @@
 
   .tab-scroll{ display:none; }
 
-  @media (max-width:1080px){
+  @media (max-width:1000px){
     nav.main-nav .nav-tab, nav.main-nav .nav-sep{ display:none; }
     .tab-scroll{
       display:flex; gap:8px; overflow-x:auto; padding:10px 20px 12px;
