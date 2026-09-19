@@ -71,7 +71,13 @@
     position:relative; min-height:auto; display:flex; align-items:center; padding:88px 0 72px;
     background:var(--bg); color:var(--ink); overflow:hidden;
   }
-  .hero .wrap{ position:relative; z-index:2; max-width:760px; }
+  .hero .wrap{ position:relative; z-index:2; display:grid; grid-template-columns:1fr auto; align-items:stretch; gap:40px; }
+  @media (max-width:900px){ .hero .wrap{ grid-template-columns:1fr; } .hero-visual{ order:-1; margin-bottom:8px; } }
+  .hero-copy{ position:relative; z-index:2; }
+  .hero-copy-text{ min-height:374px; }
+  .hero-visual{ position:relative; z-index:1; height:100%; max-width:min(560px, 48vw); display:flex; }
+  .hero-visual .card{ height:100%; display:flex; align-items:center; justify-content:center; background:#fff; border-radius:28px; box-shadow:0 18px 32px rgba(2,20,26,0.10); border:1px solid var(--border); padding:16px; }
+  .hero-visual .card img{ height:100%; width:auto; max-width:100%; object-fit:contain; border-radius:14px; }
   .hero .tagline{ font-size:13px; font-weight:700; letter-spacing:0.2em; color:var(--main); text-transform:uppercase; margin-bottom:14px; }
   .hero h1{ font-size:clamp(26px, 3.6vw, 40px); font-weight:900; color:var(--dark); margin:0 0 18px; line-height:1.5; }
   .hero .sub{ font-size:16px; font-weight:500; color:var(--ink); opacity:0.9; margin-bottom:14px; }
@@ -265,22 +271,31 @@
 
 <section class="hero">
   <div class="wrap">
-    <p class="tagline">Hook the Past</p>
-    <h1>図面がない。他社に断られた。<br>それでも、1個から形にします。</h1>
-    <p class="sub">古い機械・車両の取り付け用パーツ復元製作</p>
-    <p class="lead">
-      図面が残っていない、メーカーが対応してくれない——そんな古い機械・車両の【取り付け用パーツ】（ブラケット・リンケージ・カバー等）を、現物から図面を起こし、JIS規格の金属切削加工で1個単位で形にします。
-    </p>
-    <div class="badge-row">
-      <span class="badge"><span class="dot"></span>図面不要・破損した現物を送るだけ</span>
-      <span class="badge"><span class="dot"></span>本物の強度・S45C/SUS/アルミ/真鍮の削り出し</span>
-      <span class="badge"><span class="dot"></span>資産化・作成した2D/3D図面データもお渡し</span>
-      <span class="badge"><span class="dot"></span>全国対応・宅配便での現物やりとりに対応</span>
+    <div class="hero-copy">
+      <div class="hero-copy-text">
+        <p class="tagline">Hook the Past</p>
+        <h1>図面がない。他社に断られた。<br>それでも、1個から形にします。</h1>
+        <p class="sub">古い機械・車両の取り付け用パーツ復元製作</p>
+        <p class="lead">
+          図面が残っていない、メーカーが対応してくれない——そんな古い機械・車両の【取り付け用パーツ】（ブラケット・リンケージ・カバー等）を、現物から図面を起こし、JIS規格の金属切削加工で1個単位で形にします。
+        </p>
+        <div class="badge-row">
+          <span class="badge"><span class="dot"></span>図面不要・破損した現物を送るだけ</span>
+          <span class="badge"><span class="dot"></span>本物の強度・S45C/SUS/アルミ/真鍮の削り出し</span>
+          <span class="badge"><span class="dot"></span>資産化・作成した2D/3D図面データもお渡し</span>
+          <span class="badge"><span class="dot"></span>全国対応・宅配便での現物やりとりに対応</span>
+        </div>
+      </div>
+      <a class="btn" href="#contact">
+        <svg class="ic" width="18" height="18" viewBox="0 0 24 24" style="fill:none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M4 8h16"/><path d="M8 4v4"/></svg>
+        資料請求・お問い合わせ
+      </a>
     </div>
-    <a class="btn" href="#contact">
-      <svg class="ic" width="18" height="18" viewBox="0 0 24 24" style="fill:none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M4 8h16"/><path d="M8 4v4"/></svg>
-      資料請求・お問い合わせ
-    </a>
+    <div class="hero-visual">
+      <div class="card">
+        <img src="assets/restore_reverse_engineering_web.jpg" alt="現物計測から図面起こし・CAD復元・製作図面作成までのリバースエンジニアリング工程イメージ">
+      </div>
+    </div>
   </div>
 </section>
 
