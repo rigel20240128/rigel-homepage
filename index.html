@@ -402,6 +402,86 @@
   footer .foot-links a:hover{ color:var(--main); text-decoration:underline; }
   footer .tag{ font-size:11px; color:var(--sub); letter-spacing:0.08em; margin-top:4px; }
 </style>
+<style id="kintsugi-repair">
+/* 金継ぎ修理デモ: トップの写しだけへ適用。本番・全ページには未適用。 */
+
+/* 1. 低コントラスト。既存の紺と同じ色相の濃い橙を使う。 */
+.nav-tab.active {
+  color: #014B5D;
+}
+.feature .num {
+  color: #6B6E73;
+}
+.brand-hero .btn:not(.outline) {
+  background-color: #C7461B;
+  border-color: #C7461B;
+}
+.brand-hero .btn:not(.outline):hover {
+  background-color: #B93D16;
+  border-color: #B93D16;
+}
+.card.problem h3::before {
+  color: #C7461B;
+}
+.pricing p,
+.contact .kicker {
+  color: #FFFFFF;
+}
+
+/* 2. 文字段。極小ナビを12pxへ上げ、役割内の値を揃える。 */
+.btn { font-size: 14px; }
+.biz-card .biz-link { font-size: 14px; }
+.nav-tab { font-size: 12px; }
+.section-head p,
+.contact p,
+.card p,
+table.company th,
+table.company td,
+.feature p,
+.biz-card p,
+.strengths .item p { font-size: 16px; }
+.pricing p { font-size: 14px; }
+.access-note { font-size: 14px; }
+.feature .num { font-size: 12.5px; }
+.card h3,
+.feature h4 { font-size: 16px; }
+
+/* 文字段の統一で新しい泣き別れを作らないための限定的な折り返し保護。 */
+.section-head p,
+.section-head h2,
+.card p,
+.feature p,
+.pricing p,
+.biz-card h3,
+.biz-card p,
+.strengths .item p,
+.access-note span {
+  word-break: auto-phrase;
+}
+
+/* 3. 角丸を小12・面22・丸999の3役へ整理する。 */
+.biz-thumb,
+.biz-card .icon-badge,
+.card .icon-badge,
+.strengths .item .icon-ring { border-radius: 12px; }
+.access-map,
+.card,
+.company-panel,
+.pricing { border-radius: 22px; }
+
+@media (max-width: 1000px) {
+  .tab-chip.active { background-color: #146FE9; }
+}
+
+@media (max-width: 560px) {
+  /* 16px化で表幅が画面を越えたため、原寸の安全な段へ戻す。 */
+  table.company th,
+  table.company td {
+    font-size: 14.5px;
+    word-break: normal;
+  }
+}
+</style>
 </head>
 <body>
 
